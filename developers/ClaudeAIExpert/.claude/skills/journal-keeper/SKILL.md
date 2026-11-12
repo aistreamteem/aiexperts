@@ -1,0 +1,203 @@
+---
+name: journal-keeper
+description: "Use after every pipeline phase completes or when the user answers a question - updates the active journal (phase completed, artifacts, Resolved Q&A, next action) and folds merged background-agent notes into the proper sections."
+trigger: After every phase completion or when the user answers a question
+---
+
+# Journal Keeper
+
+Updates the Work Item progress journal after each phase or when the user answers a question. Use after every phase completion and whenever a decision is recorded. Now Work Item-aware with facts/rules tracking and pipeline support.
+
+## When to use
+
+- After every phase completion (spec-parser, hld-writer, dd-writer, diagram-generator, task-breakdown, scaffold-project, implement-feature)
+- Whenever the user answers a blocking or deferred question (record in same response)
+- At session end (write Last session summary)
+- When facts/rules are loaded or proactively detected
+
+## Instructions
+
+### Where notes go
+
+Three stores. Do not put step notes in the flat journals.
+
+- Expert journal: `journals/expert/progress.md` (current work item line, future work that is not a work item yet)
+- Work item journal: `journals/work-items/<id>/progress.md` (premise, goal, workflow type, decisions every branch inherits, completion status)
+- Branch map: `journals/work-items/<id>/state.json` (`active` path and `history` only)
+- Node notes: `journals/work-items/<id>/nodes/<node-id>.md` (step notes, questions, next action)
+
+Preserve the exact `Current work item:` line. Only `continue` and `switch-context` may change it.
+
+`active` is the path from `work-item` to the leaf. `history` is the descendant path below a node, not including that node. A load reads `active` only. A closed question must not stay in `history`.
+
+A blocking question becomes the active leaf. Its id is unique and is not `work-item` or a phase name. Answering or deferring it: if another open blocking question remains, move `active` there; otherwise return `active` to the parent, update that parent's next action, and clear `history`. Use **AskUserQuestion** for a fixed choice. Use chat for an open answer.
+
+### 0. Work Item context
+
+- Active work item: the line in `.claude/active-context.txt`, formatted `work-item:<id>`.
+- Artifacts (spec, docs, TODOS, STATUS, facts): `work-items/<id>/`.
+- Journal: `journals/work-items/<id>/progress.md` for item-wide fields, `state.json` for the
+  branch map, and `nodes/<active leaf>.md` for step notes, open questions, and the next action.
+  Write through journal-keeper.
+
+The active note is the last id in `state.json` `active`, file `nodes/<id>.md`. If `active-context.txt` is missing, the legacy `.claude/active-work-item.txt` may be read as a fallback; never write it.
+
+### Where each field lives
+
+The flat journal is injected before every tool call, so it holds only item-wide, slow-changing fields. Step-specific fields go on the active node. Do not store a field in a file other than the one listed here.
+
+| File | Fields |
+| --- | --- |
+| `journals/work-items/<id>/progress.md` | Work item ID and description; Work item record; Workflow type and workflow-specific context; Spec file and version; Mode; Repo URL; Current branch; Commit strategy; PR URL; HLD profile, intake links, compliance review; Decisions and approvals that every branch inherits; Completion status |
+| `journals/work-items/<id>/nodes/<node>.md` | Last completed; Next action; Open questions (blocking and deferred); Q&A resolved in this step; Blockers, pause reason, last failure; facts and rules loaded and applied; proactively detected facts and rules; step notes |
+| `work-items/<id>/STATUS.md` | Last session summary; Artifacts list; links |
+| Not stored | Current phase. It is the phase node on the `active` path in `state.json` |
+
+The templates (`journals/work-items/_TEMPLATE/progress.md`, `nodes/work-item.md`, and `work-items/_TEMPLATE/STATUS.md`) carry these fields. If a skill needs a field that has no home above, add it to this table and to the template first.
+
+### Journal Schema (Extended for Work Items)
+
+The fields below are grouped by topic; the table above says which file each one is written to.
+
+**Work Item Context:**
+- **Work Item ID:** `WID-XXXXXXXXX`
+- **Work Item description:** [Brief description]
+- **Workflow type:** `developer | production-incident` (set by workflow-selector; never changes)
+- **Pipeline:** `developer | adhoc-incident | [custom-pipeline-name]` (legacy field for backward compatibility)
+
+**Workflow-Specific Context:**
+- [Production Incident fields: what is affected, who has escalated, evidence location, incident bridge URL]
+- [External references: chat threads, issue tracker tickets, logs and monitoring alerts, documentation pages]
+
+**Standard Fields:**
+- **Spec file:** `spec.md`
+- **Spec version / last modified:** [YYYY-MM-DD or detect changes]
+- **Mode:** greenfield | iterative feature
+- **Current feature id:** [For iterative mode only]
+- **Repo URL:** [Optional; none if not connected]
+- **Current branch:** [e.g., main, feature/WID-214111151-description]
+- **Commit strategy:** incremental | single
+- **PR URL:** [After git-workflow (commit/PR)]
+- **Last completed:** [Last task/phase completed]
+- **Next action:** [Exact pipeline step to run next]
+
+**Artifacts** (in `work-items/<id>/STATUS.md`):
+- List of created files/folders with paths relative to Work Item folder (e.g., `docs/design/hld.md`, `docs/diagrams/hld-architecture.mmd`)
+
+**Facts and Rules Context:**
+- **Work Item facts loaded:** [List of fact labels/IDs from `work-items/<id>/facts/facts.md`]
+- **Work Item rules loaded:** [List of rule labels/IDs from `work-items/<id>/facts/rules.md`]
+- **Expert Role facts applied:** [List of expert-level fact labels/IDs from the workflow-split files, e.g. `facts/facts-shared.md` or `facts/facts-developer.md`]
+- **Expert Role rules applied:** [List of expert-level rule labels/IDs from the workflow-split files, e.g. `facts/rules-shared.md` or `facts/rules-developer.md`]
+- **Rule violations / conflicts:** [Any conflicts detected between rules or design decisions]
+- **Proactively detected facts/rules:** [Facts/rules detected during work and proposed to user, with date and outcome]
+
+**Questions and Decisions:**
+- **Open questions (blocking):** [MUST be empty to proceed past spec/HLD]
+- **Open questions (deferred):** [Resolve when reaching the task that needs the answer]
+- **Resolved Q&A / Decisions:** [Every user answer recorded here with question ID, question, answer, date]
+
+**Blockers:**
+- **Status:** none | waiting on user | waiting on external | build failed | blocking question
+- **Pause reason / Delay:** [e.g., "Waiting for API key", "Waiting for HLD approval"]
+- **Last failure / Retry state:** [For recovery on continue]
+
+**Completion:**
+- **Completion status:** not started | in progress | done
+- **Last session summary:** [One paragraph: what was done, next step, what's needed from user] (in `work-items/<id>/STATUS.md`)
+
+**Design Metadata:**
+- **HLD profile:** [unset until HLD runs] standard
+- **HLD intake links:** [Optional designs, prior HLD, documentation URLs]
+- **Compliance review:** unknown | required | not required | n/a
+
+### Update Procedures
+
+**After each phase:**
+1. Write the phase completed to **Last completed**
+2. Add artifacts produced to the **Artifacts** list in `work-items/<id>/STATUS.md` (use Work Item-relative paths)
+3. Set **Next action** to next pipeline step (based on **Workflow type** or legacy **Pipeline** field)
+4. If facts/rules were loaded, update **Facts and Rules Context** section
+5. If new facts/rules were proactively detected and captured, add to **Proactively detected facts/rules**
+6. **After hld-writer phase completes**: Ensure **HLD profile**, **HLD intake links**, and **Compliance review** are set
+7. Do not mark a phase complete if blocking questions remain unanswered
+8. **Preserve workflow type and workflow-specific context fields** - these are set once by workflow-selector and never changed
+
+**When user answers a question:**
+- In the **same response**, add question and answer to **Resolved Q&A / Decisions**
+- Remove the question from **Open questions (blocking)** or **Open questions (deferred)**
+- Include date: `[YYYY-MM-DD] Q: [question] A: [answer]`
+
+**When facts/rules are loaded (at skill start):**
+- Update **Work Item facts loaded** with labels from `work-items/<id>/facts/facts.md`
+- Update **Work Item rules loaded** with labels from `work-items/<id>/facts/rules.md`
+- Update **Expert Role facts applied** with labels from the workflow-split facts files (e.g. `facts/facts-shared.md`, `facts/facts-developer.md`)
+- Update **Expert Role rules applied** with labels from the workflow-split rules files (e.g. `facts/rules-shared.md`, `facts/rules-developer.md`)
+- If any rule conflicts detected, note in **Rule violations / conflicts**
+
+**When facts/rules are proactively detected:**
+- Add entry to **Proactively detected facts/rules**
+- Format: `[YYYY-MM-DD] Detected [fact/rule]: [label] - [user approved/declined]`
+
+**At session end:**
+1. Write **Last session summary** (one short paragraph: what was done, what is next, what is needed from user) in `work-items/<work-item-id>/STATUS.md`
+2. Refresh the rest of `work-items/<work-item-id>/STATUS.md`:
+ - Last updated timestamp
+ - Current phase (the phase node on the `active` path)
+ - Artifacts list
+ - Next action (copied from the active node)
+
+**Trigger audit snapshot (automatic, deterministic):**
+3. After journal update is complete, execute: `py -3 .claude/hooks/journal_snapshot.py`
+ - This is automatic and deterministic - agent doesn't manage content
+ - Hook script commits only `journals/expert/progress.md`, `journals/work-items/<id>/`, and `work-items/<id>/STATUS.md` / `NEEDS-ATTENTION.md`
+ - Script never runs `git init` or `git config`; it skips the commit if there is no repository or git ignores the journal
+ - If script fails, log error but don't block workflow
+ - Agent simply invokes script; hook captures state independently
+ - Creates audit trail for time-travel and recovery
+
+**Merge background-agent notes (automatic, parallel-safe):**
+- Background agents do **not** edit `progress.md` directly. Each writes to the agent-notes drop folder (loose note `agent-notes/<label>.md`, or a shared-task folder `agent-notes/tasks/<task-id>/` gated by a manifest - under `journals/work-items/<id>/agent-notes/`; see its README). This prevents collisions when several agents run at once.
+- The merge is **automatic and deterministic**: the `SubagentStop` and `Stop` hooks (`.claude/settings.json`) run `py -3 .claude/hooks/on_stop.py` (which calls `merge_agent_notes.py`) after every subagent finishes and every main-agent turn. It is lock-guarded and idempotent; shared tasks merge only once **all** their subtasks are present. Merged notes land in the active leaf node file (`journals/work-items/<id>/nodes/<leaf>.md`) under a timestamped section; originals are archived to `agent-notes/merged/`; the audit commit runs via `journal_snapshot.py`. You do **not** need to invoke the merge yourself.
+- Your job after a merge: fold the appended raw notes into the proper journal sections (Artifacts, Resolved Q&A / Decisions, Next action) and set the real next step, exactly as you would for a phase you ran yourself. If you haven't yet, the content is already present and current – tidiness is pending, not truth.
+
+**Workflow-aware next actions:**
+- For **developer workflow**: Follow the sequence in `.claude/workflows/developer.md`: spec-parser → hld-writer → dd-writer → diagram-generator → task-breakdown → git-workflow (setup) → scaffold-project → implement-feature (loop) → test → git-workflow (commit/PR) → done
+- For **production-incident workflow**: Follow incident sequence (assess-incident → analyze-root-cause → apply-mitigation → monitor-impact → resolve-and-document → done)
+- For **legacy pipelines**: Map old pipeline names to workflow types (adhoc-incident → production-incident)
+
+### Artifact Paths
+
+All artifact paths are Work Item-scoped:
+- `docs/design/` → Design documents (HLD, DD, requirements-summary.md)
+- `docs/diagrams/` → Mermaid diagrams and index.html
+- `docs/decisions/` → ADRs
+- `docs/features/<feature-id>/` → Feature-specific docs (for iterative mode)
+- `facts/` → Work Item facts and rules
+- `tests/` → Work Item tests (if not using global tests)
+- `TODOS.md` → Task list
+- `STATUS.md` → Status summary
+
+### Example Journal Updates
+
+**After HLD completion:**
+- **Last completed:** hld-writer 
+- **Next action:** wait for HLD approval
+- **Artifacts:** [docs/design/hld.md, docs/diagrams/hld-architecture.mmd, docs/diagrams/hld-system-context.mmd, docs/diagrams/index.html]
+- **HLD profile:** standard
+- **Expert Role rules applied:** [Repository pattern requirement, No microservices, Integration tests use real DB]
+
+**After proactive detection:**
+- **Proactively detected facts/rules:**
+ - [2026-04-28] Detected rule: "Integration tests must use real database" - user approved, stored at expert-role level
+
+**At session end:**
+- **Last session summary:** Completed HLD with the standard profile, generated architecture and system context diagrams. Next: Waiting for HLD approval. Please review docs/design/hld.md and reply with "I approve the HLD" to proceed to DD phase.
+
+### Notes
+- Journal is the single source of truth for Work Item state across sessions
+- All pipeline skills read from and write to this journal via journal-keeper
+- Facts/rules tracking enables visibility into what knowledge informed decisions
+- Workflow type field determines phase sequence (developer vs production-incident)
+- Workflow type is set once by workflow-selector and never changes for a Work Item
+- Workflow-specific context fields (incident details, external references) must be preserved across updates
