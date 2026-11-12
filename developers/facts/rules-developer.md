@@ -1,9 +1,4 @@
 # Developer Rules
 
-Prescriptive constraints for developer-workflow work only: coding standards, design patterns, testing requirements, git and deployment procedures.
+Constraints and procedures that must be followed in the developer workflow: code standards, testing requirements, deployment order, and git practice. Entry format: see [Entry Format Reference in MEMORY-INDEX.md](MEMORY-INDEX.md#entry-format-reference).
 
-Entry format: see [Entry Format Reference in MEMORY-INDEX.md](MEMORY-INDEX.md#entry-format-reference). Use `### YYYY-MM-DD: Title` headers.
-
----
-
-(No entries yet.)

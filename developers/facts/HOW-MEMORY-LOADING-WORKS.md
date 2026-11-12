@@ -1,43 +1,32 @@
-# How Memory Loading Works
+# How memory loading works
 
-The agent cannot load every memory file on every turn. It loads a small, fixed set by workflow, and surfaces individual rules at the moment they matter.
+Short description of the expert memory mechanism in this scaffold. Entry format lives in [MEMORY-INDEX.md](MEMORY-INDEX.md).
 
-## Files
+## Two axes
 
-| Scope | Files |
+1. **Workflow axis (browse / context budget).** Skills load a **shared** pair (`facts-shared.md`, `rules-shared.md`) plus the pair for the current workflow (e.g. `facts-developer.md`, `rules-developer.md`). Work Item memory lives under `work-items/<id>/facts/`. Entries marked `Workflows: all` are filed in the shared pair so every workflow sees them.
+2. **Trigger axis (action-time).** Rules may carry a `**Triggers:**` field. `scripts/memory/build_trigger_index.py` builds `TRIGGER-INDEX.md` and `trigger-index.json`. The preToolUse hook `.cursor/hooks/inject_rules_on_action.py` injects matching rule text when the agent is about to take that action, in any workflow.
+
+## What loads when
+
+| Moment | What is loaded |
 | --- | --- |
-| Shared (every workflow) | `facts/facts-shared.md`, `facts/rules-shared.md` |
-| Workflow pair | `facts/facts-developer.md` / `facts/rules-developer.md`, or `facts/facts-incident-response.md` / `facts/rules-incident-response.md` |
-| Work item | `work-items/<id>/facts/facts.md`, `work-items/<id>/facts/rules.md` |
-| Index | `facts/MEMORY-INDEX.md` (entry formats, navigation) |
-| Trigger index | `facts/trigger-index.json` and `facts/TRIGGER-INDEX.md` (generated) |
+| Session start / before prompt / preToolUse | Journal context via `inject_journal_context.py` (expert journal, flat work-item journal, active branch notes) |
+| Skill start (continue, spec-parser, implement, iterative) | `MEMORY-INDEX.md`, shared pair, workflow pair, then Work Item `facts/` |
+| About to Write/Shell a matching action | Rules whose Triggers match, from `trigger-index.json` |
 
-## Session-start loading (workflow axis)
+## Active work item
 
-Skills such as `continue`, `spec-parser`, `implement-feature`, and `iterative-feature` load memory in this order:
+The active id is the line in `.cursor/active-context.txt` (`work-item:<id>`). Hooks and skills may read the legacy `.cursor/active-work-item.txt` as a fallback; nothing writes that file any more.
 
-1. `facts/MEMORY-INDEX.md`
-2. The shared pair
-3. The pair for the work item's `Workflow type` (from `journals/work-items/<id>/progress.md`)
-4. The work item pair, unfiltered
+## Files on disk
 
-Each expert entry has a `**Workflows:**` field (default `all`). An entry is kept when the field is `all` or names the current workflow. Entries marked `all` live in the shared pair, so every workflow loads them. Rules MUST be followed; facts give context. Violations are logged to the journal.
+- Expert: `facts/facts-*.md`, `facts/rules-*.md` (discoverable by glob; create an incident-response pair when that workflow is enabled)
+- Indexes: `MEMORY-INDEX.md`, `TRIGGER-INDEX.md`, `trigger-index.json`
+- Work Item: `work-items/<id>/facts/facts.md`, `work-items/<id>/facts/rules.md`
 
-## Action-time surfacing (trigger axis)
+## Maintenance
 
-Some rules matter only at a particular action, whatever the workflow.
-
-1. A rule carries `**Triggers:**` with tokens such as `write:sql`, `write:doc`, `pr:open`, `git:push`, `git:commit`.
-2. `python scripts/memory/build_trigger_index.py` scans every `facts/rules-*.md` and writes `trigger-index.json` and `TRIGGER-INDEX.md`. It warns about rules with no `Triggers:` line and about tokens the hook cannot produce.
-3. The PreToolUse hook `.claude/hooks/inject_rules_on_action.py` runs before every tool call. It classifies the pending action into tokens, looks them up in `trigger-index.json`, and injects the full text of each matching rule.
-
-The token vocabulary is the `KNOWN_TOKENS` table in the hook. Regenerate the index after adding or retagging a rule.
-
-## Writing memory
-
-- `remember` captures one fact or rule and files it by scope and workflow.
-- `promote-facts-rules` moves work item entries to the expert files at the end of a work item.
-- `integrate-docs` imports entries in bulk from documents.
-- `memory-optimize` analyzes the files for size, duplicates, and missing metadata.
-
-All four use `### YYYY-MM-DD: Title` entry headers; see the format in `MEMORY-INDEX.md`.
+- Capture with the **remember** skill; promote with **promote-facts-rules**
+- Health check: `py -3 .cursor/skills/memory-optimize/scripts/analyze-memory.py facts`
+- After retagging rules: `py -3 scripts/memory/build_trigger_index.py`

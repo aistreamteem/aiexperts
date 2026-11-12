@@ -1,8 +1,7 @@
 # work-item
 
-Step-specific fields for this node. Item-wide fields live in `../progress.md`. See the field table in the journal-keeper skill.
-
 **Last completed:**
+
 **Next action:**
 
 ## Open questions (blocking)
@@ -13,23 +12,24 @@ Step-specific fields for this node. Item-wide fields live in `../progress.md`. S
 
 (none)
 
-## Resolved Q&A
+## Q&A resolved in this step
 
 (none)
 
 ## Blockers
 
-**Status:** none
+**Blockers:**
+
 **Pause reason:**
+
 **Last failure:**
 
 ## Facts and rules
 
-**Loaded:**
-**Applied:**
-**Rule violations / conflicts:**
-**Proactively detected:**
+**Facts and rules loaded and applied:**
+
+**Proactively detected facts and rules:**
 
 ## Step notes
 
-(none)
+(none yet)

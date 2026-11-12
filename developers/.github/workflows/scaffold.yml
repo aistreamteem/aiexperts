@@ -1,4 +1,4 @@
-name: Scaffold integrity
+name: scaffold
 
 on:
   push:
@@ -7,6 +7,7 @@ on:
 jobs:
   check:
     strategy:
+      fail-fast: false
       matrix:
         os: [windows-latest, ubuntu-latest]
     runs-on: ${{ matrix.os }}
@@ -15,7 +16,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Integrity check
+      - name: Scaffold integrity check
         run: python scripts/check_scaffold.py
       - name: Journal hook tests
         run: python scripts/test_journal_hook.py
@@ -23,5 +24,3 @@ jobs:
         run: python scripts/test_rules_hook.py
       - name: Stop hook tests
         run: python scripts/test_stop_hooks.py
-      - name: Rebuild trigger index
-        run: python scripts/memory/build_trigger_index.py

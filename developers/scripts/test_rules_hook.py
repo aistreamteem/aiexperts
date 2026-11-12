@@ -1,4 +1,4 @@
-"""Classifier and PreToolUse rules hook tests."""
+"""Cursor preToolUse rules hook matches Shell and StrReplace actions."""
 
 from __future__ import annotations
 
@@ -9,10 +9,9 @@ import tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / ".claude" / "hooks"))
-from inject_rules_on_action import KNOWN_TOKENS, classify  # noqa: E402
-
-HOOK = ROOT / ".claude" / "hooks" / "inject_rules_on_action.py"
+HOOK = ROOT / ".cursor" / "hooks" / "inject_rules_on_action.py"
+sys.path.insert(0, str(ROOT / ".cursor" / "hooks"))
+from inject_rules_on_action import classify  # noqa: E402
 
 
 def _assert(condition: bool, message: str) -> None:
@@ -20,79 +19,103 @@ def _assert(condition: bool, message: str) -> None:
         raise SystemExit(message)
 
 
-CASES = [
-    ("Shell", "", "git config user.name x", []),
-    ("Write", "db/fix.sql", "", ["write:sql", "sql:generate"]),
-    ("Write", "docs/report.html", "", ["write:doc"]),
-    ("Write", "docs/note.md", "", ["write:doc"]),
-    ("Write", "page.htm", "", ["write:doc"]),
-    ("Shell", "", "gh pr create --title t", ["pr:open"]),
-    ("Shell", "", "git -C repo push origin HEAD", ["git:push"]),
-    ("Shell", "", "git -C repo commit -m msg", ["git:commit"]),
-    ("Shell", "", "npm run build --config webpack.js", []),
-    ("Bash", "", "git push", ["git:push"]),
-    ("Edit", "migrations/demo.sql", "", ["write:sql", "sql:generate"]),
-]
-
-
-def main() -> int:
-    for tool, path, command, expected in CASES:
-        got = classify(tool, path, command)
-        _assert(got == expected, f"{tool} {path!r} {command!r}: got {got}, expected {expected}")
-
-    expected_tokens = {
-        "write:sql",
-        "sql:generate",
-        "write:doc",
-        "pr:open",
-        "git:push",
-        "git:commit",
-    }
-    _assert(set(KNOWN_TOKENS) == expected_tokens, f"unexpected KNOWN_TOKENS: {KNOWN_TOKENS}")
-
-    tmp = Path(tempfile.mkdtemp(prefix="claude-rules-"))
-    facts = tmp / "facts"
-    facts.mkdir(parents=True)
-    (facts / "trigger-index.json").write_text(
-        json.dumps(
-            {
-                "write:sql": [
-                    {
-                        "title": "SQL rule",
-                        "file": "rules-developer.md",
-                        "line": 1,
-                        "body": "### SQL rule\n\nDo not drop tables.",
-                    }
-                ]
-            }
-        ),
-        encoding="utf-8",
-    )
+def _run(payload: dict, workspace: Path) -> dict:
     completed = subprocess.run(
         [sys.executable, str(HOOK)],
-        input=json.dumps({"tool_name": "Write", "tool_input": {"file_path": "db/x.sql"}}),
+        input=json.dumps(payload),
         text=True,
         capture_output=True,
-        cwd=str(tmp),
+        cwd=str(workspace),
         check=False,
     )
     _assert(completed.returncode == 0, completed.stderr or "rules hook failed")
-    body = json.loads(completed.stdout)["hookSpecificOutput"]["additionalContext"]
-    _assert("Do not drop tables" in body, "rule body missing")
-    _assert("write:sql" in body, "trigger label missing")
+    return json.loads(completed.stdout)
 
-    no_match = subprocess.run(
-        [sys.executable, str(HOOK)],
-        input=json.dumps({"tool_name": "Shell", "tool_input": {"command": "git config user.name x"}}),
-        text=True,
-        capture_output=True,
-        cwd=str(tmp),
-        check=False,
-    )
-    _assert(no_match.returncode == 0, "config command should exit 0")
-    _assert(not no_match.stdout.strip(), "config:change must not fire")
 
-    print("claude rules hook tests passed")
+def main() -> int:
+    # Classifier table cases (fix 5).
+    cases = [
+        ("Shell", "", "git config user.name x", []),
+        (
+            "Write",
+            "outputs/fix.sql",
+            "",
+            ["write:sql", "sql:generate"],
+        ),
+        ("Write", "notes/readme.md", "", ["write:doc"]),
+        ("Write", "docs/page.html", "", ["write:doc"]),
+        ("Shell", "", "git -C repo push", ["git:push"]),
+        ("Shell", "", "npm run build --config webpack.js", []),
+        (
+            "Write",
+            "docs/walkthrough.html",
+            "",
+            ["write:doc"],
+        ),
+        ("Shell", "", "gh pr create --title t", ["pr:open"]),
+        ("Shell", "", "git commit -m hello", ["git:commit"]),
+        ("Write", "db/migrations/add_user.sql", "", ["write:sql", "sql:generate"]),
+        ("Read", "README.md", "", []),
+    ]
+    for tool, path, command, expected in cases:
+        got = classify(tool, path, command)
+        _assert(
+            got == expected,
+            f"classify({tool!r}, {path!r}, {command!r}) -> {got!r}, want {expected!r}",
+        )
+
+    with tempfile.TemporaryDirectory(prefix="cursor-rules-") as tmp_name:
+        tmp = Path(tmp_name)
+        index = {
+            "write:sql": [
+                {
+                    "title": "SQL",
+                    "file": "facts/rules-developer.md",
+                    "line": 1,
+                    "body": "SQL_RULE_BODY",
+                }
+            ],
+            "git:commit": [
+                {
+                    "title": "Commit",
+                    "file": "facts/rules-developer.md",
+                    "line": 2,
+                    "body": "COMMIT_RULE_BODY",
+                }
+            ],
+        }
+        facts = tmp / "facts"
+        facts.mkdir()
+        (facts / "trigger-index.json").write_text(
+            json.dumps(index), encoding="utf-8"
+        )
+
+        sql = _run(
+            {
+                "tool_name": "StrReplace",
+                "tool_input": {"path": "db\\migrations\\add_user.sql"},
+            },
+            tmp,
+        )
+        _assert("SQL_RULE_BODY" in sql.get("additional_context", ""), "sql rule missing")
+        _assert(sql.get("continue") is True, "sql continue missing")
+
+        commit = _run(
+            {"tool_name": "Shell", "tool_input": {"command": "git commit -m hello"}},
+            tmp,
+        )
+        _assert(
+            "COMMIT_RULE_BODY" in commit.get("additional_context", ""),
+            "commit rule missing",
+        )
+
+        quiet = _run(
+            {"tool_name": "Read", "tool_input": {"path": "README.md"}},
+            tmp,
+        )
+        _assert("additional_context" not in quiet, "read injected a rule")
+        _assert(quiet.get("continue") is True, "read continue missing")
+    print("cursor rules hook tests passed")
     return 0
 
 

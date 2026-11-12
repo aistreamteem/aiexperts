@@ -36,11 +36,11 @@
 
 **When to use:** Production incidents, urgent bugs, hotfixes
 
-**Phases:** assess-incident → analyze-root-cause → apply-mitigation → monitor-impact → resolve-and-document → done (see `.claude/workflows/production-incident.md`; not enabled in the registry until the role approves it)
+**Phases:** assess-incident → analyze-root-cause → apply-mitigation → monitor-impact → resolve-and-document
 
 **Human gates:**
-- Fix approach approval (after analyze-root-cause, before apply-mitigation)
-- Deployment approval (before any change reaches production)
+- Fix approach approval (before implementing fix)
+- Deployment approval (before pushing to production)
 
 **Characteristics:**
 - NO HLD/DD phase (assumes existing architecture is known)
