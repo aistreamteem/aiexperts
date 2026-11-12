@@ -1,0 +1,16 @@
+{
+  "workflows": {
+    "product-initiative": {
+      "name": "Product Initiative",
+      "description": "Use when a user problem needs an outcome, a now-versus-later cut, and stakeholder alignment.",
+      "instruction_file": ".cursor/workflows/product-initiative.md",
+      "initial_phase": "intake"
+    },
+    "product-escalation": {
+      "name": "Product Escalation",
+      "description": "Use for a launch problem, a priority conflict, or a user issue that changes the outcome.",
+      "instruction_file": ".cursor/workflows/product-escalation.md",
+      "initial_phase": "assess-situation"
+    }
+  }
+}

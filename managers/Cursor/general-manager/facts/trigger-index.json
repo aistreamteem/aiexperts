@@ -1,0 +1,72 @@
+{
+  "cadence:review": [
+    {
+      "title": "Set the next check",
+      "file": "rules-management-escalation.md",
+      "line": 75,
+      "body": "### 2026-10-08: Set the next check\n\n**Scope:** expert-role\n\n**Workflows:** management-escalation\n\n**Triggers:** cadence:review\n\n**Captured:** 2026-10-08\n\n**Source:** starter pack\n\n**Rule:** Monitoring names what will be checked and when.\n\n**Why:** A decision without a check slides back into conflict.\n\n**How to apply:** Record the check and the time."
+    },
+    {
+      "title": "Charter and plan gates are not skipped",
+      "file": "rules-management-initiative.md",
+      "line": 39,
+      "body": "### 2026-10-08: Charter and plan gates are not skipped\n\n**Scope:** expert-role\n\n**Workflows:** management-initiative\n\n**Triggers:** cadence:review\n\n**Captured:** 2026-10-08\n\n**Source:** starter pack\n\n**Rule:** Do not start kickoff or execute actions until the charter and the operating plan are approved or the operator explicitly skips that gate.\n\n**Why:** A cadence built on an unapproved outcome wastes attention.\n\n**How to apply:** If the next action is a wait, re-prompt. Continue is not approval."
+    }
+  ],
+  "decision:log": [
+    {
+      "title": "Options precede the ask",
+      "file": "rules-management-escalation.md",
+      "line": 21,
+      "body": "### 2026-10-08: Options precede the ask\n\n**Scope:** expert-role\n\n**Workflows:** management-escalation\n\n**Triggers:** decision:log\n\n**Captured:** 2026-10-08\n\n**Source:** starter pack\n\n**Rule:** The impact note lists options and who chooses.\n\n**Why:** A single forced option is not a decision.\n\n**How to apply:** Write at least two options unless the operator says there is only one."
+    },
+    {
+      "title": "A decision names the decider and the date",
+      "file": "rules-management-initiative.md",
+      "line": 3,
+      "body": "### 2026-10-08: A decision names the decider and the date\n\n**Scope:** expert-role\n\n**Workflows:** management-initiative\n\n**Triggers:** decision:log\n\n**Captured:** 2026-10-08\n\n**Source:** starter pack\n\n**Rule:** Every decision records who decided and the date.\n\n**Why:** An undated, unowned decision will be reopened.\n\n**How to apply:** Write the decider and the date in the decision log before calling the action done."
+    },
+    {
+      "title": "One owner per action",
+      "file": "rules-management-initiative.md",
+      "line": 75,
+      "body": "### 2026-10-08: One owner per action\n\n**Scope:** expert-role\n\n**Workflows:** management-initiative\n\n**Triggers:** decision:log\n\n**Captured:** 2026-10-08\n\n**Source:** starter pack\n\n**Rule:** Each action in the tracker has one owner.\n\n**Why:** Shared ownership hides who will do the work.\n\n**How to apply:** Name one owner. If unknown, record an open question."
+    }
+  ],
+  "escalation:open": [
+    {
+      "title": "Name the stuck decision",
+      "file": "rules-management-escalation.md",
+      "line": 3,
+      "body": "### 2026-10-08: Name the stuck decision\n\n**Scope:** expert-role\n\n**Workflows:** management-escalation\n\n**Triggers:** escalation:open\n\n**Captured:** 2026-10-08\n\n**Source:** starter pack\n\n**Rule:** The assessment names the stuck decision, the people affected, and the next communication.\n\n**Why:** A vague conflict cannot be resolved.\n\n**How to apply:** Fill those three points before impact analysis."
+    },
+    {
+      "title": "Response approval comes first",
+      "file": "rules-management-escalation.md",
+      "line": 39,
+      "body": "### 2026-10-08: Response approval comes first\n\n**Scope:** expert-role\n\n**Workflows:** management-escalation\n\n**Triggers:** escalation:open\n\n**Captured:** 2026-10-08\n\n**Source:** starter pack\n\n**Rule:** Do not send the communication or lock the decision until the operator approves the response.\n\n**Why:** A stuck decision still needs an explicit yes.\n\n**How to apply:** Wait for I approve the response or Skip response approval."
+    }
+  ],
+  "stakeholder:update": [
+    {
+      "title": "Say what will be communicated",
+      "file": "rules-management-escalation.md",
+      "line": 57,
+      "body": "### 2026-10-08: Say what will be communicated\n\n**Scope:** expert-role\n\n**Workflows:** management-escalation\n\n**Triggers:** stakeholder:update\n\n**Captured:** 2026-10-08\n\n**Source:** starter pack\n\n**Rule:** The response includes the next communication: audience and message.\n\n**Why:** Stakeholders otherwise hear different stories.\n\n**How to apply:** Write the audience and the message in the response."
+    },
+    {
+      "title": "People notes stay on the work item",
+      "file": "rules-management-initiative.md",
+      "line": 57,
+      "body": "### 2026-10-08: People notes stay on the work item\n\n**Scope:** expert-role\n\n**Workflows:** management-initiative\n\n**Triggers:** stakeholder:update\n\n**Captured:** 2026-10-08\n\n**Source:** starter pack\n\n**Rule:** People notes stay on the work item unless the operator explicitly says to store them in expert-role memory.\n\n**Why:** Private topics must not become standing memory by accident.\n\n**How to apply:** Keep the note on the work item. Ask before any expert-role copy."
+    }
+  ],
+  "status:update": [
+    {
+      "title": "Status states the outcome, the risk, and the ask",
+      "file": "rules-management-initiative.md",
+      "line": 21,
+      "body": "### 2026-10-08: Status states the outcome, the risk, and the ask\n\n**Scope:** expert-role\n\n**Workflows:** management-initiative\n\n**Triggers:** status:update\n\n**Captured:** 2026-10-08\n\n**Source:** starter pack\n\n**Rule:** A status update states the outcome, the risk, and the ask.\n\n**Why:** A narrative without an ask does not move the work.\n\n**How to apply:** Use those three parts in that order."
+    }
+  ]
+}

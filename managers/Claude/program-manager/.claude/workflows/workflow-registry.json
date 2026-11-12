@@ -1,0 +1,16 @@
+{
+  "workflows": {
+    "program-delivery": {
+      "name": "Program Delivery",
+      "description": "Use when a cross-team effort needs a schedule, a RAID log, and a steering forum.",
+      "instruction_file": ".claude/workflows/program-delivery.md",
+      "initial_phase": "intake"
+    },
+    "program-escalation": {
+      "name": "Program Escalation",
+      "description": "Use when a milestone is blocked, a dependency fails, or scope is disputed.",
+      "instruction_file": ".claude/workflows/program-escalation.md",
+      "initial_phase": "assess-situation"
+    }
+  }
+}

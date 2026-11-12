@@ -1,0 +1,16 @@
+{
+  "workflows": {
+    "management-initiative": {
+      "name": "Management Initiative",
+      "description": "Use when an outcome needs owners, a cadence, decisions, and stakeholder communication.",
+      "instruction_file": ".claude/workflows/management-initiative.md",
+      "initial_phase": "intake"
+    },
+    "management-escalation": {
+      "name": "Management Escalation",
+      "description": "Use when a decision is stuck, a commitment is at risk, or stakeholders conflict.",
+      "instruction_file": ".claude/workflows/management-escalation.md",
+      "initial_phase": "assess-situation"
+    }
+  }
+}

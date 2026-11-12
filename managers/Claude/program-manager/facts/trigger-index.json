@@ -1,0 +1,72 @@
+{
+  "milestone:review": [
+    {
+      "title": "The named approver accepts the milestone",
+      "file": "rules-program-delivery.md",
+      "line": 57,
+      "body": "### 2026-10-08: The named approver accepts the milestone\n\n**Scope:** expert-role\n\n**Workflows:** program-delivery\n\n**Triggers:** milestone:review\n\n**Captured:** 2026-10-08\n\n**Source:** starter pack\n\n**Rule:** A milestone is accepted only by the named approver.\n\n**Why:** The program manager prepares the evidence. Acceptance is a separate act.\n\n**How to apply:** Record the approver's yes in the verification file. Do not write accepted on your own authority."
+    },
+    {
+      "title": "State which milestone moved",
+      "file": "rules-program-escalation.md",
+      "line": 3,
+      "body": "### 2026-10-08: State which milestone moved\n\n**Scope:** expert-role\n\n**Workflows:** program-escalation\n\n**Triggers:** milestone:review\n\n**Captured:** 2026-10-08\n\n**Source:** starter pack\n\n**Rule:** The assessment names the milestone that moved and why.\n\n**Why:** Steering cannot decide from a vague slip.\n\n**How to apply:** Name the milestone, the old date, and the pressure on the new date."
+    }
+  ],
+  "raid:update": [
+    {
+      "title": "Every risk has an owner and a date",
+      "file": "rules-program-delivery.md",
+      "line": 39,
+      "body": "### 2026-10-08: Every risk has an owner and a date\n\n**Scope:** expert-role\n\n**Workflows:** program-delivery\n\n**Triggers:** raid:update\n\n**Captured:** 2026-10-08\n\n**Source:** starter pack\n\n**Rule:** Every RAID entry has one owner and a date.\n\n**Why:** An ownerless risk is a wish.\n\n**How to apply:** Do not save a RAID entry that lacks either field."
+    },
+    {
+      "title": "Watch the dependency after the decision",
+      "file": "rules-program-escalation.md",
+      "line": 75,
+      "body": "### 2026-10-08: Watch the dependency after the decision\n\n**Scope:** expert-role\n\n**Workflows:** program-escalation\n\n**Triggers:** raid:update\n\n**Captured:** 2026-10-08\n\n**Source:** starter pack\n\n**Rule:** Monitoring names the dependency or milestone signal and the next check.\n\n**Why:** A decided escalation can slip again quietly.\n\n**How to apply:** Record the signal and the check time."
+    }
+  ],
+  "scope:change": [
+    {
+      "title": "Scope changes use the change gate",
+      "file": "rules-program-delivery.md",
+      "line": 3,
+      "body": "### 2026-10-08: Scope changes use the change gate\n\n**Scope:** expert-role\n\n**Workflows:** program-delivery\n\n**Triggers:** scope:change\n\n**Captured:** 2026-10-08\n\n**Source:** starter pack\n\n**Rule:** A change to scope, date, or a dependency goes through change-request and waits for I approve the change or Skip change approval.\n\n**Why:** Silent scope change breaks the charter.\n\n**How to apply:** Draft the change file. Stop until the operator approves or skips."
+    },
+    {
+      "title": "Response approval comes first",
+      "file": "rules-program-escalation.md",
+      "line": 39,
+      "body": "### 2026-10-08: Response approval comes first\n\n**Scope:** expert-role\n\n**Workflows:** program-escalation\n\n**Triggers:** scope:change\n\n**Captured:** 2026-10-08\n\n**Source:** starter pack\n\n**Rule:** Do not change scope, a date, or a dependency as part of an escalation response until the operator approves the response.\n\n**Why:** Urgent disputes still need an explicit yes.\n\n**How to apply:** Wait for I approve the response or Skip response approval."
+    }
+  ],
+  "status:report": [
+    {
+      "title": "Status is done, next, and blocked",
+      "file": "rules-program-delivery.md",
+      "line": 21,
+      "body": "### 2026-10-08: Status is done, next, and blocked\n\n**Scope:** expert-role\n\n**Workflows:** program-delivery\n\n**Triggers:** status:report\n\n**Captured:** 2026-10-08\n\n**Source:** starter pack\n\n**Rule:** Every status report separates done, next, and blocked.\n\n**Why:** Mixed status hides the blocked work.\n\n**How to apply:** Use those three headings and no other structure for the status body."
+    }
+  ],
+  "steering:pack": [
+    {
+      "title": "Steering packs match the plan",
+      "file": "rules-program-delivery.md",
+      "line": 75,
+      "body": "### 2026-10-08: Steering packs match the plan\n\n**Scope:** expert-role\n\n**Workflows:** program-delivery\n\n**Triggers:** steering:pack\n\n**Captured:** 2026-10-08\n\n**Source:** starter pack\n\n**Rule:** A steering pack uses the milestones, RAID, and decision rights from the approved plan.\n\n**Why:** A pack that invents a new plan confuses governance.\n\n**How to apply:** Read the operating plan first. Cite the milestone and the risk you are showing."
+    },
+    {
+      "title": "List options and the decider",
+      "file": "rules-program-escalation.md",
+      "line": 21,
+      "body": "### 2026-10-08: List options and the decider\n\n**Scope:** expert-role\n\n**Workflows:** program-escalation\n\n**Triggers:** steering:pack\n\n**Captured:** 2026-10-08\n\n**Source:** starter pack\n\n**Rule:** The impact note lists options and who must decide.\n\n**Why:** An escalation without a decider stalls.\n\n**How to apply:** Write the options and one decider before asking for response approval."
+    },
+    {
+      "title": "Tell steering what was decided",
+      "file": "rules-program-escalation.md",
+      "line": 57,
+      "body": "### 2026-10-08: Tell steering what was decided\n\n**Scope:** expert-role\n\n**Workflows:** program-escalation\n\n**Triggers:** steering:pack\n\n**Captured:** 2026-10-08\n\n**Source:** starter pack\n\n**Rule:** The response states what steering is told.\n\n**Why:** Governance that hears nothing will reopen the decision.\n\n**How to apply:** Write the message and the forum into the response."
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "workflows": {
+    "team-delivery": {
+      "name": "Team Delivery",
+      "description": "Use when a team objective needs an outcome, owners, and a cadence, such as a delivery commitment, a staffing plan, or a delegation change.",
+      "instruction_file": ".claude/workflows/team-delivery.md",
+      "initial_phase": "intake"
+    },
+    "team-escalation": {
+      "name": "Team Escalation",
+      "description": "Use when delivery slips, a people decision is urgent, or a production issue lands on the team.",
+      "instruction_file": ".claude/workflows/team-escalation.md",
+      "initial_phase": "assess-situation"
+    }
+  }
+}

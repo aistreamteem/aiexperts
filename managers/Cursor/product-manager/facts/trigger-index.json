@@ -1,0 +1,72 @@
+{
+  "discovery:note": [
+    {
+      "title": "Write the outcome before the solution",
+      "file": "rules-product-initiative.md",
+      "line": 3,
+      "body": "### 2026-10-08: Write the outcome before the solution\n\n**Scope:** expert-role\n\n**Workflows:** product-initiative\n\n**Triggers:** discovery:note\n\n**Captured:** 2026-10-08\n\n**Source:** starter pack\n\n**Rule:** State the outcome and the user before describing a solution.\n\n**Why:** Solutions written first hide whether the problem is understood.\n\n**How to apply:** In the brief and in discovery notes, problem and outcome come first."
+    },
+    {
+      "title": "Assumptions are written in the brief",
+      "file": "rules-product-initiative.md",
+      "line": 57,
+      "body": "### 2026-10-08: Assumptions are written in the brief\n\n**Scope:** expert-role\n\n**Workflows:** product-initiative\n\n**Triggers:** discovery:note\n\n**Captured:** 2026-10-08\n\n**Source:** starter pack\n\n**Rule:** Assumptions are written in the opportunity brief and reviewed at verification.\n\n**Why:** Unwritten assumptions cannot be checked.\n\n**How to apply:** Each assumption is a line in the brief. Verification lists which ones are still open."
+    }
+  ],
+  "metric:review": [
+    {
+      "title": "Describe impact on the outcome",
+      "file": "rules-product-escalation.md",
+      "line": 3,
+      "body": "### 2026-10-08: Describe impact on the outcome\n\n**Scope:** expert-role\n\n**Workflows:** product-escalation\n\n**Triggers:** metric:review\n\n**Captured:** 2026-10-08\n\n**Source:** starter pack\n\n**Rule:** The assessment states how the issue changes the outcome or the success metric.\n\n**Why:** Urgency without outcome impact is noise.\n\n**How to apply:** Name the metric and the direction of the change."
+    },
+    {
+      "title": "Watch the metric after the decision",
+      "file": "rules-product-escalation.md",
+      "line": 75,
+      "body": "### 2026-10-08: Watch the metric after the decision\n\n**Scope:** expert-role\n\n**Workflows:** product-escalation\n\n**Triggers:** metric:review\n\n**Captured:** 2026-10-08\n\n**Source:** starter pack\n\n**Rule:** Monitoring names the metric and the next reading.\n\n**Why:** A launch decision needs a check.\n\n**How to apply:** Record the metric and when it will be read again."
+    },
+    {
+      "title": "Readouts name the metric",
+      "file": "rules-product-initiative.md",
+      "line": 75,
+      "body": "### 2026-10-08: Readouts name the metric\n\n**Scope:** expert-role\n\n**Workflows:** product-initiative\n\n**Triggers:** metric:review\n\n**Captured:** 2026-10-08\n\n**Source:** starter pack\n\n**Rule:** A stakeholder readout cites the success metric and the latest reading.\n\n**Why:** Narrative without the metric cannot be verified.\n\n**How to apply:** Include the metric, the reading, and the gap."
+    }
+  ],
+  "prioritization:decide": [
+    {
+      "title": "Response approval comes first",
+      "file": "rules-product-escalation.md",
+      "line": 39,
+      "body": "### 2026-10-08: Response approval comes first\n\n**Scope:** expert-role\n\n**Workflows:** product-escalation\n\n**Triggers:** prioritization:decide\n\n**Captured:** 2026-10-08\n\n**Source:** starter pack\n\n**Rule:** Do not change priority or the public message until the operator approves the response.\n\n**Why:** A launch problem still needs an explicit yes.\n\n**How to apply:** Wait for I approve the response or Skip response approval."
+    },
+    {
+      "title": "Priority changes use the change gate",
+      "file": "rules-product-initiative.md",
+      "line": 21,
+      "body": "### 2026-10-08: Priority changes use the change gate\n\n**Scope:** expert-role\n\n**Workflows:** product-initiative\n\n**Triggers:** prioritization:decide\n\n**Captured:** 2026-10-08\n\n**Source:** starter pack\n\n**Rule:** A change to priority, scope-now, or the success metric uses change-request.\n\n**Why:** Quiet priority edits break stakeholder agreement.\n\n**How to apply:** Draft the change. Wait for I approve the change or Skip change approval."
+    }
+  ],
+  "roadmap:update": [
+    {
+      "title": "Do not pick up the build",
+      "file": "rules-product-escalation.md",
+      "line": 57,
+      "body": "### 2026-10-08: Do not pick up the build\n\n**Scope:** expert-role\n\n**Workflows:** product-escalation\n\n**Triggers:** roadmap:update\n\n**Captured:** 2026-10-08\n\n**Source:** starter pack\n\n**Rule:** The response is a decision, a message, or a watch item, not a build task.\n\n**Why:** Urgency does not change this expert's job.\n\n**How to apply:** If the only next step is a build, record that as someone else's action and stop."
+    },
+    {
+      "title": "An execute action is not a build task",
+      "file": "rules-product-initiative.md",
+      "line": 39,
+      "body": "### 2026-10-08: An execute action is not a build task\n\n**Scope:** expert-role\n\n**Workflows:** product-initiative\n\n**Triggers:** roadmap:update\n\n**Captured:** 2026-10-08\n\n**Source:** starter pack\n\n**Rule:** Execute actions are discovery notes, prioritization decisions, roadmap updates, stakeholder readouts, or metric checks.\n\n**Why:** This expert does not carry out the build.\n\n**How to apply:** If the operator asks for a build task, record it as out of scope and point at the decision or readout you can write instead."
+    }
+  ],
+  "stakeholder:update": [
+    {
+      "title": "Name the decider and the message",
+      "file": "rules-product-escalation.md",
+      "line": 21,
+      "body": "### 2026-10-08: Name the decider and the message\n\n**Scope:** expert-role\n\n**Workflows:** product-escalation\n\n**Triggers:** stakeholder:update\n\n**Captured:** 2026-10-08\n\n**Source:** starter pack\n\n**Rule:** The impact note names who decides and what users or stakeholders are told.\n\n**Why:** An undescribed message will be inconsistent.\n\n**How to apply:** Write the decider and the message before response approval."
+    }
+  ]
+}

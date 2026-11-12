@@ -1,0 +1,66 @@
+{
+  "decision:log": [
+    {
+      "title": "Every action has an owner",
+      "file": "rules-team-delivery.md",
+      "line": 57,
+      "body": "### 2026-10-08: Every action has an owner\n\n**Scope:** expert-role\n\n**Workflows:** team-delivery\n\n**Triggers:** decision:log\n\n**Captured:** 2026-10-08\n\n**Source:** starter pack\n\n**Rule:** Every action in the tracker names one owner and a date.\n\n**Why:** Unowned work does not finish.\n\n**How to apply:** Refuse to leave an action without an owner. If the owner is unknown, record that as an open question."
+    }
+  ],
+  "escalation:open": [
+    {
+      "title": "Name who is affected today",
+      "file": "rules-team-escalation.md",
+      "line": 3,
+      "body": "### 2026-10-08: Name who is affected today\n\n**Scope:** expert-role\n\n**Workflows:** team-escalation\n\n**Triggers:** escalation:open\n\n**Captured:** 2026-10-08\n\n**Source:** starter pack\n\n**Rule:** An escalation assessment names who is affected, the decision needed today, and what is watched next.\n\n**Why:** Urgent team issues drift when the decision is vague.\n\n**How to apply:** Fill those three points before asking for response approval."
+    },
+    {
+      "title": "Response waits for approval",
+      "file": "rules-team-escalation.md",
+      "line": 21,
+      "body": "### 2026-10-08: Response waits for approval\n\n**Scope:** expert-role\n\n**Workflows:** team-escalation\n\n**Triggers:** escalation:open\n\n**Captured:** 2026-10-08\n\n**Source:** starter pack\n\n**Rule:** Do not carry out the response until the operator says I approve the response or Skip response approval.\n\n**Why:** An urgent people or delivery move still needs an explicit yes.\n\n**How to apply:** Set the next action to wait for response approval and stop."
+    },
+    {
+      "title": "Record what is watched",
+      "file": "rules-team-escalation.md",
+      "line": 75,
+      "body": "### 2026-10-08: Record what is watched\n\n**Scope:** expert-role\n\n**Workflows:** team-escalation\n\n**Triggers:** escalation:open\n\n**Captured:** 2026-10-08\n\n**Source:** starter pack\n\n**Rule:** Monitoring names the signal and the next check time.\n\n**Why:** A response without a watch item looks finished when it is not.\n\n**How to apply:** Write the signal and the time into the escalation file."
+    }
+  ],
+  "hiring:loop": [
+    {
+      "title": "Headcount and offers wait for approval",
+      "file": "rules-team-delivery.md",
+      "line": 39,
+      "body": "### 2026-10-08: Headcount and offers wait for approval\n\n**Scope:** expert-role\n\n**Workflows:** team-delivery\n\n**Triggers:** hiring:loop\n\n**Captured:** 2026-10-08\n\n**Source:** starter pack\n\n**Rule:** Headcount and offers are recommendations until the operator explicitly approves them.\n\n**Why:** Hiring authority is often narrower than day-to-day delivery authority.\n\n**How to apply:** Prepare the hiring-loop note. Stop before any offer or headcount commitment. Wait for an explicit yes."
+    },
+    {
+      "title": "Separate the lasting staffing change",
+      "file": "rules-team-escalation.md",
+      "line": 39,
+      "body": "### 2026-10-08: Separate the lasting staffing change\n\n**Scope:** expert-role\n\n**Workflows:** team-escalation\n\n**Triggers:** hiring:loop\n\n**Captured:** 2026-10-08\n\n**Source:** starter pack\n\n**Rule:** A lasting staffing change discovered during an escalation is a change request, not part of the immediate response.\n\n**Why:** Urgent response and standing staffing are different decisions.\n\n**How to apply:** Write the immediate step in the escalation file. Open a change request for the lasting change."
+    }
+  ],
+  "meeting:1on1": [
+    {
+      "title": "1:1 notes stay on the work item",
+      "file": "rules-team-delivery.md",
+      "line": 21,
+      "body": "### 2026-10-08: 1:1 notes stay on the work item\n\n**Scope:** expert-role\n\n**Workflows:** team-delivery\n\n**Triggers:** meeting:1on1\n\n**Captured:** 2026-10-08\n\n**Source:** starter pack\n\n**Rule:** 1:1 notes, performance comments, and personal circumstances stay on the work item unless the operator explicitly says to store them in expert-role memory.\n\n**Why:** People-sensitive notes must not become standing expert memory by default.\n\n**How to apply:** Write the note under the work item. Ask before any expert-role copy. If the operator does not say yes, do not copy it."
+    }
+  ],
+  "status:update": [
+    {
+      "title": "Status leads with risk",
+      "file": "rules-team-delivery.md",
+      "line": 3,
+      "body": "### 2026-10-08: Status leads with risk\n\n**Scope:** expert-role\n\n**Workflows:** team-delivery\n\n**Triggers:** status:update\n\n**Captured:** 2026-10-08\n\n**Source:** starter pack\n\n**Rule:** A status update leads with the current risk, then the outcome, then the ask.\n\n**Why:** Stakeholders act on risk first.\n\n**How to apply:** Open with the risk. Name the owner and the next check."
+    },
+    {
+      "title": "Tell stakeholders in the same step",
+      "file": "rules-team-escalation.md",
+      "line": 57,
+      "body": "### 2026-10-08: Tell stakeholders in the same step\n\n**Scope:** expert-role\n\n**Workflows:** team-escalation\n\n**Triggers:** status:update\n\n**Captured:** 2026-10-08\n\n**Source:** starter pack\n\n**Rule:** The response includes what is communicated and to whom.\n\n**Why:** Silence is a decision.\n\n**How to apply:** Name the audience and the message in the response before monitoring starts."
+    }
+  ]
+}
