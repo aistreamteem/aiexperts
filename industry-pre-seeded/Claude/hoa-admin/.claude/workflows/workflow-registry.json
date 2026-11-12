@@ -1,0 +1,64 @@
+{
+  "workflows": {
+    "acc-completeness": {
+      "name": "ACC Completeness",
+      "description": "List missing pages, sketches, neighbor notes, and unsigned fields on the architectural application they use, against their form or guidelines.",
+      "instruction_file": ".claude/workflows/acc-completeness.md",
+      "initial_phase": "role-job"
+    },
+    "bid-compare": {
+      "name": "Bid Compare",
+      "description": "Compare amounts, allowances, exclusions, and dates from bid PDFs they provided for one project.",
+      "instruction_file": ".claude/workflows/bid-compare.md",
+      "initial_phase": "role-job"
+    },
+    "board-files": {
+      "name": "Board Files",
+      "description": "Assemble a present-or-missing list of files for the next meeting they name: agenda, last approved minutes, financials they already produced, and exhibits they listed.",
+      "instruction_file": ".claude/workflows/board-files.md",
+      "initial_phase": "role-job"
+    },
+    "dues-aging": {
+      "name": "Dues Aging",
+      "description": "List balances by current, thirty, sixty, and ninety-plus from their ledger export after you confirm community name and as-of date.",
+      "instruction_file": ".claude/workflows/dues-aging.md",
+      "initial_phase": "role-job"
+    },
+    "election-tally": {
+      "name": "Election Tally",
+      "description": "Count from the roster and ballot or proxy files they provide. Label the product a tally, not a certified election.",
+      "instruction_file": ".claude/workflows/election-tally.md",
+      "initial_phase": "role-job"
+    },
+    "reserve-index": {
+      "name": "Reserve Index",
+      "description": "Confirm the reserve-study PDF is present, copy the report date and association name on the cover, and copy any printed number they asked for.",
+      "instruction_file": ".claude/workflows/reserve-index.md",
+      "initial_phase": "role-job"
+    },
+    "vendor-certs": {
+      "name": "Vendor Certs",
+      "description": "List expiration dates, named insured, and additional-insured wording as printed from certificates they filed.",
+      "instruction_file": ".claude/workflows/vendor-certs.md",
+      "initial_phase": "role-job"
+    },
+    "violations": {
+      "name": "Violations",
+      "description": "From their log or export, list open items, lots, categories they use, status against their adopted notice steps, and missing photos or blank lots.",
+      "instruction_file": ".claude/workflows/violations.md",
+      "initial_phase": "role-job"
+    },
+    "work-orders": {
+      "name": "Work Orders",
+      "description": "From their export, list open common-area jobs, locations, vendors, and missing vendor or photo fields.",
+      "instruction_file": ".claude/workflows/work-orders.md",
+      "initial_phase": "role-job"
+    }
+  },
+  "default_workflow": "acc-completeness",
+  "preseeded_role": "HOA / association admin",
+  "memory": {
+    "facts": "facts/facts-operations.md",
+    "rules": "facts/rules-operations.md"
+  }
+}

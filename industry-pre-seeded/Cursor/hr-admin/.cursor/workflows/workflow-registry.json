@@ -1,0 +1,64 @@
+{
+  "workflows": {
+    "applicant-file-completeness": {
+      "name": "Applicant File Completeness",
+      "description": "From their applicant folder index, list each applicant for the opening they named and which required forms are present or missing.",
+      "instruction_file": ".cursor/workflows/applicant-file-completeness.md",
+      "initial_phase": "role-job"
+    },
+    "handbook-ack-missing": {
+      "name": "Handbook Ack Missing",
+      "description": "Compare the live handbook version string to each acknowledgment on their roster or ack sheet.",
+      "instruction_file": ".cursor/workflows/handbook-ack-missing.md",
+      "initial_phase": "role-job"
+    },
+    "i9-section-dates": {
+      "name": "I9 Section Dates",
+      "description": "Build a date list from their I-9 index: name, start date, Section 1 date, Section 2 date, and reverify date if they track one.",
+      "instruction_file": ".cursor/workflows/i9-section-dates.md",
+      "initial_phase": "role-job"
+    },
+    "new-hire-completeness": {
+      "name": "New Hire Completeness",
+      "description": "Read their new-hire checklist sheet and the packet folder. Mark each row present, missing, or not-applicable as they allow.",
+      "instruction_file": ".cursor/workflows/new-hire-completeness.md",
+      "initial_phase": "role-job"
+    },
+    "offboard-checklist": {
+      "name": "Offboard Checklist",
+      "description": "Use their termination checklist only after they already wrote a last day. Compare the issue log and org chart for remaining tasks.",
+      "instruction_file": ".cursor/workflows/offboard-checklist.md",
+      "initial_phase": "role-job"
+    },
+    "poster-and-handbook-version": {
+      "name": "Poster And Handbook Version",
+      "description": "Read their poster index and the live handbook PDF. List poster files or wall-check dates plus the handbook version string.",
+      "instruction_file": ".cursor/workflows/poster-and-handbook-version.md",
+      "initial_phase": "role-job"
+    },
+    "pto-log": {
+      "name": "Pto Log",
+      "description": "List balances and requests from their PTO sheet. Keep their column names; you do not approve or deny.",
+      "instruction_file": ".cursor/workflows/pto-log.md",
+      "initial_phase": "role-job"
+    },
+    "reverify-dates": {
+      "name": "Reverify Dates",
+      "description": "From their I-9 index, list people with a reverify-by date and whether that date is past on the calendar they use.",
+      "instruction_file": ".cursor/workflows/reverify-dates.md",
+      "initial_phase": "role-job"
+    },
+    "training-due": {
+      "name": "Training Due",
+      "description": "Read their training log. List people with a due or refresh date on or before the pack date they asked for.",
+      "instruction_file": ".cursor/workflows/training-due.md",
+      "initial_phase": "role-job"
+    }
+  },
+  "default_workflow": "applicant-file-completeness",
+  "preseeded_role": "Small-shop HR admin (not a lawyer)",
+  "memory": {
+    "facts": "facts/facts-shared.md",
+    "rules": "facts/rules-shared.md"
+  }
+}

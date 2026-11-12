@@ -1,0 +1,64 @@
+{
+  "workflows": {
+    "background-dates-as-file": {
+      "name": "Background Dates As File",
+      "description": "List background dates and status words next to date-required volunteer roles.",
+      "instruction_file": ".cursor/workflows/background-dates-as-file.md",
+      "initial_phase": "role-job"
+    },
+    "board-pack": {
+      "name": "Board Pack",
+      "description": "Index the board-or-session folder against the stored packet list.",
+      "instruction_file": ".cursor/workflows/board-pack.md",
+      "initial_phase": "role-job"
+    },
+    "facility-coi-missing": {
+      "name": "Facility COI Missing",
+      "description": "Flag still-scheduled outside facility uses missing a COI.",
+      "instruction_file": ".cursor/workflows/facility-coi-missing.md",
+      "initial_phase": "role-job"
+    },
+    "giving-batch-from-export": {
+      "name": "Giving Batch From Export",
+      "description": "Match one named giving batch from export to the signed count sheet.",
+      "instruction_file": ".cursor/workflows/giving-batch-from-export.md",
+      "initial_phase": "role-job"
+    },
+    "missing-fund-codes": {
+      "name": "Missing Fund Codes",
+      "description": "List giving-export rows with a blank fund or a code not on their chart.",
+      "instruction_file": ".cursor/workflows/missing-fund-codes.md",
+      "initial_phase": "role-job"
+    },
+    "pledge-vs-received": {
+      "name": "Pledge vs Received",
+      "description": "Join their pledge sheet to gifts their process counts toward a pledge.",
+      "instruction_file": ".cursor/workflows/pledge-vs-received.md",
+      "initial_phase": "role-job"
+    },
+    "statement-run-list-their-process": {
+      "name": "Statement Run List — Their Process",
+      "description": "Build a statement run list from their process file and giving export.",
+      "instruction_file": ".cursor/workflows/statement-run-list-their-process.md",
+      "initial_phase": "role-job"
+    },
+    "volunteer-roster": {
+      "name": "Volunteer Roster",
+      "description": "Build the volunteer team list from their export for named ministries.",
+      "instruction_file": ".cursor/workflows/volunteer-roster.md",
+      "initial_phase": "role-job"
+    },
+    "week-calendar": {
+      "name": "Week Calendar",
+      "description": "Build the week's room and building pack from their calendar file.",
+      "instruction_file": ".cursor/workflows/week-calendar.md",
+      "initial_phase": "role-job"
+    }
+  },
+  "default_workflow": "week-calendar",
+  "preseeded_role": "Church / house-of-worship office",
+  "memory": {
+    "facts": "facts/facts-shared.md",
+    "rules": "facts/rules-shared.md"
+  }
+}

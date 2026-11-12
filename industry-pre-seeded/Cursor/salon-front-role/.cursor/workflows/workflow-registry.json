@@ -1,0 +1,64 @@
+{
+  "workflows": {
+    "booth-split": {
+      "name": "Booth Split",
+      "description": "Using the roster and the POS or book export, list tickets and totals in two piles: house employees versus booth renters.",
+      "instruction_file": ".cursor/workflows/booth-split.md",
+      "initial_phase": "role-job"
+    },
+    "closeout": {
+      "name": "Closeout",
+      "description": "From the POS export, list sales types, tenders, tips, voids, and gift-card activity.",
+      "instruction_file": ".cursor/workflows/closeout.md",
+      "initial_phase": "role-job"
+    },
+    "days-book": {
+      "name": "Days Book",
+      "description": "Build tomorrow's or today's book from their booking export.",
+      "instruction_file": ".cursor/workflows/days-book.md",
+      "initial_phase": "role-job"
+    },
+    "gift-card-recon": {
+      "name": "Gift Card Recon",
+      "description": "From their gift-card export, list sales, redemptions, and remaining balances using last-four or internal IDs only.",
+      "instruction_file": ".cursor/workflows/gift-card-recon.md",
+      "initial_phase": "role-job"
+    },
+    "menu-vs-book": {
+      "name": "Menu Vs Book",
+      "description": "Compare services on the day's book to the menu file.",
+      "instruction_file": ".cursor/workflows/menu-vs-book.md",
+      "initial_phase": "role-job"
+    },
+    "no-show-list": {
+      "name": "No Show List",
+      "description": "From the book export and their policy file, list cancelled and no-show rows.",
+      "instruction_file": ".cursor/workflows/no-show-list.md",
+      "initial_phase": "role-job"
+    },
+    "reminder-list": {
+      "name": "Reminder List",
+      "description": "Build a list of guests due a confirmation or reminder from their export. They send the messages.",
+      "instruction_file": ".cursor/workflows/reminder-list.md",
+      "initial_phase": "role-job"
+    },
+    "retail-count": {
+      "name": "Retail Count",
+      "description": "From their count sheet, list on-hand, flag SKUs below par if the sheet has par, and keep retail off the backbar column.",
+      "instruction_file": ".cursor/workflows/retail-count.md",
+      "initial_phase": "role-job"
+    },
+    "waitlist-gaps": {
+      "name": "Waitlist Gaps",
+      "description": "List open slots the hours file says are workable, plus waitlist names from their export.",
+      "instruction_file": ".cursor/workflows/waitlist-gaps.md",
+      "initial_phase": "role-job"
+    }
+  },
+  "default_workflow": "days-book",
+  "preseeded_role": "Salon / spa front role",
+  "memory": {
+    "facts": "facts/facts-operations.md",
+    "rules": "facts/rules-operations.md"
+  }
+}

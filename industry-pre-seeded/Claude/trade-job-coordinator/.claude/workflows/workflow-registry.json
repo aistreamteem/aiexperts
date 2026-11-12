@@ -1,0 +1,70 @@
+{
+  "workflows": {
+    "callback-triage": {
+      "name": "Callback Triage",
+      "description": "List returns to recent jobs. Flag warranty versus billable per their marks. Do not admit legal fault.",
+      "instruction_file": ".claude/workflows/callback-triage.md",
+      "initial_phase": "role-job"
+    },
+    "closeout-photos": {
+      "name": "Closeout Photos",
+      "description": "For jobs they mark complete: required photos present or missing. Do not invent an inspection pass.",
+      "instruction_file": ".claude/workflows/closeout-photos.md",
+      "initial_phase": "role-job"
+    },
+    "daily-board": {
+      "name": "Daily Board",
+      "description": "From their schedule file, list today's jobs, assigned tech, and missing packing lists. Do not invent ETAs.",
+      "instruction_file": ".claude/workflows/daily-board.md",
+      "initial_phase": "role-job"
+    },
+    "emergency-queue": {
+      "name": "Emergency Queue",
+      "description": "Jobs they marked emergency or that match their life-safety words. Windows, tech, parts. No clock-time promise they did not give.",
+      "instruction_file": ".claude/workflows/emergency-queue.md",
+      "initial_phase": "role-job"
+    },
+    "parts-ready": {
+      "name": "Parts Ready",
+      "description": "Build or check a packing list for one job id they name. SKUs from sold PDF or them, not invented.",
+      "instruction_file": ".claude/workflows/parts-ready.md",
+      "initial_phase": "role-job"
+    },
+    "permit-file": {
+      "name": "Permit File",
+      "description": "For jobs they marked as needing a permit: number, AHJ, dates. Do not say passed unless the file says passed and dated.",
+      "instruction_file": ".claude/workflows/permit-file.md",
+      "initial_phase": "role-job"
+    },
+    "quote-to-job": {
+      "name": "Quote To Job",
+      "description": "One sold estimate: parts from the PDF, schedule question, permit question. Do not schedule if not marked sold.",
+      "instruction_file": ".claude/workflows/quote-to-job.md",
+      "initial_phase": "role-job"
+    },
+    "truck-load": {
+      "name": "Truck Load",
+      "description": "Jobs on one tech or crew, combined packing list, missing special orders. They load the truck.",
+      "instruction_file": ".claude/workflows/truck-load.md",
+      "initial_phase": "role-job"
+    },
+    "warranty-parts": {
+      "name": "Warranty Parts",
+      "description": "One job they name: serial, install date, failed part from their file, order question. No manufacturer promise.",
+      "instruction_file": ".claude/workflows/warranty-parts.md",
+      "initial_phase": "role-job"
+    },
+    "week-schedule": {
+      "name": "Week Schedule",
+      "description": "Week view: crew PTO, overbook, sold installs without parts. Ask before moving a customer window.",
+      "instruction_file": ".claude/workflows/week-schedule.md",
+      "initial_phase": "role-job"
+    }
+  },
+  "default_workflow": "callback-triage",
+  "preseeded_role": "Job coordinator in a trade shop",
+  "memory": {
+    "facts": "facts/facts-shared.md",
+    "rules": "facts/rules-shared.md"
+  }
+}

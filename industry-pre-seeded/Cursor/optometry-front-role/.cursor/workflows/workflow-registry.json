@@ -1,0 +1,64 @@
+{
+  "workflows": {
+    "day-close": {
+      "name": "Day Close",
+      "description": "From their close report or drawer sheet, list tender types and amounts they recorded for one clinic date.",
+      "instruction_file": ".cursor/workflows/day-close.md",
+      "initial_phase": "intake"
+    },
+    "day-list": {
+      "name": "Day List",
+      "description": "From the schedule export, list the day by time, doctor, type, and their patient label.",
+      "instruction_file": ".cursor/workflows/day-list.md",
+      "initial_phase": "intake"
+    },
+    "eligibility-screenshot": {
+      "name": "Eligibility Screenshot",
+      "description": "Quote only the dated screenshot or clearinghouse print they saved.",
+      "instruction_file": ".cursor/workflows/eligibility-screenshot.md",
+      "initial_phase": "intake"
+    },
+    "frame-lens-order-completeness": {
+      "name": "Frame Lens Order Completeness",
+      "description": "From their frame-order sheet, list missing required fields as questions.",
+      "instruction_file": ".cursor/workflows/frame-lens-order-completeness.md",
+      "initial_phase": "intake"
+    },
+    "missing-rx-on-order": {
+      "name": "Missing Rx On Order",
+      "description": "List jobs that need a spectacle or contact-lens Rx file and the file is not present.",
+      "instruction_file": ".cursor/workflows/missing-rx-on-order.md",
+      "initial_phase": "intake"
+    },
+    "pickup-notify-list": {
+      "name": "Pickup Notify List",
+      "description": "From the lab-status or tray export, list jobs ready and not yet marked notified.",
+      "instruction_file": ".cursor/workflows/pickup-notify-list.md",
+      "initial_phase": "intake"
+    },
+    "recall-list": {
+      "name": "Recall List",
+      "description": "Shape an exported recall or reminder list: chart label, due date, and type as labeled.",
+      "instruction_file": ".cursor/workflows/recall-list.md",
+      "initial_phase": "intake"
+    },
+    "redo-log": {
+      "name": "Redo Log",
+      "description": "From their order sheet or redo workbook, list remake rows with original job, new job, and reason code.",
+      "instruction_file": ".cursor/workflows/redo-log.md",
+      "initial_phase": "intake"
+    },
+    "wait-list": {
+      "name": "Wait List",
+      "description": "From their wait-list file, keep their order and requested type and doctor.",
+      "instruction_file": ".cursor/workflows/wait-list.md",
+      "initial_phase": "intake"
+    }
+  },
+  "default_workflow": "day-list",
+  "preseeded_role": "Optometry front role (not the doctor)",
+  "memory": {
+    "facts": "facts/facts-operations.md",
+    "rules": "facts/rules-operations.md"
+  }
+}

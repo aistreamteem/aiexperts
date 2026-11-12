@@ -1,0 +1,64 @@
+{
+  "workflows": {
+    "banquet-check-file": {
+      "name": "Banquet Check File",
+      "description": "Compare banquet-check PDFs to matching BEOs for menu, counts, extras, service charge, and tax.",
+      "instruction_file": ".cursor/workflows/banquet-check-file.md",
+      "initial_phase": "role-job"
+    },
+    "beo-pack": {
+      "name": "BEO Pack",
+      "description": "Assemble BEO pages for definite functions and attach menu prices only as printed on their menu file.",
+      "instruction_file": ".cursor/workflows/beo-pack.md",
+      "initial_phase": "role-job"
+    },
+    "coi-missing": {
+      "name": "COI Missing",
+      "description": "From definite events, list renter or required vendor COIs that are present, expired, missing wording, or missing event dates.",
+      "instruction_file": ".cursor/workflows/coi-missing.md",
+      "initial_phase": "role-job"
+    },
+    "cutoff-list": {
+      "name": "Cutoff List",
+      "description": "From the hold sheet, list tentative options with cutoff on or before the pack date, plus blank cutoff cells as asks.",
+      "instruction_file": ".cursor/workflows/cutoff-list.md",
+      "initial_phase": "role-job"
+    },
+    "diagram-revision-log": {
+      "name": "Diagram Revision Log",
+      "description": "List diagram PDFs by event, date, and revision label. Mark the latest dated file and any undated overwrite.",
+      "instruction_file": ".cursor/workflows/diagram-revision-log.md",
+      "initial_phase": "role-job"
+    },
+    "group-pickup-if-any": {
+      "name": "Group Pickup If Any",
+      "description": "If a sleeping-room block file exists, list contracted rooms, pickup, remaining, printed rate, and room cutoff.",
+      "instruction_file": ".cursor/workflows/group-pickup-if-any.md",
+      "initial_phase": "role-job"
+    },
+    "guarantee-vs-setup": {
+      "name": "Guarantee vs Setup",
+      "description": "Compare the guarantee or labeled expected count on each BEO to chair and table counts on the dated diagram.",
+      "instruction_file": ".cursor/workflows/guarantee-vs-setup.md",
+      "initial_phase": "role-job"
+    },
+    "hold-vs-definite": {
+      "name": "Hold vs Definite",
+      "description": "Build one list of tentative holds and definite bookings for the same date range. Keep status as they coded it.",
+      "instruction_file": ".cursor/workflows/hold-vs-definite.md",
+      "initial_phase": "role-job"
+    },
+    "load-in-calendar": {
+      "name": "Load-In Calendar",
+      "description": "Build a dock, elevator, and vendor arrival calendar from the timeline sheet and BEO time blocks.",
+      "instruction_file": ".cursor/workflows/load-in-calendar.md",
+      "initial_phase": "role-job"
+    }
+  },
+  "default_workflow": "banquet-check-file",
+  "preseeded_role": "Event venue coordinator",
+  "memory": {
+    "facts": "facts/facts-shared.md",
+    "rules": "facts/rules-shared.md"
+  }
+}

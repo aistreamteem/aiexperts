@@ -1,0 +1,70 @@
+{
+  "workflows": {
+    "key-audit": {
+      "name": "Key Audit",
+      "description": "Who holds what from their log. No alarm codes, lockbox pins, or passwords.",
+      "instruction_file": ".claude/workflows/key-audit.md",
+      "initial_phase": "role-job"
+    },
+    "license-watch": {
+      "name": "License Watch",
+      "description": "Expire dates from their tracker or certificate images. Flag past or blank.",
+      "instruction_file": ".claude/workflows/license-watch.md",
+      "initial_phase": "role-job"
+    },
+    "mail-log": {
+      "name": "Mail Log",
+      "description": "What arrived. Checks seen only — they deposit; you never endorse or move funds.",
+      "instruction_file": ".claude/workflows/mail-log.md",
+      "initial_phase": "role-job"
+    },
+    "meeting-pack": {
+      "name": "Meeting Pack",
+      "description": "Agenda plus open actions from last minutes.",
+      "instruction_file": ".claude/workflows/meeting-pack.md",
+      "initial_phase": "role-job"
+    },
+    "recurring-checklist": {
+      "name": "Recurring Checklist",
+      "description": "Only lines they named. Missing owner: ask in the write-up, do not assign.",
+      "instruction_file": ".claude/workflows/recurring-checklist.md",
+      "initial_phase": "role-job"
+    },
+    "retention-boxes": {
+      "name": "Retention Boxes",
+      "description": "Label and hold flag from their sheet. Do not shred, haul, or invent retention years.",
+      "instruction_file": ".claude/workflows/retention-boxes.md",
+      "initial_phase": "role-job"
+    },
+    "supplies": {
+      "name": "Supplies",
+      "description": "Build or update a supply CSV for them to order. Flag at or below their min.",
+      "instruction_file": ".claude/workflows/supplies.md",
+      "initial_phase": "role-job"
+    },
+    "vendor-contacts": {
+      "name": "Vendor Contacts",
+      "description": "Contacts and renewal months from their file. Do not invent phones, account numbers, or a website listing as their account.",
+      "instruction_file": ".claude/workflows/vendor-contacts.md",
+      "initial_phase": "role-job"
+    },
+    "visitor-week": {
+      "name": "Visitor Week",
+      "description": "If they use a visitor sheet, list the week they named. No ID numbers, license photos, or badge data in the pack.",
+      "instruction_file": ".claude/workflows/visitor-week.md",
+      "initial_phase": "role-job"
+    },
+    "weekly-pack": {
+      "name": "Weekly Pack",
+      "description": "From their task sheet and calendar export, list this week's items and missing files.",
+      "instruction_file": ".claude/workflows/weekly-pack.md",
+      "initial_phase": "role-job"
+    }
+  },
+  "default_workflow": "weekly-pack",
+  "preseeded_role": "Office and operations",
+  "memory": {
+    "facts": "facts/facts-operations.md",
+    "rules": "facts/rules-operations.md"
+  }
+}

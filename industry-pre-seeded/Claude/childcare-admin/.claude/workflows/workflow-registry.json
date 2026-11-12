@@ -1,0 +1,64 @@
+{
+  "workflows": {
+    "attendance-day": {
+      "name": "Attendance Day",
+      "description": "From the attendance export, list the program date by room, child label they allow, and present/absent or in/out as they coded it.",
+      "instruction_file": ".claude/workflows/attendance-day.md",
+      "initial_phase": "role-job"
+    },
+    "holiday-calendar-pack": {
+      "name": "Holiday Calendar Pack",
+      "description": "Copy the year’s closures, staff-only days, and tuition-charged holidays from their calendar file.",
+      "instruction_file": ".claude/workflows/holiday-calendar-pack.md",
+      "initial_phase": "role-job"
+    },
+    "incident-routing": {
+      "name": "Incident Routing",
+      "description": "From the incident log, list dated forms that still need a director signature, a parent-notice box, or a missing page.",
+      "instruction_file": ".claude/workflows/incident-routing.md",
+      "initial_phase": "role-job"
+    },
+    "licensing-packet-completeness": {
+      "name": "Licensing Packet Completeness",
+      "description": "Against their visit checklist, list named binder pages as present or missing.",
+      "instruction_file": ".claude/workflows/licensing-packet-completeness.md",
+      "initial_phase": "role-job"
+    },
+    "missing-enrollment-forms": {
+      "name": "Missing Enrollment Forms",
+      "description": "From the enrollment PDF folder, list each named packet page as present, dated, signed, or missing.",
+      "instruction_file": ".claude/workflows/missing-enrollment-forms.md",
+      "initial_phase": "role-job"
+    },
+    "pickup-list-check": {
+      "name": "Pickup List Check",
+      "description": "Compare the live pickup list to the roster and to any sign-out adults they exported.",
+      "instruction_file": ".claude/workflows/pickup-list-check.md",
+      "initial_phase": "role-job"
+    },
+    "ratio-from-their-posted": {
+      "name": "Ratio From Their Posted",
+      "description": "Compare children present from attendance to staff on their schedule using only the posted ratio.",
+      "instruction_file": ".claude/workflows/ratio-from-their-posted.md",
+      "initial_phase": "role-job"
+    },
+    "tuition-from-file": {
+      "name": "Tuition From File",
+      "description": "Build a tuition or past-due list only from their rate sheet and ledger export.",
+      "instruction_file": ".claude/workflows/tuition-from-file.md",
+      "initial_phase": "role-job"
+    },
+    "waitlist": {
+      "name": "Waitlist",
+      "description": "From their waitlist workbook, list date added, requested room or age band, desired start, and deposit status.",
+      "instruction_file": ".claude/workflows/waitlist.md",
+      "initial_phase": "role-job"
+    }
+  },
+  "default_workflow": "attendance-day",
+  "preseeded_role": "Childcare center office (not the teacher)",
+  "memory": {
+    "facts": "facts/facts-operations.md",
+    "rules": "facts/rules-operations.md"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "workflows": {
+    "attendance-day": {
+      "name": "Attendance Day",
+      "description": "Program date by room, child label, and present/absent from the attendance export.",
+      "instruction_file": ".cursor/workflows/attendance-day.md",
+      "initial_phase": "role-job"
+    },
+    "holiday-calendar-pack": {
+      "name": "Holiday Calendar Pack",
+      "description": "Year's closures, staff-only days, and tuition-charged holidays from their calendar file.",
+      "instruction_file": ".cursor/workflows/holiday-calendar-pack.md",
+      "initial_phase": "role-job"
+    },
+    "incident-routing": {
+      "name": "Incident Routing",
+      "description": "Incident-log forms that still need a director signature, parent-notice box, or missing page.",
+      "instruction_file": ".cursor/workflows/incident-routing.md",
+      "initial_phase": "role-job"
+    },
+    "licensing-packet-completeness": {
+      "name": "Licensing Packet Completeness",
+      "description": "Binder pages present or missing against their visit checklist.",
+      "instruction_file": ".cursor/workflows/licensing-packet-completeness.md",
+      "initial_phase": "role-job"
+    },
+    "missing-enrollment-forms": {
+      "name": "Missing Enrollment Forms",
+      "description": "Named enrollment packet pages present, dated, signed, or missing.",
+      "instruction_file": ".cursor/workflows/missing-enrollment-forms.md",
+      "initial_phase": "role-job"
+    },
+    "pickup-list-check": {
+      "name": "Pickup List Check",
+      "description": "Live pickup list versus roster and sign-out adults; flag unauthorized adults.",
+      "instruction_file": ".cursor/workflows/pickup-list-check.md",
+      "initial_phase": "role-job"
+    },
+    "ratio-from-their-posted": {
+      "name": "Ratio From Their Posted",
+      "description": "Children present versus staff on schedule using only their posted room ratio.",
+      "instruction_file": ".cursor/workflows/ratio-from-their-posted.md",
+      "initial_phase": "role-job"
+    },
+    "tuition-from-file": {
+      "name": "Tuition From File",
+      "description": "Tuition or past-due list from their rate sheet and ledger export.",
+      "instruction_file": ".cursor/workflows/tuition-from-file.md",
+      "initial_phase": "role-job"
+    },
+    "waitlist": {
+      "name": "Waitlist",
+      "description": "Waitlist rows with date added, requested room, desired start, and deposit status.",
+      "instruction_file": ".cursor/workflows/waitlist.md",
+      "initial_phase": "role-job"
+    }
+  },
+  "default_workflow": "attendance-day",
+  "preseeded_role": "Childcare center office (not the teacher)",
+  "memory": {
+    "facts": "facts/facts-operations.md",
+    "rules": "facts/rules-operations.md"
+  }
+}

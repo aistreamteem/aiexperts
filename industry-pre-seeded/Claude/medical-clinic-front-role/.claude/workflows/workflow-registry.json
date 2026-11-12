@@ -1,0 +1,64 @@
+{
+  "workflows": {
+    "day-close-tender": {
+      "name": "Day Close Tender",
+      "description": "From their close report or drawer sheet, list tender types and amounts they recorded for one clinic date. Do not store PAN or check account numbers.",
+      "instruction_file": ".claude/workflows/day-close-tender.md",
+      "initial_phase": "role-job"
+    },
+    "day-list": {
+      "name": "Day List",
+      "description": "From the schedule export, list the day by time, provider, type, and their patient label.",
+      "instruction_file": ".claude/workflows/day-list.md",
+      "initial_phase": "role-job"
+    },
+    "eligibility-from-screenshot": {
+      "name": "Eligibility From Screenshot",
+      "description": "Quote only the dated screenshot or clearinghouse print they saved. Do not invent remaining benefits.",
+      "instruction_file": ".claude/workflows/eligibility-from-screenshot.md",
+      "initial_phase": "role-job"
+    },
+    "intake-completeness": {
+      "name": "Intake Completeness",
+      "description": "From PDFs they share, list missing pages and signatures as questions. No clinical reading of history answers.",
+      "instruction_file": ".claude/workflows/intake-completeness.md",
+      "initial_phase": "role-job"
+    },
+    "no-show-list": {
+      "name": "No Show List",
+      "description": "From the day-list or EHR export, list rows they already coded no-show, late cancel, or broken.",
+      "instruction_file": ".claude/workflows/no-show-list.md",
+      "initial_phase": "role-job"
+    },
+    "recall-list-if-file": {
+      "name": "Recall List If File",
+      "description": "If they exported a recall or reminder list, shape it. Do not message patients or invent a due date.",
+      "instruction_file": ".claude/workflows/recall-list-if-file.md",
+      "initial_phase": "role-job"
+    },
+    "records-release-log": {
+      "name": "Records Release Log",
+      "description": "From the ROI folder and their release log, list request date, requester type, ROI present or missing, and send status.",
+      "instruction_file": ".claude/workflows/records-release-log.md",
+      "initial_phase": "role-job"
+    },
+    "referral-paperwork": {
+      "name": "Referral Paperwork",
+      "description": "From the referral PDF folder, list inbound and outbound packets as complete or missing named pages.",
+      "instruction_file": ".claude/workflows/referral-paperwork.md",
+      "initial_phase": "role-job"
+    },
+    "wait-list": {
+      "name": "Wait List",
+      "description": "From their wait-list file, keep their order and requested type and provider. They choose who is offered.",
+      "instruction_file": ".claude/workflows/wait-list.md",
+      "initial_phase": "role-job"
+    }
+  },
+  "default_workflow": "day-list",
+  "preseeded_role": "Medical clinic front role (not the clinician)",
+  "memory": {
+    "facts": "facts/facts-operations.md",
+    "rules": "facts/rules-operations.md"
+  }
+}

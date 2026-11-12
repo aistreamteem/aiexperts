@@ -1,0 +1,64 @@
+{
+  "workflows": {
+    "board-dropoff": {
+      "name": "Board Dropoff",
+      "description": "From their form, list pickup time, feeding as written, and missing signatures. Not medical advice.",
+      "instruction_file": ".cursor/workflows/board-dropoff.md",
+      "initial_phase": "role-job"
+    },
+    "checkout-list": {
+      "name": "Checkout List",
+      "description": "List invoice lines and tenders from their export. You do not take payment or add clinical charges.",
+      "instruction_file": ".cursor/workflows/checkout-list.md",
+      "initial_phase": "role-job"
+    },
+    "day-appointments": {
+      "name": "Day Appointments",
+      "description": "List from export. Flag emergency wording at the top. No clinical commentary.",
+      "instruction_file": ".cursor/workflows/day-appointments.md",
+      "initial_phase": "role-job"
+    },
+    "emergency-flag": {
+      "name": "Emergency Flag",
+      "description": "From today's book or message log, list rows with emergency wording first. Flag for staff. Do not triage as a vet.",
+      "instruction_file": ".cursor/workflows/emergency-flag.md",
+      "initial_phase": "role-job"
+    },
+    "estimate-from-prices": {
+      "name": "Estimate From Prices",
+      "description": "Fill their estimate template using only items and amounts on their price file. No added clinical lines.",
+      "instruction_file": ".cursor/workflows/estimate-from-prices.md",
+      "initial_phase": "role-job"
+    },
+    "new-client-forms": {
+      "name": "New Client Forms",
+      "description": "From registration PDFs, list missing pages and signatures. Do not take a clinical history.",
+      "instruction_file": ".cursor/workflows/new-client-forms.md",
+      "initial_phase": "role-job"
+    },
+    "records-in": {
+      "name": "Records In",
+      "description": "Log received PDFs. Do not interpret labs or films. Assign only as their routing sheet says.",
+      "instruction_file": ".cursor/workflows/records-in.md",
+      "initial_phase": "role-job"
+    },
+    "records-out": {
+      "name": "Records Out",
+      "description": "Log client or clinic requests and whether an authorization file is present. Do not interpret the chart.",
+      "instruction_file": ".cursor/workflows/records-out.md",
+      "initial_phase": "role-job"
+    },
+    "reminder-list": {
+      "name": "Reminder List",
+      "description": "Produce a list from their export for them to send. You do not message clients.",
+      "instruction_file": ".cursor/workflows/reminder-list.md",
+      "initial_phase": "role-job"
+    }
+  },
+  "default_workflow": "day-appointments",
+  "preseeded_role": "Veterinary front role (not the vet)",
+  "memory": {
+    "facts": "facts/facts-shared.md",
+    "rules": "facts/rules-shared.md"
+  }
+}

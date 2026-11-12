@@ -1,0 +1,64 @@
+{
+  "workflows": {
+    "assignment-board": {
+      "name": "Assignment Board",
+      "description": "Build a board from their assignment sheet, employee list, and calendar. They dispatch. You list holes.",
+      "instruction_file": ".claude/workflows/assignment-board.md",
+      "initial_phase": "role-job"
+    },
+    "credential-expirations": {
+      "name": "Credential Expirations",
+      "description": "List credential types with expiration or issued dates on or before the pack date, plus blank dates they track.",
+      "instruction_file": ".claude/workflows/credential-expirations.md",
+      "initial_phase": "role-job"
+    },
+    "do-not-send-list": {
+      "name": "Do Not Send List",
+      "description": "Print people flagged DNS or DNR with the scope they coded. They own the flags.",
+      "instruction_file": ".claude/workflows/do-not-send-list.md",
+      "initial_phase": "role-job"
+    },
+    "fill-vs-open": {
+      "name": "Fill Vs Open",
+      "description": "Join job orders to assignments. Count filled versus open with their status words and fill-rate formula.",
+      "instruction_file": ".claude/workflows/fill-vs-open.md",
+      "initial_phase": "role-job"
+    },
+    "holiday-shift-list": {
+      "name": "Holiday Shift List",
+      "description": "List who is scheduled on a holiday they wrote, quoting premiums only from the rate file.",
+      "instruction_file": ".claude/workflows/holiday-shift-list.md",
+      "initial_phase": "role-job"
+    },
+    "incident-routing": {
+      "name": "Incident Routing",
+      "description": "List incident form-present, date, site, and named receiver. They investigate. You flag missing forms.",
+      "instruction_file": ".claude/workflows/incident-routing.md",
+      "initial_phase": "role-job"
+    },
+    "open-job-orders": {
+      "name": "Open Job Orders",
+      "description": "List orders they still code as open or partial-fill. They fill. You do not invent or close orders.",
+      "instruction_file": ".claude/workflows/open-job-orders.md",
+      "initial_phase": "role-job"
+    },
+    "orientation-missing": {
+      "name": "Orientation Missing",
+      "description": "List missing orientation sign-ins and acks against people who should have a packet.",
+      "instruction_file": ".claude/workflows/orientation-missing.md",
+      "initial_phase": "role-job"
+    },
+    "timesheet-completeness": {
+      "name": "Timesheet Completeness",
+      "description": "List missing timesheet files, punches, blank totals, and missing approval ticks for the named period.",
+      "instruction_file": ".claude/workflows/timesheet-completeness.md",
+      "initial_phase": "role-job"
+    }
+  },
+  "default_workflow": "assignment-board",
+  "preseeded_role": "Staffing agency office admin",
+  "memory": {
+    "facts": "facts/facts-shared.md",
+    "rules": "facts/rules-shared.md"
+  }
+}

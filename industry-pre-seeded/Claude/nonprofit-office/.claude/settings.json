@@ -1,0 +1,39 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "py -3 .claude/hooks/inject_journal_context.py"
+          },
+          {
+            "type": "command",
+            "command": "py -3 .claude/hooks/inject_rules_on_action.py"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "py -3 .claude/hooks/on_stop.py"
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "py -3 .claude/hooks/on_stop.py"
+          }
+        ]
+      }
+    ]
+  }
+}

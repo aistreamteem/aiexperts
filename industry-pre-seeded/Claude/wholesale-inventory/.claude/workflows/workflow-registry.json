@@ -1,0 +1,72 @@
+{
+  "workflows": {
+    "abc-class": {
+      "name": "ABC Class",
+      "description": "Class from their stored rules or from a value or movement column they provided.",
+      "instruction_file": ".claude/workflows/abc-class.md",
+      "initial_phase": "role-job"
+    },
+    "cycle-count": {
+      "name": "Cycle Count",
+      "description": "From a count CSV, list variances versus the on-hand file if they provided both.",
+      "instruction_file": ".claude/workflows/cycle-count.md",
+      "initial_phase": "role-job"
+    },
+    "dead-stock": {
+      "name": "Dead Stock",
+      "description": "Slow-mover list from last-movement or last-sale dates they provided, plus quantity.",
+      "instruction_file": ".claude/workflows/dead-stock.md",
+      "initial_phase": "role-job"
+    },
+    "lot-expiry": {
+      "name": "Lot Expiry",
+      "description": "Flag lots and expiry from their file. Do not invent lots or dates.",
+      "instruction_file": ".claude/workflows/lot-expiry.md",
+      "initial_phase": "role-job"
+    },
+    "pick-pack": {
+      "name": "Pick Pack",
+      "description": "Pick list from their order export and on-hand or available file.",
+      "instruction_file": ".claude/workflows/pick-pack.md",
+      "initial_phase": "role-job"
+    },
+    "putaway-list": {
+      "name": "Putaway List",
+      "description": "Bins the receiver wrote or preferred locations from their map or master.",
+      "instruction_file": ".claude/workflows/putaway-list.md",
+      "initial_phase": "role-job"
+    },
+    "receiving-match": {
+      "name": "Receiving Match",
+      "description": "Match purchase order versus packing slip versus dock count.",
+      "instruction_file": ".claude/workflows/receiving-match.md",
+      "initial_phase": "role-job"
+    },
+    "reorder": {
+      "name": "Reorder",
+      "description": "List SKUs at or below their min from their stock file.",
+      "instruction_file": ".claude/workflows/reorder.md",
+      "initial_phase": "role-job"
+    },
+    "rma-returns": {
+      "name": "RMA Returns",
+      "description": "Condition and sellable flag from their RMA sheet. Do not credit.",
+      "instruction_file": ".claude/workflows/rma-returns.md",
+      "initial_phase": "role-job"
+    },
+    "transfer": {
+      "name": "Transfer",
+      "description": "From site, to site, SKU, quantity, and UOM from their transfer file.",
+      "instruction_file": ".claude/workflows/transfer.md",
+      "initial_phase": "role-job"
+    }
+  },
+  "default_workflow": "receiving-match",
+  "preseeded_role": "Wholesale / inventory role",
+  "memory": {
+    "shared_facts": "facts/facts-shared.md",
+    "shared_rules": "facts/rules-shared.md",
+    "facts": "facts/facts-operations.md",
+    "rules": "facts/rules-operations.md"
+  }
+}

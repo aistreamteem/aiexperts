@@ -1,0 +1,64 @@
+{
+  "workflows": {
+    "bindery-queue": {
+      "name": "Bindery Queue",
+      "description": "Build a finishing queue from the bindery list and open tickets.",
+      "instruction_file": ".claude/workflows/bindery-queue.md",
+      "initial_phase": "role-job"
+    },
+    "delivery-today": {
+      "name": "Delivery Today",
+      "description": "List jobs that should leave today from the delivery log and matching tickets.",
+      "instruction_file": ".claude/workflows/delivery-today.md",
+      "initial_phase": "role-job"
+    },
+    "due-today": {
+      "name": "Due Today",
+      "description": "List tickets due today or overdue, then read each due against the press calendar.",
+      "instruction_file": ".claude/workflows/due-today.md",
+      "initial_phase": "role-job"
+    },
+    "job-board": {
+      "name": "Job Board",
+      "description": "Build a board from their ticket sheet: job, customer, qty, stock, proof, due, press, and bindery.",
+      "instruction_file": ".claude/workflows/job-board.md",
+      "initial_phase": "role-job"
+    },
+    "mill-order-vs-stock": {
+      "name": "Mill Order Vs Stock",
+      "description": "Join the mill-order sheet to on-hand stock and flag tickets waiting on paper.",
+      "instruction_file": ".claude/workflows/mill-order-vs-stock.md",
+      "initial_phase": "role-job"
+    },
+    "preflight-completeness": {
+      "name": "Preflight Completeness",
+      "description": "Run their checklist only against files in the proof or art folder.",
+      "instruction_file": ".claude/workflows/preflight-completeness.md",
+      "initial_phase": "role-job"
+    },
+    "proof-status": {
+      "name": "Proof Status",
+      "description": "List each open ticket's proof type and status, then confirm a matching proof in the folder.",
+      "instruction_file": ".claude/workflows/proof-status.md",
+      "initial_phase": "role-job"
+    },
+    "reprint-log": {
+      "name": "Reprint Log",
+      "description": "List reprint tickets with parent job, qty, and the required reason text.",
+      "instruction_file": ".claude/workflows/reprint-log.md",
+      "initial_phase": "role-job"
+    },
+    "stock-vs-jobs": {
+      "name": "Stock Vs Jobs",
+      "description": "Compare on-hand stock to the pull implied by open tickets. Shortages stay visible.",
+      "instruction_file": ".claude/workflows/stock-vs-jobs.md",
+      "initial_phase": "role-job"
+    }
+  },
+  "default_workflow": "job-board",
+  "preseeded_role": "Print shop job coordinator",
+  "memory": {
+    "facts": "facts/facts-shared.md",
+    "rules": "facts/rules-shared.md"
+  }
+}

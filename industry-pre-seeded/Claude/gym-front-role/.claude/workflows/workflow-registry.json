@@ -1,0 +1,64 @@
+{
+  "workflows": {
+    "access-flag-exceptions": {
+      "name": "Access Flag Exceptions",
+      "description": "Join check-ins to the access-flag export. List denies that walked, questioned allows, and recorded overrides.",
+      "instruction_file": ".claude/workflows/access-flag-exceptions.md",
+      "initial_phase": "intake"
+    },
+    "check-in-day": {
+      "name": "Check In Day",
+      "description": "Build today’s check-in list from their scan export. Join access flags so denied or frozen rows stay visible.",
+      "instruction_file": ".claude/workflows/check-in-day.md",
+      "initial_phase": "intake"
+    },
+    "class-roster": {
+      "name": "Class Roster",
+      "description": "Build the roster for named classes from the schedule file plus check-ins or bookings they exported.",
+      "instruction_file": ".claude/workflows/class-roster.md",
+      "initial_phase": "intake"
+    },
+    "failed-draft-list": {
+      "name": "Failed Draft List",
+      "description": "List failed drafts from the membership or billing export they dropped.",
+      "instruction_file": ".claude/workflows/failed-draft-list.md",
+      "initial_phase": "intake"
+    },
+    "freeze-and-cancel-list": {
+      "name": "Freeze And Cancel List",
+      "description": "List open freezes and pending cancels from their freeze log and membership export.",
+      "instruction_file": ".claude/workflows/freeze-and-cancel-list.md",
+      "initial_phase": "intake"
+    },
+    "guest-pass-log": {
+      "name": "Guest Pass Log",
+      "description": "Build the guest-pass log from check-ins plus the membership export for host rows.",
+      "instruction_file": ".claude/workflows/guest-pass-log.md",
+      "initial_phase": "intake"
+    },
+    "missing-waivers": {
+      "name": "Missing Waivers",
+      "description": "Compare the membership export to the waiver folder. List members and guests whose required form is absent.",
+      "instruction_file": ".claude/workflows/missing-waivers.md",
+      "initial_phase": "intake"
+    },
+    "pt-session-counts": {
+      "name": "Pt Session Counts",
+      "description": "Tabulate purchased, used, and remaining PT sessions from their package sheet.",
+      "instruction_file": ".claude/workflows/pt-session-counts.md",
+      "initial_phase": "intake"
+    },
+    "retail-close": {
+      "name": "Retail Close",
+      "description": "Close retail from their count-and-price sheet plus the day-close tender export.",
+      "instruction_file": ".claude/workflows/retail-close.md",
+      "initial_phase": "intake"
+    }
+  },
+  "default_workflow": "check-in-day",
+  "preseeded_role": "Gym / fitness front role",
+  "memory": {
+    "facts": "facts/facts-operations.md",
+    "rules": "facts/rules-operations.md"
+  }
+}

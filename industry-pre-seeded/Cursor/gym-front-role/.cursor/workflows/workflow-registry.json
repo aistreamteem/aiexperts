@@ -1,0 +1,64 @@
+{
+  "workflows": {
+    "access-flag-exceptions": {
+      "name": "Access Flag Exceptions",
+      "description": "Join check-ins to the access-flag export. List denies that walked, allows that the freeze log would question, and overrides they recorded.",
+      "instruction_file": ".cursor/workflows/access-flag-exceptions.md",
+      "initial_phase": "role-job"
+    },
+    "check-in-day": {
+      "name": "Check In Day",
+      "description": "Build today's check-in list from their scan export.",
+      "instruction_file": ".cursor/workflows/check-in-day.md",
+      "initial_phase": "role-job"
+    },
+    "class-roster": {
+      "name": "Class Roster",
+      "description": "Build the roster for named classes from the schedule file plus check-ins or bookings they exported.",
+      "instruction_file": ".cursor/workflows/class-roster.md",
+      "initial_phase": "role-job"
+    },
+    "failed-draft-list": {
+      "name": "Failed Draft List",
+      "description": "List failed drafts from the membership or billing export they dropped: amount as printed, fail date, and reason code if present.",
+      "instruction_file": ".cursor/workflows/failed-draft-list.md",
+      "initial_phase": "role-job"
+    },
+    "freeze-and-cancel-list": {
+      "name": "Freeze And Cancel List",
+      "description": "List open freezes and pending cancels from their freeze log and membership export.",
+      "instruction_file": ".cursor/workflows/freeze-and-cancel-list.md",
+      "initial_phase": "role-job"
+    },
+    "guest-pass-log": {
+      "name": "Guest Pass Log",
+      "description": "Build the guest-pass log from check-ins plus the membership export for host rows if their file requires a host.",
+      "instruction_file": ".cursor/workflows/guest-pass-log.md",
+      "initial_phase": "role-job"
+    },
+    "missing-waivers": {
+      "name": "Missing Waivers",
+      "description": "Compare the membership export to the waiver folder. List members and guests whose required form is absent.",
+      "instruction_file": ".cursor/workflows/missing-waivers.md",
+      "initial_phase": "role-job"
+    },
+    "pt-session-counts": {
+      "name": "PT Session Counts",
+      "description": "Tabulate purchased, used, and remaining PT sessions from their package sheet.",
+      "instruction_file": ".cursor/workflows/pt-session-counts.md",
+      "initial_phase": "role-job"
+    },
+    "retail-close": {
+      "name": "Retail Close",
+      "description": "Close retail from their count-and-price sheet plus the day-close tender export.",
+      "instruction_file": ".cursor/workflows/retail-close.md",
+      "initial_phase": "role-job"
+    }
+  },
+  "default_workflow": "check-in-day",
+  "preseeded_role": "Gym / fitness front role",
+  "memory": {
+    "facts": "facts/facts-operations.md",
+    "rules": "facts/rules-operations.md"
+  }
+}

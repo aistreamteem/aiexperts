@@ -1,0 +1,64 @@
+{
+  "workflows": {
+    "change-after-cutoff-log": {
+      "name": "Change After Cutoff Log",
+      "description": "List revisions from the change-log sheet against each event's cutoff from the order.",
+      "instruction_file": ".claude/workflows/change-after-cutoff-log.md",
+      "initial_phase": "role-job"
+    },
+    "count-vs-guarantee": {
+      "name": "Count Versus Guarantee",
+      "description": "List expected, guaranteed, and any actual they recorded, plus vegetarian, kids, and vendor-meal splits as their sheet adds them.",
+      "instruction_file": ".claude/workflows/count-vs-guarantee.md",
+      "initial_phase": "role-job"
+    },
+    "dietary-list": {
+      "name": "Dietary List",
+      "description": "Build a per-event dietary list from their dietary sheet, the event order, and the allergen file.",
+      "instruction_file": ".claude/workflows/dietary-list.md",
+      "initial_phase": "role-job"
+    },
+    "equipment-vs-events": {
+      "name": "Equipment Versus Events",
+      "description": "Compare house equipment on-hand to the same-day event pack-outs: chafers, cambros, urns, china.",
+      "instruction_file": ".claude/workflows/equipment-vs-events.md",
+      "initial_phase": "role-job"
+    },
+    "leftover-form-completeness": {
+      "name": "Leftover Form Completeness",
+      "description": "For events whose leftover policy requires a signed release, list form present or missing from the leftover-form folder against the event-order list.",
+      "instruction_file": ".claude/workflows/leftover-form-completeness.md",
+      "initial_phase": "role-job"
+    },
+    "pack-out-list": {
+      "name": "Pack-Out List",
+      "description": "Build a pack-out from the event order, house equipment list, and their pack-out sheet.",
+      "instruction_file": ".claude/workflows/pack-out-list.md",
+      "initial_phase": "role-job"
+    },
+    "rental-pos": {
+      "name": "Rental POs",
+      "description": "List open rental POs against events: item, qty, deliver window, return window.",
+      "instruction_file": ".claude/workflows/rental-pos.md",
+      "initial_phase": "role-job"
+    },
+    "staffing-from-file": {
+      "name": "Staffing From File",
+      "description": "Build a staffing board from the roster and the event-order labor grid.",
+      "instruction_file": ".claude/workflows/staffing-from-file.md",
+      "initial_phase": "role-job"
+    },
+    "week-of-events": {
+      "name": "Week-Of Events",
+      "description": "Build a week board from their event-order export and calendar.",
+      "instruction_file": ".claude/workflows/week-of-events.md",
+      "initial_phase": "role-job"
+    }
+  },
+  "default_workflow": "week-of-events",
+  "preseeded_role": "Catering office",
+  "memory": {
+    "facts": "facts/facts-operations.md",
+    "rules": "facts/rules-operations.md"
+  }
+}

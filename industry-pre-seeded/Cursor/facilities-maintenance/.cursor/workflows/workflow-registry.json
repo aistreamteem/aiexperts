@@ -1,0 +1,64 @@
+{
+  "workflows": {
+    "asset-warranty-due": {
+      "name": "Asset Warranty Due",
+      "description": "List assets whose warranty-end date on the asset list falls before the pack date they named, or is already past.",
+      "instruction_file": ".cursor/workflows/asset-warranty-due.md",
+      "initial_phase": "role-job"
+    },
+    "backlog-by-craft": {
+      "name": "Backlog By Craft",
+      "description": "Group approved, not-complete work orders by the craft they stored.",
+      "instruction_file": ".cursor/workflows/backlog-by-craft.md",
+      "initial_phase": "role-job"
+    },
+    "contractor-wo-list": {
+      "name": "Contractor WO List",
+      "description": "Join open contractor or outside-service work orders to their contractor list.",
+      "instruction_file": ".cursor/workflows/contractor-wo-list.md",
+      "initial_phase": "role-job"
+    },
+    "dispatch-list": {
+      "name": "Dispatch List",
+      "description": "Build today's or this week's in-house work-order dispatch list from their WO CSV.",
+      "instruction_file": ".cursor/workflows/dispatch-list.md",
+      "initial_phase": "role-job"
+    },
+    "downtime-log": {
+      "name": "Downtime Log",
+      "description": "Build a downtime pack from their downtime log without inventing an end or hiding an open outage.",
+      "instruction_file": ".cursor/workflows/downtime-log.md",
+      "initial_phase": "role-job"
+    },
+    "emergency-after-hours-list": {
+      "name": "Emergency After Hours List",
+      "description": "List emergency or after-hours tickets with on-call vendors and calendar windows.",
+      "instruction_file": ".cursor/workflows/emergency-after-hours-list.md",
+      "initial_phase": "role-job"
+    },
+    "loto-form-present": {
+      "name": "LOTO Form Present",
+      "description": "Index whether a machine-specific lockout procedure PDF is present for work orders that need LOTO.",
+      "instruction_file": ".cursor/workflows/loto-form-present.md",
+      "initial_phase": "role-job"
+    },
+    "parts-below-min": {
+      "name": "Parts Below Min",
+      "description": "Compare crib on-hand to stored min-qty and list SKUs at or below min.",
+      "instruction_file": ".cursor/workflows/parts-below-min.md",
+      "initial_phase": "role-job"
+    },
+    "pm-due": {
+      "name": "PM Due",
+      "description": "List PMs due or overdue from their PM calendar, joined to the stored asset list.",
+      "instruction_file": ".cursor/workflows/pm-due.md",
+      "initial_phase": "role-job"
+    }
+  },
+  "default_workflow": "dispatch-list",
+  "preseeded_role": "Facilities / plant maintenance planner",
+  "memory": {
+    "facts": "facts/facts-operations.md",
+    "rules": "facts/rules-operations.md"
+  }
+}

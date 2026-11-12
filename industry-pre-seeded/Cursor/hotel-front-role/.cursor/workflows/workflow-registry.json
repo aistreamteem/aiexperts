@@ -1,0 +1,64 @@
+{
+  "workflows": {
+    "arrivals-day": {
+      "name": "Arrivals Day",
+      "description": "Build today's arrivals list from their CSV and mark ready versus not-ready using the room-status sheet.",
+      "instruction_file": ".cursor/workflows/arrivals-day.md",
+      "initial_phase": "role-job"
+    },
+    "departures-due-out": {
+      "name": "Departures Due Out",
+      "description": "List due-outs and planned departures from the in-house export and room status.",
+      "instruction_file": ".cursor/workflows/departures-due-out.md",
+      "initial_phase": "role-job"
+    },
+    "folio-exceptions": {
+      "name": "Folio Exceptions",
+      "description": "Read folio PDFs against the tax file and list missing posts, duplicates, tax-off without a cert, comps without a code, and POS mismatches.",
+      "instruction_file": ".cursor/workflows/folio-exceptions.md",
+      "initial_phase": "role-job"
+    },
+    "group-block-vs-pickup": {
+      "name": "Group Block Vs Pickup",
+      "description": "Compare contracted block rooms to pickup on their group sheet and the arrivals export.",
+      "instruction_file": ".cursor/workflows/group-block-vs-pickup.md",
+      "initial_phase": "role-job"
+    },
+    "house-count": {
+      "name": "House Count",
+      "description": "Restate tonight's house count from their PMS export and in-house list.",
+      "instruction_file": ".cursor/workflows/house-count.md",
+      "initial_phase": "role-job"
+    },
+    "night-audit-file-check": {
+      "name": "Night Audit File Check",
+      "description": "Check that the night-audit packet they dropped has the usual pages versus their PMS export.",
+      "instruction_file": ".cursor/workflows/night-audit-file-check.md",
+      "initial_phase": "role-job"
+    },
+    "no-show-list": {
+      "name": "No Show List",
+      "description": "Build the no-show list from arrivals that did not check in and from the night-audit PDF if it already coded them.",
+      "instruction_file": ".cursor/workflows/no-show-list.md",
+      "initial_phase": "role-job"
+    },
+    "ooo-and-status": {
+      "name": "Ooo And Status",
+      "description": "List out-of-order and status-board rooms from their status sheet and the PMS export.",
+      "instruction_file": ".cursor/workflows/ooo-and-status.md",
+      "initial_phase": "role-job"
+    },
+    "tax-exempt-completeness": {
+      "name": "Tax Exempt Completeness",
+      "description": "Compare folios coded tax-exempt to certificates in the tax-file folder.",
+      "instruction_file": ".cursor/workflows/tax-exempt-completeness.md",
+      "initial_phase": "role-job"
+    }
+  },
+  "default_workflow": "arrivals-day",
+  "preseeded_role": "Hotel / inn front role",
+  "memory": {
+    "facts": "facts/facts-operations.md",
+    "rules": "facts/rules-operations.md"
+  }
+}

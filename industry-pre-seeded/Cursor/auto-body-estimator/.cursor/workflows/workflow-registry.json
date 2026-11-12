@@ -1,0 +1,64 @@
+{
+  "workflows": {
+    "assignment-intake": {
+      "name": "Assignment Intake",
+      "description": "Build an intake pack from the assignment sheet and the VIN file: claim, VIN, DOL, insurer, mileage if present.",
+      "instruction_file": ".cursor/workflows/assignment-intake.md",
+      "initial_phase": "role-job"
+    },
+    "authorization-missing": {
+      "name": "Authorization Missing",
+      "description": "Compare estimate or supplement dollars to portal screenshots or signed auth they saved.",
+      "instruction_file": ".cursor/workflows/authorization-missing.md",
+      "initial_phase": "role-job"
+    },
+    "customer-pay-vs-insurer": {
+      "name": "Customer Pay Vs Insurer",
+      "description": "Split estimate lines by the pay type they coded: insurer, deductible as posted, and customer-pay.",
+      "instruction_file": ".cursor/workflows/customer-pay-vs-insurer.md",
+      "initial_phase": "role-job"
+    },
+    "cycle-time-list": {
+      "name": "Cycle Time List",
+      "description": "List stage dates from their cycle calendar joined to open estimates.",
+      "instruction_file": ".cursor/workflows/cycle-time-list.md",
+      "initial_phase": "role-job"
+    },
+    "estimate-from-files": {
+      "name": "Estimate From Files",
+      "description": "Build an estimate pack from their labor matrix, parts file, and estimate export.",
+      "instruction_file": ".cursor/workflows/estimate-from-files.md",
+      "initial_phase": "role-job"
+    },
+    "oem-procedure-present": {
+      "name": "OEM Procedure Present",
+      "description": "Index procedure PDFs against estimate operations that their process says need a page.",
+      "instruction_file": ".cursor/workflows/oem-procedure-present.md",
+      "initial_phase": "role-job"
+    },
+    "parts-order-vs-estimate": {
+      "name": "Parts Order Vs Estimate",
+      "description": "Join the parts PO sheet to estimate lines: part, qty, source, promised date, backorder.",
+      "instruction_file": ".cursor/workflows/parts-order-vs-estimate.md",
+      "initial_phase": "role-job"
+    },
+    "photo-index": {
+      "name": "Photo Index",
+      "description": "Index the photo folder with their file names and required angles if they stored a shot list.",
+      "instruction_file": ".cursor/workflows/photo-index.md",
+      "initial_phase": "role-job"
+    },
+    "supplement-log": {
+      "name": "Supplement Log",
+      "description": "List estimate versions from the supplement log and join to the estimate export so first-write versus later dollars stay visible.",
+      "instruction_file": ".cursor/workflows/supplement-log.md",
+      "initial_phase": "role-job"
+    }
+  },
+  "default_workflow": "assignment-intake",
+  "preseeded_role": "Auto body estimator / office",
+  "memory": {
+    "facts": "facts/facts-shared.md",
+    "rules": "facts/rules-shared.md"
+  }
+}

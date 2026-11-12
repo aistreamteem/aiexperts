@@ -1,0 +1,64 @@
+{
+  "workflows": {
+    "acord-completeness": {
+      "name": "ACORD Completeness",
+      "description": "Index ACORD and application PDFs, list form number, named insured as written, and blank required boxes.",
+      "instruction_file": ".cursor/workflows/acord-completeness.md",
+      "initial_phase": "role-job"
+    },
+    "certificate-holder-batch": {
+      "name": "Certificate Holder Batch",
+      "description": "Batch the holder list against their COI form for one named client or job list.",
+      "instruction_file": ".cursor/workflows/certificate-holder-batch.md",
+      "initial_phase": "role-job"
+    },
+    "coi-request-pack": {
+      "name": "COI Request Pack",
+      "description": "Assemble one certificate request: holder as written, job or contract name, and the COI form they use.",
+      "instruction_file": ".cursor/workflows/coi-request-pack.md",
+      "initial_phase": "role-job"
+    },
+    "endorsement-request-list": {
+      "name": "Endorsement Request List",
+      "description": "List open policy-change requests from their endorsement sheet with type, effective date, and supporting-doc status.",
+      "instruction_file": ".cursor/workflows/endorsement-request-list.md",
+      "initial_phase": "role-job"
+    },
+    "expiration-list": {
+      "name": "Expiration List",
+      "description": "Build the expiration list from their expiration CSV: policy, named insured, and expiration date as exported.",
+      "instruction_file": ".cursor/workflows/expiration-list.md",
+      "initial_phase": "role-job"
+    },
+    "fnol-routing": {
+      "name": "FNOL Routing",
+      "description": "From their claim log and loss-notice PDFs, list date of loss, policy number, missing fields, and where to send the notice.",
+      "instruction_file": ".cursor/workflows/fnol-routing.md",
+      "initial_phase": "role-job"
+    },
+    "missing-dec-pages": {
+      "name": "Missing Dec Pages",
+      "description": "Compare the AMS policy list to the dec-page folder and list issued or in-force rows with no current-term dec PDF.",
+      "instruction_file": ".cursor/workflows/missing-dec-pages.md",
+      "initial_phase": "role-job"
+    },
+    "renewal-pipeline": {
+      "name": "Renewal Pipeline",
+      "description": "Join their AMS export to the expiration CSV. Keep producer, CSR, line, and status as they coded it.",
+      "instruction_file": ".cursor/workflows/renewal-pipeline.md",
+      "initial_phase": "role-job"
+    },
+    "vehicle-add-paperwork": {
+      "name": "Vehicle Add Paperwork",
+      "description": "From the endorsement sheet, list each vehicle add: VIN as provided, requested effective date, and title or registration present.",
+      "instruction_file": ".cursor/workflows/vehicle-add-paperwork.md",
+      "initial_phase": "role-job"
+    }
+  },
+  "default_workflow": "acord-completeness",
+  "preseeded_role": "Insurance agency CSR (not the producer)",
+  "memory": {
+    "facts": "facts/facts-operations.md",
+    "rules": "facts/rules-operations.md"
+  }
+}

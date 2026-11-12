@@ -1,0 +1,65 @@
+{
+  "workflows": {
+    "additional-findings": {
+      "name": "Additional Findings",
+      "description": "New technician or MPI recommendations not yet authorized.",
+      "instruction_file": ".cursor/workflows/additional-findings.md",
+      "initial_phase": "role-job"
+    },
+    "auth-gap": {
+      "name": "Auth Gap",
+      "description": "Compare estimate lines to the authorization log; list pending lines.",
+      "instruction_file": ".cursor/workflows/auth-gap.md",
+      "initial_phase": "role-job"
+    },
+    "comeback": {
+      "name": "Comeback",
+      "description": "Match today's concern to a prior RO in their history export.",
+      "instruction_file": ".cursor/workflows/comeback.md",
+      "initial_phase": "role-job"
+    },
+    "estimate-pack": {
+      "name": "Estimate Pack",
+      "description": "Build estimate lines from their labor guide or menu plus confirmed parts.",
+      "instruction_file": ".cursor/workflows/estimate-pack.md",
+      "initial_phase": "role-job"
+    },
+    "mpi-pack": {
+      "name": "MPI Pack",
+      "description": "Copy inspection tags and photo captions from their MPI export only.",
+      "instruction_file": ".cursor/workflows/mpi-pack.md",
+      "initial_phase": "role-job"
+    },
+    "one-ro": {
+      "name": "One RO",
+      "description": "One ticket write-up: concern in customer words, parts, estimate questions.",
+      "instruction_file": ".cursor/workflows/one-ro.md",
+      "initial_phase": "role-job"
+    },
+    "open-ros": {
+      "name": "Open ROs",
+      "description": "List open tickets from their board export or screenshot.",
+      "instruction_file": ".cursor/workflows/open-ros.md",
+      "initial_phase": "role-job"
+    },
+    "parts-status": {
+      "name": "Parts Status",
+      "description": "On order, in stock, backorder, and returned from vendor files and POs.",
+      "instruction_file": ".cursor/workflows/parts-status.md",
+      "initial_phase": "role-job"
+    },
+    "pickup-invoice": {
+      "name": "Pickup Invoice",
+      "description": "Compare last authorization and technician notes to the invoice PDF.",
+      "instruction_file": ".cursor/workflows/pickup-invoice.md",
+      "initial_phase": "role-job"
+    }
+  },
+  "default_workflow": "one-ro",
+  "preseeded_role": "Auto shop service advisor",
+  "memory": {
+    "facts": "facts/facts-operations.md",
+    "rules": "facts/rules-operations.md"
+  }
+}
+

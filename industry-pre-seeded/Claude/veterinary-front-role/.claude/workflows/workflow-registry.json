@@ -1,0 +1,66 @@
+{
+  "workflows": {
+    "board-dropoff": {
+      "name": "Board Dropoff",
+      "description": "From their form, list pickup time, feeding as written, and missing signatures.",
+      "instruction_file": ".claude/workflows/board-dropoff.md",
+      "initial_phase": "role-job"
+    },
+    "checkout-list": {
+      "name": "Checkout List",
+      "description": "List invoice lines and tenders from their export.",
+      "instruction_file": ".claude/workflows/checkout-list.md",
+      "initial_phase": "role-job"
+    },
+    "day-appointments": {
+      "name": "Day Appointments",
+      "description": "List from export. Flag emergency wording at the top.",
+      "instruction_file": ".claude/workflows/day-appointments.md",
+      "initial_phase": "role-job"
+    },
+    "emergency-flag": {
+      "name": "Emergency Flag",
+      "description": "From today's book or message log, list rows with emergency wording first.",
+      "instruction_file": ".claude/workflows/emergency-flag.md",
+      "initial_phase": "role-job"
+    },
+    "estimate-from-prices": {
+      "name": "Estimate From Prices",
+      "description": "Fill their estimate template using only items and amounts on their price file.",
+      "instruction_file": ".claude/workflows/estimate-from-prices.md",
+      "initial_phase": "role-job"
+    },
+    "new-client-forms": {
+      "name": "New Client Forms",
+      "description": "From registration PDFs, list missing pages and signatures.",
+      "instruction_file": ".claude/workflows/new-client-forms.md",
+      "initial_phase": "role-job"
+    },
+    "records-in": {
+      "name": "Records In",
+      "description": "Log received PDFs. Do not interpret labs or films.",
+      "instruction_file": ".claude/workflows/records-in.md",
+      "initial_phase": "role-job"
+    },
+    "records-out": {
+      "name": "Records Out",
+      "description": "Log client or clinic requests and whether an authorization file is present.",
+      "instruction_file": ".claude/workflows/records-out.md",
+      "initial_phase": "role-job"
+    },
+    "reminder-list": {
+      "name": "Reminder List",
+      "description": "Produce a list from their export for them to send.",
+      "instruction_file": ".claude/workflows/reminder-list.md",
+      "initial_phase": "role-job"
+    }
+  },
+  "default_workflow": "day-appointments",
+  "preseeded_role": "Veterinary front role (not the vet)",
+  "memory": {
+    "shared_facts": "facts/facts-shared.md",
+    "shared_rules": "facts/rules-shared.md",
+    "facts": "facts/facts-operations.md",
+    "rules": "facts/rules-operations.md"
+  }
+}

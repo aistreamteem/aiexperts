@@ -1,0 +1,64 @@
+{
+  "workflows": {
+    "day-close-tender": {
+      "name": "Day Close Tender",
+      "description": "From their close report or drawer sheet, list tender types and amounts for one clinic date.",
+      "instruction_file": ".cursor/workflows/day-close-tender.md",
+      "initial_phase": "role-job"
+    },
+    "day-list": {
+      "name": "Day List",
+      "description": "From the schedule export, list the day by time, provider, type, and patient label.",
+      "instruction_file": ".cursor/workflows/day-list.md",
+      "initial_phase": "role-job"
+    },
+    "eligibility-from-screenshot": {
+      "name": "Eligibility From Screenshot",
+      "description": "Quote only the dated screenshot or clearinghouse print they saved.",
+      "instruction_file": ".cursor/workflows/eligibility-from-screenshot.md",
+      "initial_phase": "role-job"
+    },
+    "intake-completeness": {
+      "name": "Intake Completeness",
+      "description": "From PDFs they share, list missing pages and signatures as questions.",
+      "instruction_file": ".cursor/workflows/intake-completeness.md",
+      "initial_phase": "role-job"
+    },
+    "no-show-list": {
+      "name": "No Show List",
+      "description": "From the day-list or EHR export, list rows they already coded no-show, late cancel, or broken.",
+      "instruction_file": ".cursor/workflows/no-show-list.md",
+      "initial_phase": "role-job"
+    },
+    "recall-list-if-file": {
+      "name": "Recall List If File",
+      "description": "Shape an exported recall or reminder list; say the file is missing if they have none.",
+      "instruction_file": ".cursor/workflows/recall-list-if-file.md",
+      "initial_phase": "role-job"
+    },
+    "records-release-log": {
+      "name": "Records Release Log",
+      "description": "From the ROI folder and their release log, list request date, requester type, ROI present or missing, and send status.",
+      "instruction_file": ".cursor/workflows/records-release-log.md",
+      "initial_phase": "role-job"
+    },
+    "referral-paperwork": {
+      "name": "Referral Paperwork",
+      "description": "From the referral PDF folder, list inbound and outbound packets as complete or missing named pages.",
+      "instruction_file": ".cursor/workflows/referral-paperwork.md",
+      "initial_phase": "role-job"
+    },
+    "wait-list": {
+      "name": "Wait List",
+      "description": "From their wait-list file, keep their order and match listed open or cancelled slots as options.",
+      "instruction_file": ".cursor/workflows/wait-list.md",
+      "initial_phase": "role-job"
+    }
+  },
+  "default_workflow": "day-list",
+  "preseeded_role": "Medical clinic front role (not the clinician)",
+  "memory": {
+    "facts": "facts/facts-shared.md",
+    "rules": "facts/rules-shared.md"
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "workflows": {
+    "loan-file-index": {
+      "name": "Loan File Index",
+      "description": "Index PDFs they stored for this loan: application, ID (minimum necessary), income, assets, VOE, contract as present versus missing. Do not underwrite.",
+      "instruction_file": ".claude/workflows/loan-file-index.md",
+      "initial_phase": "role-job"
+    },
+    "conditions-checklist": {
+      "name": "Conditions Checklist",
+      "description": "Build a conditions checklist from their conditions sheet: loan number, condition text, PTD/PTF/suspense as they coded it, and status.",
+      "instruction_file": ".claude/workflows/conditions-checklist.md",
+      "initial_phase": "role-job"
+    },
+    "missing-docs": {
+      "name": "Missing Docs",
+      "description": "Compare their document-folder index to the conditions sheet and list named items that are missing, cut off, or undated.",
+      "instruction_file": ".claude/workflows/missing-docs.md",
+      "initial_phase": "role-job"
+    },
+    "date-stamps": {
+      "name": "Date Stamps",
+      "description": "Build a date-file pack from their calendar and document-folder index with dates as they stored them.",
+      "instruction_file": ".claude/workflows/date-stamps.md",
+      "initial_phase": "role-job"
+    },
+    "appraisal-in-file-not-value": {
+      "name": "Appraisal In File Not Value",
+      "description": "Index the appraisal PDF folder: report present, report date, invoice, AOA, and printed appraisal conditions as text. Do not give a value opinion.",
+      "instruction_file": ".claude/workflows/appraisal-in-file-not-value.md",
+      "initial_phase": "role-job"
+    },
+    "title-routing": {
+      "name": "Title Routing",
+      "description": "Index the title folder: commitment, updates, invoices, and related PDFs. Route names and dates.",
+      "instruction_file": ".claude/workflows/title-routing.md",
+      "initial_phase": "role-job"
+    },
+    "insurance-binder-present": {
+      "name": "Insurance Binder Present",
+      "description": "List HOI binders, dec pages, master policies, and flood policies in their insurance-binder folder.",
+      "instruction_file": ".claude/workflows/insurance-binder-present.md",
+      "initial_phase": "role-job"
+    },
+    "cd-le-present": {
+      "name": "CD/LE Present",
+      "description": "List Loan Estimate and Closing Disclosure versions in their LE/CD folder with issued dates as printed.",
+      "instruction_file": ".claude/workflows/cd-le-present.md",
+      "initial_phase": "role-job"
+    },
+    "suspense-list-as-their-codes": {
+      "name": "Suspense List As Their Codes",
+      "description": "List suspense and rereq items from their conditions sheet using their codes and comments only.",
+      "instruction_file": ".claude/workflows/suspense-list-as-their-codes.md",
+      "initial_phase": "role-job"
+    },
+    "wire-fraud-checklist-their-process": {
+      "name": "Wire Fraud Checklist Their Process",
+      "description": "List whether their written wire-fraud or callback checklist rows are marked as they marked them. Do not send a wire.",
+      "instruction_file": ".claude/workflows/wire-fraud-checklist-their-process.md",
+      "initial_phase": "role-job"
+    }
+  },
+  "default_workflow": "conditions-checklist",
+  "preseeded_role": "Mortgage processor (file completeness)",
+  "memory": {
+    "facts": "facts/facts-shared.md",
+    "rules": "facts/rules-shared.md"
+  }
+}

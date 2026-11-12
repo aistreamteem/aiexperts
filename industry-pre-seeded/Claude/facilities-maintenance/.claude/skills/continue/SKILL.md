@@ -1,0 +1,93 @@
+﻿---
+name: continue
+description: >-
+  Use when the user says "continue", "start", or "resume" with no other
+  instruction. Runs define-role while the role is pending, then reads the
+  active journal and performs the next facilities-maintenance work-map step.
+  Does NOT mean approval of a gate or an answer to an open question.
+---
+
+# Continue
+
+Resumes the active maintenance Work Item from the journals. Use when the operator says "continue", "start", or "resume".
+
+## When to use
+
+- Operator says "continue", "start", or "resume"
+- Operator asks to pick up where the role left off
+- When the job is waiting for an answer or a file, "continue" means re-prompt, not "they answered"
+
+## Instructions
+
+**Do not** treat "continue" as an answer to a question or as approval of a gate. It means only: read the journal and perform the next ready step. If that step waits for an answer (which export is live, whether a missing LOTO PDF is a flag only, and so on), re-prompt and do **not** advance until they give a substantive answer. Role questions use the same rule: "I approve the role" or "Skip role definition" is the approval, not the word continue.
+
+### Role gate (before any Work Item)
+
+0. Read `MyRole.txt` at the workspace root.
+ - If the user said "define my role", run the define-role skill and stop.
+ - If `Role status` is `pending` or the field is missing, run define-role and stop. Do not ask for a Work Item ID.
+ - If `Role status` is `defined` or `skipped`, continue to step 0a.
+
+### Context initialization (steps 0a–0e)
+
+0a. **Check for active context:**
+ - Read `.claude/active-context.txt`
+ - Format: `<type>:<id>` (e.g., `work-item:WID-20261108`)
+ - If file exists: parse type and id
+ - If file missing: check `.claude/active-work-item.txt` → assume `context_type=work-item`
+ - If both missing: proceed to step 0b
+
+0b. **Prompt for context:** If no active context, ask: "What are you working on? (work item WID-XXXXXXXX — one dispatch day, PM week, crib pull, downtime period, or pack)". Parse response:
+ - If starts with "WID-": `context_type=work-item`, `context_id=WID-XXXXXXXX`
+ - Write `.claude/active-context.txt` as `<type>:<id>`
+
+0c. **Set context paths:**
+ - `root_path=work-items/<context_id>/`
+ - `journal_path=journals/work-items/<context_id>/progress.md`
+ - `map_path=journals/work-items/<context_id>/state.json`
+
+0d. **Load or select workflow type:**
+ - Read `<journal_path>` for **Workflow type**
+ - If missing: invoke `workflow-selector` → operator selects a registered role job → reload journal
+ - Read `.claude/workflows/workflow-registry.json`
+ - Load `.claude/workflows/<workflow-type>.md`
+ - Default if they decline to choose: `dispatch-list` (confirm first)
+ - Do not map unknown names to a developer or incident pipeline
+
+0e. **Initialize folders:** If `<root_path>` does not exist:
+ - Copy `work-items/_TEMPLATE/`
+ - If `journals/work-items/<context_id>/` does not exist, copy `journals/work-items/_TEMPLATE/` there and set **Work item record** to `work-items/<context_id>/`
+ - Write `Current work item: <context_id>` in `journals/expert/progress.md` (copy from `journals/_TEMPLATE/expert/progress.md` if missing)
+ - Create `in/`, `work/`, `out/`, and `evidence/` under the Work Item if missing
+
+### Facts and rules (step 0f)
+
+0f. Load in this order:
+ - `facts/MEMORY-INDEX.md`
+ - `facts/facts-operations.md` and `facts/rules-operations.md` (this role’s Expert Role memory)
+ - `work-items/<id>/facts/facts.md` and `.../rules.md` when those files exist
+ - Filter Expert Role entries by `**Workflows:**` (include `all` or the current registry id)
+ - Log loaded counts in the Work Item journal
+ - Follow rules. Ask when shop procedure is missing. Do not invent intervals, mins, hours, criticality, or downtime codes.
+
+### Execution (steps 1–8)
+
+1. **Read** `<journal_path>`. If empty, set next action to the first YAML step of the selected workflow.
+2. **Blocking questions:** If Open questions (blocking) is non-empty, ask those questions. **The word "continue" is not an answer.**
+3. **Blockers:** If Blockers or Last failure is set, describe the block (missing export, check failed, missing LOTO PDF) and wait for agreement. Do not skip.
+4. **Wait for a human gate:** If next action is waiting for a file, a “which file is live” choice, or explicit okay to publish a list, re-surface that ask. Do not treat continue as approval.
+5. **Done or empty:** If next action is empty or "done", stop and ask what they want next. Optionally offer **promote-facts-rules**.
+6. **Otherwise perform one ready YAML step** from the loaded workflow file:
+ - Resolve `in/`, `work/`, `out/`, `evidence/` as paths under `work-items/<id>/`
+ - Do not start the step if any `needs` artifact is missing on disk
+ - Read the step’s `tool` file under `docs/tools/`
+ - Produce the file at `produce_path` inside this Work Item
+ - Run the step’s `check` command against those same paths (from the Work Item root, or adjust relative paths so they hit this item)
+ - On check fail: retry at most 3, then ask
+ - Do not mark the step passed on a chat summary
+ - One step per continue unless they asked to run the **whole named job** — then walk remaining ready steps until the map is complete or blocked
+7. After the step, **journal-keeper**: last completed, next YAML step id (or pack/close), artifacts, checks, facts/rules loaded.
+8. At session end, write **Last session summary** and optionally refresh `work-items/<id>/STATUS.md`.
+9. When completion status becomes done, ask whether to review Work Item facts/rules for promotion.
+
+Always follow the selected work map. Do not skip steps unless the journal says the step already passed and the artifact exists.

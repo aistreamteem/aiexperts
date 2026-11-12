@@ -1,0 +1,28 @@
+name: scaffold
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  check:
+    strategy:
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        working-directory: .
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Integrity check
+        run: python scripts/check_scaffold.py
+      - name: Journal hook tests
+        run: python scripts/test_journal_hook.py
+      - name: Rules hook tests
+        run: python scripts/test_rules_hook.py
+      - name: Stop hook tests
+        run: python scripts/test_stop_hooks.py

@@ -1,0 +1,70 @@
+{
+  "workflows": {
+    "ar-followup": {
+      "name": "AR Followup",
+      "description": "Age AR with their buckets and produce a questions pack. Do not write off, apply payments, or email customers unless they asked.",
+      "instruction_file": ".cursor/workflows/ar-followup.md",
+      "initial_phase": "role-job"
+    },
+    "bank-reconcile": {
+      "name": "Bank Reconcile",
+      "description": "Match one named statement to the books and write a rec pack that shows the difference. Do not plug to force a zero.",
+      "instruction_file": ".cursor/workflows/bank-reconcile.md",
+      "initial_phase": "role-job"
+    },
+    "bank-review": {
+      "name": "Bank Review",
+      "description": "Flag unclear bank lines, transfers, owner deposits, and processor names. Next step is their answers, not a silent recode.",
+      "instruction_file": ".cursor/workflows/bank-review.md",
+      "initial_phase": "role-job"
+    },
+    "contractor-1099-year": {
+      "name": "Contractor 1099 Year",
+      "description": "Build a contractor payment list for a year they name. No TINs, no e-file, no worker-classification opinion.",
+      "instruction_file": ".cursor/workflows/contractor-1099-year.md",
+      "initial_phase": "role-job"
+    },
+    "credit-card-code": {
+      "name": "Credit Card Code",
+      "description": "Code one card statement period and flag personal-looking charges and missing receipts. Do not pay the card.",
+      "instruction_file": ".cursor/workflows/credit-card-code.md",
+      "initial_phase": "role-job"
+    },
+    "job-cost-light": {
+      "name": "Job Cost Light",
+      "description": "Tag bills and costs to job ids they already use. No invented jobs, markup, or overhead rates.",
+      "instruction_file": ".cursor/workflows/job-cost-light.md",
+      "initial_phase": "role-job"
+    },
+    "month-end": {
+      "name": "Month End",
+      "description": "Close notes for one named period: rec status, open questions, and a short close pack. Do not call the month closed if a rec is open.",
+      "instruction_file": ".cursor/workflows/month-end.md",
+      "initial_phase": "role-job"
+    },
+    "receipt-match": {
+      "name": "Receipt Match",
+      "description": "Index receipts and match them to card or bank lines. Unmatched items stay exceptions.",
+      "instruction_file": ".cursor/workflows/receipt-match.md",
+      "initial_phase": "role-job"
+    },
+    "sales-tax-questions": {
+      "name": "Sales Tax Questions",
+      "description": "List tax collected as they marked from their sales file. Never invent a rate, nexus, or a filed return.",
+      "instruction_file": ".cursor/workflows/sales-tax-questions.md",
+      "initial_phase": "role-job"
+    },
+    "vendor-bills": {
+      "name": "Vendor Bills",
+      "description": "Index vendor bills and code them to their chart or a labeled guess. This role never originates payment.",
+      "instruction_file": ".cursor/workflows/vendor-bills.md",
+      "initial_phase": "role-job"
+    }
+  },
+  "default_workflow": "month-end",
+  "preseeded_role": "Bookkeeping / bills",
+  "memory": {
+    "facts": "facts/facts-operations.md",
+    "rules": "facts/rules-operations.md"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "workflows": {
+    "bake-list-day": {
+      "name": "Bake List Day",
+      "description": "Build the day's bake plan from their bake-list sheet and formula file.",
+      "instruction_file": ".claude/workflows/bake-list-day.md",
+      "initial_phase": "list"
+    },
+    "case-par-vs-count": {
+      "name": "Case Par Vs Count",
+      "description": "Compare pastry-case and bread-wall par to the count they recorded for the named daypart.",
+      "instruction_file": ".claude/workflows/case-par-vs-count.md",
+      "initial_phase": "pars"
+    },
+    "wholesale-day": {
+      "name": "Wholesale Day",
+      "description": "Build the pick list from standing filtered to the weekday on their calendar, plus dated extras or standing-changes they filed.",
+      "instruction_file": ".claude/workflows/wholesale-day.md",
+      "initial_phase": "standing"
+    },
+    "custom-cake-board": {
+      "name": "Custom Cake Board",
+      "description": "List open cake and wedding tickets from the cake-order folder against the production calendar.",
+      "instruction_file": ".claude/workflows/custom-cake-board.md",
+      "initial_phase": "orders"
+    },
+    "holiday-bake-up": {
+      "name": "Holiday Bake Up",
+      "description": "Pull the holiday tab on their calendar and the matching bake-list rows.",
+      "instruction_file": ".claude/workflows/holiday-bake-up.md",
+      "initial_phase": "cal"
+    },
+    "receiving-shorts": {
+      "name": "Receiving Shorts",
+      "description": "Join the receiving CSV to invoice PDFs they dropped: shorts, damage, qty fights, price only as printed.",
+      "instruction_file": ".claude/workflows/receiving-shorts.md",
+      "initial_phase": "recv"
+    },
+    "ingredient-below-par": {
+      "name": "Ingredient Below Par",
+      "description": "Compare ingredient par-min to counted on-hand or receiving on-hand for flour, butter, dairy, and other lines they named.",
+      "instruction_file": ".claude/workflows/ingredient-below-par.md",
+      "initial_phase": "pars"
+    },
+    "stale-and-waste": {
+      "name": "Stale And Waste",
+      "description": "Recap their waste and stale logs for the dates they named, next to case par if they asked why the case overbaked.",
+      "instruction_file": ".claude/workflows/stale-and-waste.md",
+      "initial_phase": "logs"
+    },
+    "allergen-sheet-index": {
+      "name": "Allergen Sheet Index",
+      "description": "Index their allergen sheet against formula or bake-list names: missing rows, two-sheet fights, blank sesame or nut cells.",
+      "instruction_file": ".claude/workflows/allergen-sheet-index.md",
+      "initial_phase": "sheet"
+    }
+  },
+  "default_workflow": "bake-list-day",
+  "preseeded_role": "Bakery / cafe production office",
+  "memory": {
+    "facts": "facts/facts-operations.md",
+    "rules": "facts/rules-operations.md"
+  }
+}

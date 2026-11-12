@@ -1,0 +1,64 @@
+{
+  "workflows": {
+    "estimate-from-rate-file": {
+      "name": "Estimate From Rate File",
+      "description": "Draft the estimate from their rate file plus the inventory they stored.",
+      "instruction_file": ".claude/workflows/estimate-from-rate-file.md",
+      "initial_phase": "role-job"
+    },
+    "inventory-completeness": {
+      "name": "Inventory Completeness",
+      "description": "Compare the inventory sheet to rooms, PBO versus CP codes, and the high-value list if their rule requires one.",
+      "instruction_file": ".claude/workflows/inventory-completeness.md",
+      "initial_phase": "role-job"
+    },
+    "high-value-list-check": {
+      "name": "High Value List Check",
+      "description": "Check whether their high-value form is present when their rule or estimate PDF says it is required.",
+      "instruction_file": ".claude/workflows/high-value-list-check.md",
+      "initial_phase": "role-job"
+    },
+    "materials-list": {
+      "name": "Materials List",
+      "description": "Pull carton and crate quantities from their materials sheet and the inventory tally they named as live.",
+      "instruction_file": ".claude/workflows/materials-list.md",
+      "initial_phase": "role-job"
+    },
+    "crew-day": {
+      "name": "Crew Day",
+      "description": "Build the day list from their roster plus the calendar jobs they already booked.",
+      "instruction_file": ".claude/workflows/crew-day.md",
+      "initial_phase": "role-job"
+    },
+    "truck-calendar": {
+      "name": "Truck Calendar",
+      "description": "List unit, date, and job from their truck calendar.",
+      "instruction_file": ".claude/workflows/truck-calendar.md",
+      "initial_phase": "role-job"
+    },
+    "delivery-window-list": {
+      "name": "Delivery Window List",
+      "description": "List dest windows and spreads from their calendar file and job sheet.",
+      "instruction_file": ".claude/workflows/delivery-window-list.md",
+      "initial_phase": "role-job"
+    },
+    "weigh-ticket-pack": {
+      "name": "Weigh Ticket Pack",
+      "description": "Index scale slips they stored: tare, gross, net, unit, date.",
+      "instruction_file": ".claude/workflows/weigh-ticket-pack.md",
+      "initial_phase": "role-job"
+    },
+    "claims-routing": {
+      "name": "Claims Routing",
+      "description": "Assemble the claim row, named photos, and BOL number if present.",
+      "instruction_file": ".claude/workflows/claims-routing.md",
+      "initial_phase": "role-job"
+    }
+  },
+  "default_workflow": "estimate-from-rate-file",
+  "preseeded_role": "Moving company office",
+  "memory": {
+    "facts": "facts/facts-operations.md",
+    "rules": "facts/rules-operations.md"
+  }
+}

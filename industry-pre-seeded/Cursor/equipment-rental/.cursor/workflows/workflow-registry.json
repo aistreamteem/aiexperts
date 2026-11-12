@@ -1,0 +1,64 @@
+{
+  "workflows": {
+    "contract-completeness": {
+      "name": "Contract Completeness",
+      "description": "Read contract PDFs against their required fields.",
+      "instruction_file": ".cursor/workflows/contract-completeness.md",
+      "initial_phase": "role-job"
+    },
+    "delivery-tickets": {
+      "name": "Delivery Tickets",
+      "description": "List today’s delivery and pickup tickets with zone lookup from their zone sheet.",
+      "instruction_file": ".cursor/workflows/delivery-tickets.md",
+      "initial_phase": "role-job"
+    },
+    "maintenance-due": {
+      "name": "Maintenance Due",
+      "description": "List units their PM file marks due or overdue and show reservation or on-rent conflicts.",
+      "instruction_file": ".cursor/workflows/maintenance-due.md",
+      "initial_phase": "role-job"
+    },
+    "meter-exceptions": {
+      "name": "Meter Exceptions",
+      "description": "Compare meter or telematics export to fleet and inspection hours.",
+      "instruction_file": ".cursor/workflows/meter-exceptions.md",
+      "initial_phase": "role-job"
+    },
+    "outgoing-inspection": {
+      "name": "Outgoing Inspection",
+      "description": "For units leaving today, check outgoing inspection sheets against the fleet row.",
+      "instruction_file": ".cursor/workflows/outgoing-inspection.md",
+      "initial_phase": "role-job"
+    },
+    "renter-coi-missing": {
+      "name": "Renter COI Missing",
+      "description": "Compare commercial or flagged contracts to the renter COI folder.",
+      "instruction_file": ".cursor/workflows/renter-coi-missing.md",
+      "initial_phase": "role-job"
+    },
+    "reservation-day": {
+      "name": "Reservation Day",
+      "description": "Build today’s reservation list from their reservation export and fleet statuses.",
+      "instruction_file": ".cursor/workflows/reservation-day.md",
+      "initial_phase": "role-job"
+    },
+    "return-damage": {
+      "name": "Return Damage",
+      "description": "Compare return inspection to outgoing: new marks, missing kit, fuel and cleaning codes.",
+      "instruction_file": ".cursor/workflows/return-damage.md",
+      "initial_phase": "role-job"
+    },
+    "utilization": {
+      "name": "Utilization",
+      "description": "Compute or copy utilization from their fleet and contract or reservation exports using only the formula they wrote.",
+      "instruction_file": ".cursor/workflows/utilization.md",
+      "initial_phase": "role-job"
+    }
+  },
+  "default_workflow": "contract-completeness",
+  "preseeded_role": "Equipment rental role",
+  "memory": {
+    "facts": "facts/facts-operations.md",
+    "rules": "facts/rules-operations.md"
+  }
+}

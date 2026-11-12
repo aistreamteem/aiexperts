@@ -1,0 +1,64 @@
+{
+  "workflows": {
+    "attendance-day": {
+      "name": "Attendance Day",
+      "description": "Build the day's attendance list from their export. Keep their codes.",
+      "instruction_file": ".claude/workflows/attendance-day.md",
+      "initial_phase": "role-job"
+    },
+    "calendar-pack": {
+      "name": "Calendar Pack",
+      "description": "Copy instructional days, holidays, and early dismissals from their calendar file.",
+      "instruction_file": ".claude/workflows/calendar-pack.md",
+      "initial_phase": "role-job"
+    },
+    "immunization-present-missing": {
+      "name": "Immunization Present Missing",
+      "description": "Compare their immunization log to packet PDFs. List complete, incomplete, exempt-as-filed, or stale as they coded it.",
+      "instruction_file": ".claude/workflows/immunization-present-missing.md",
+      "initial_phase": "role-job"
+    },
+    "missing-enrollment": {
+      "name": "Missing Enrollment",
+      "description": "Index the enrollment PDF folder against their required-page checklist.",
+      "instruction_file": ".claude/workflows/missing-enrollment.md",
+      "initial_phase": "role-job"
+    },
+    "pickup-list": {
+      "name": "Pickup List",
+      "description": "Build a door or aftercare check from their pickup file.",
+      "instruction_file": ".claude/workflows/pickup-list.md",
+      "initial_phase": "role-job"
+    },
+    "records-request-completeness": {
+      "name": "Records Request Completeness",
+      "description": "Check each records or transcript request against their process checklist.",
+      "instruction_file": ".claude/workflows/records-request-completeness.md",
+      "initial_phase": "role-job"
+    },
+    "transcript-request-log": {
+      "name": "Transcript Request Log",
+      "description": "List open transcript requests from their log. Do not send the transcript.",
+      "instruction_file": ".claude/workflows/transcript-request-log.md",
+      "initial_phase": "role-job"
+    },
+    "tuition-from-file": {
+      "name": "Tuition From File",
+      "description": "List amounts, due dates, and payment codes from their tuition sheet.",
+      "instruction_file": ".claude/workflows/tuition-from-file.md",
+      "initial_phase": "role-job"
+    },
+    "waitlist": {
+      "name": "Waitlist",
+      "description": "Copy their waitlist in the order they already wrote. Do not promise a seat.",
+      "instruction_file": ".claude/workflows/waitlist.md",
+      "initial_phase": "role-job"
+    }
+  },
+  "default_workflow": "attendance-day",
+  "preseeded_role": "Small school office (not the teacher)",
+  "memory": {
+    "facts": "facts/facts-shared.md",
+    "rules": "facts/rules-shared.md"
+  }
+}

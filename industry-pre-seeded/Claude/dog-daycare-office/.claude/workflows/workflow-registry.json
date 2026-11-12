@@ -1,0 +1,64 @@
+{
+  "workflows": {
+    "boarding-day": {
+      "name": "Boarding Day",
+      "description": "From their boarding export, list stay date by patient-dog, client label, stay type, and crate or playgroup as stored.",
+      "instruction_file": ".claude/workflows/boarding-day.md",
+      "initial_phase": "role-job"
+    },
+    "capacity-vs-booked": {
+      "name": "Capacity Vs Booked",
+      "description": "Compare their capacity file to the boarding export for the date they asked.",
+      "instruction_file": ".claude/workflows/capacity-vs-booked.md",
+      "initial_phase": "role-job"
+    },
+    "feeding-from-cards": {
+      "name": "Feeding From Cards",
+      "description": "Transcribe feeding as the client wrote it onto the feeding sheet for the stay date.",
+      "instruction_file": ".claude/workflows/feeding-from-cards.md",
+      "initial_phase": "role-job"
+    },
+    "incident-routing": {
+      "name": "Incident Routing",
+      "description": "From the incident log and completed forms, list time, patient-dog, form present or missing, and who was notified.",
+      "instruction_file": ".claude/workflows/incident-routing.md",
+      "initial_phase": "role-job"
+    },
+    "meds-to-give-list-as-written": {
+      "name": "Meds To Give List As Written",
+      "description": "List meds-to-give exactly as written and whether today’s medication log page is present.",
+      "instruction_file": ".claude/workflows/meds-to-give-list-as-written.md",
+      "initial_phase": "role-job"
+    },
+    "missing-vaccine-files": {
+      "name": "Missing Vaccine Files",
+      "description": "List patient-dogs whose required vaccine pages are missing, unreadable, or the wrong dog.",
+      "instruction_file": ".claude/workflows/missing-vaccine-files.md",
+      "initial_phase": "role-job"
+    },
+    "pickup-list": {
+      "name": "Pickup List",
+      "description": "Build or check today’s pickup list against the occupancy file.",
+      "instruction_file": ".claude/workflows/pickup-list.md",
+      "initial_phase": "role-job"
+    },
+    "waitlist": {
+      "name": "Waitlist",
+      "description": "From their waitlist sheet and calendar, list order, requested dates, and stay type.",
+      "instruction_file": ".claude/workflows/waitlist.md",
+      "initial_phase": "role-job"
+    },
+    "waiver-missing": {
+      "name": "Waiver Missing",
+      "description": "List dogs whose waiver is unsigned, undated, wrong version, or missing pages.",
+      "instruction_file": ".claude/workflows/waiver-missing.md",
+      "initial_phase": "role-job"
+    }
+  },
+  "default_workflow": "boarding-day",
+  "preseeded_role": "Dog daycare / boarding office",
+  "memory": {
+    "facts": "facts/facts-shared.md",
+    "rules": "facts/rules-shared.md"
+  }
+}

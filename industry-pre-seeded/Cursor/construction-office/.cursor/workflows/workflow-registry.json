@@ -1,0 +1,70 @@
+{
+  "workflows": {
+    "change-register": {
+      "name": "Change Register",
+      "description": "Open potential changes and signed change orders from their register.",
+      "instruction_file": ".cursor/workflows/change-register.md",
+      "initial_phase": "intake"
+    },
+    "closeout-binder": {
+      "name": "Closeout Binder",
+      "description": "Presence and absence of closeout files they named.",
+      "instruction_file": ".cursor/workflows/closeout-binder.md",
+      "initial_phase": "intake"
+    },
+    "daily-log": {
+      "name": "Daily Log",
+      "description": "Fill or extract today's log for one job number.",
+      "instruction_file": ".cursor/workflows/daily-log.md",
+      "initial_phase": "intake"
+    },
+    "deliveries": {
+      "name": "Deliveries",
+      "description": "List expected and received deliveries for one job.",
+      "instruction_file": ".cursor/workflows/deliveries.md",
+      "initial_phase": "intake"
+    },
+    "look-ahead": {
+      "name": "Look Ahead",
+      "description": "From their schedule export, list the next window they named.",
+      "instruction_file": ".cursor/workflows/look-ahead.md",
+      "initial_phase": "intake"
+    },
+    "punch-list": {
+      "name": "Punch List",
+      "description": "Room, item, owner, and done from their punch sheet for one job.",
+      "instruction_file": ".cursor/workflows/punch-list.md",
+      "initial_phase": "intake"
+    },
+    "rfi-status": {
+      "name": "RFI Status",
+      "description": "From their RFI export, list open, overdue versus their due column, and returned.",
+      "instruction_file": ".cursor/workflows/rfi-status.md",
+      "initial_phase": "intake"
+    },
+    "sub-coi": {
+      "name": "Sub COI",
+      "description": "Roster plus certificate dates they already track.",
+      "instruction_file": ".cursor/workflows/sub-coi.md",
+      "initial_phase": "intake"
+    },
+    "submittal-aging": {
+      "name": "Submittal Aging",
+      "description": "Status and aging from their submittal export.",
+      "instruction_file": ".cursor/workflows/submittal-aging.md",
+      "initial_phase": "intake"
+    },
+    "weekly-minutes": {
+      "name": "Weekly Minutes",
+      "description": "Agenda plus open actions from last minutes they filed.",
+      "instruction_file": ".cursor/workflows/weekly-minutes.md",
+      "initial_phase": "intake"
+    }
+  },
+  "default_workflow": "daily-log",
+  "preseeded_role": "Construction office coordinator",
+  "memory": {
+    "facts": "facts/facts-shared.md",
+    "rules": "facts/rules-shared.md"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "workflows": {
+    "board-pack": {
+      "name": "Board Pack",
+      "description": "List agenda, exhibits, treasurer attachments, staff reports, and committee items for a named meeting date.",
+      "instruction_file": ".cursor/workflows/board-pack.md",
+      "initial_phase": "role-job"
+    },
+    "donor-list": {
+      "name": "Donor List",
+      "description": "Filter the donor export they provided and list holes; they communicate.",
+      "instruction_file": ".cursor/workflows/donor-list.md",
+      "initial_phase": "role-job"
+    },
+    "funder-gap": {
+      "name": "Funder Gap",
+      "description": "Mark each required attachment present or missing from the award PDF and grant folder.",
+      "instruction_file": ".cursor/workflows/funder-gap.md",
+      "initial_phase": "role-job"
+    },
+    "gift-ack-draft": {
+      "name": "Gift Ack Draft",
+      "description": "Draft acknowledgment letters from their approved template and gift file.",
+      "instruction_file": ".cursor/workflows/gift-ack-draft.md",
+      "initial_phase": "role-job"
+    },
+    "grant-deadlines": {
+      "name": "Grant Deadlines",
+      "description": "List upcoming grant reports, draws, and closeouts from their sheet and award PDF.",
+      "instruction_file": ".cursor/workflows/grant-deadlines.md",
+      "initial_phase": "role-job"
+    },
+    "grant-report": {
+      "name": "Grant Report",
+      "description": "Map funder template questions to program files and the grant financial export.",
+      "instruction_file": ".cursor/workflows/grant-report.md",
+      "initial_phase": "role-job"
+    },
+    "in-kind-list": {
+      "name": "In Kind List",
+      "description": "List in-kind rows from their log with holes; no fair-market values.",
+      "instruction_file": ".cursor/workflows/in-kind-list.md",
+      "initial_phase": "role-job"
+    },
+    "minutes-index": {
+      "name": "Minutes Index",
+      "description": "Index meeting dates and draft versus adopted from their minutes folder.",
+      "instruction_file": ".cursor/workflows/minutes-index.md",
+      "initial_phase": "role-job"
+    },
+    "restricted-ask": {
+      "name": "Restricted Ask",
+      "description": "List uncoded or ambiguous restricted-fund rows as questions for the bookkeeper.",
+      "instruction_file": ".cursor/workflows/restricted-ask.md",
+      "initial_phase": "role-job"
+    }
+  },
+  "default_workflow": "board-pack",
+  "preseeded_role": "Nonprofit office admin",
+  "memory": {
+    "facts": "facts/facts-shared.md",
+    "rules": "facts/rules-shared.md"
+  }
+}

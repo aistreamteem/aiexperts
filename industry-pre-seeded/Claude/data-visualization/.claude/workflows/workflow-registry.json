@@ -1,0 +1,60 @@
+{
+  "workflows": {
+    "describe-csv": {
+      "name": "Describe CSV",
+      "description": "Load the named CSV and write a numeric summary plus a write-up. No invented columns or imputed values.",
+      "instruction_file": ".claude/workflows/describe-csv.md",
+      "initial_phase": "question"
+    },
+    "group-compare-bars": {
+      "name": "Group Compare Bars",
+      "description": "Group a named measure by a named category, then write an aggregated CSV, PNG bars, and a write-up.",
+      "instruction_file": ".claude/workflows/group-compare-bars.md",
+      "initial_phase": "question"
+    },
+    "histogram-pack": {
+      "name": "Histogram Pack",
+      "description": "Histogram a named numeric column with a values CSV, PNG, and write-up. Bin width is an ask or a stated default.",
+      "instruction_file": ".claude/workflows/histogram-pack.md",
+      "initial_phase": "question"
+    },
+    "missing-and-outliers": {
+      "name": "Missing and Outliers",
+      "description": "Missing-count CSV and outlier list for named columns using their fence. Do not impute or delete unless asked.",
+      "instruction_file": ".claude/workflows/missing-and-outliers.md",
+      "initial_phase": "question"
+    },
+    "refresh-from-new-export": {
+      "name": "Refresh from New Export",
+      "description": "Reload a new CSV with the same named columns, write a dated PNG, and compare file names, row counts, and date ranges.",
+      "instruction_file": ".claude/workflows/refresh-from-new-export.md",
+      "initial_phase": "question"
+    },
+    "scatter-and-corr": {
+      "name": "Scatter and Correlation",
+      "description": "Scatter two named numeric columns with a points CSV, descriptive correlation, PNG, and a write-up that is not a cause.",
+      "instruction_file": ".claude/workflows/scatter-and-corr.md",
+      "initial_phase": "question"
+    },
+    "small-multiples": {
+      "name": "Small Multiples",
+      "description": "Repeat the same chart for each value of a named facet column. One faceted PNG plus n per panel.",
+      "instruction_file": ".claude/workflows/small-multiples.md",
+      "initial_phase": "question"
+    },
+    "time-series-line": {
+      "name": "Time Series Line",
+      "description": "Parse a named date column, apply their range and grain, write a series CSV and PNG line. No invented forecast.",
+      "instruction_file": ".claude/workflows/time-series-line.md",
+      "initial_phase": "question"
+    }
+  },
+  "default_workflow": "describe-csv",
+  "preseeded_role": "Data visualization from their files",
+  "memory": {
+    "shared_facts": "facts/facts-shared.md",
+    "shared_rules": "facts/rules-shared.md",
+    "facts": "facts/facts-operations.md",
+    "rules": "facts/rules-operations.md"
+  }
+}

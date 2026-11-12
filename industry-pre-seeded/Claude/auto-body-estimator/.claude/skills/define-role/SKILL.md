@@ -1,0 +1,35 @@
+---
+name: define-role
+description: >-
+  First session: ask what this Expert is for, write MyRole.txt and stub
+  workflows. Use when `MyRole.txt` **Role status** is `pending` or they
+  name a new job.
+disable-model-invocation: false
+---
+
+# Define role
+
+Generic Experts start empty. Ask; then write files. This seed is already **Auto body estimator / office**; only run this if status is pending or they rename the job.
+
+## When
+
+`MyRole.txt` **Role status** is `pending`. They name a job. New Expert folder.
+
+## Ask (do not skip)
+
+1. What should we **call** this Expert (their words)?
+2. What **workflows** do you repeat (names + rough steps)? For a collision office, typical jobs are assignment intake, photo index, estimate from files, OEM procedure present, authorization, supplement log, parts vs estimate, customer-pay split, cycle time.
+3. What **tools** do you already use (CCC, Mitchell, Audatex, spreadsheets, photo folders)? Notes only — no passwords.
+4. What does **done** look like — what file would exist (intake pack, estimate pack, photo index)?
+5. What must we **never** do?
+6. What is **not our job** (another person / another Expert)?
+
+## Write
+
+- Fill `MyRole.txt`. Set **Role status:** defined.
+- Create `.claude/workflows/<name>.md` stubs: title + steps they said + a YAML skeleton (`needs`, `produces`, `tool` if named, `check`). Register each in `.claude/workflows/workflow-registry.json`. See `.claude/workflows/README.md`.
+- For each tool they named, a stub in `docs/tools/`.
+- Point `docs/role/work-item-method.md` at the new jobs.
+- **journal-keeper**.
+
+Do not pretend the files are complete. Thin is correct. Learning starts on the first real assignment. Do not invent labor hours, part prices, or shop procedure to fill a stub.

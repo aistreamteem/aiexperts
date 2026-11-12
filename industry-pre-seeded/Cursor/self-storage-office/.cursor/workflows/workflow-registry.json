@@ -1,0 +1,64 @@
+{
+  "workflows": {
+    "auction-file-completeness": {
+      "name": "Auction File Completeness",
+      "description": "Compare their auction checklist to files in the folder. Mark missing. Completeness is not permission to sell.",
+      "instruction_file": ".cursor/workflows/auction-file-completeness.md",
+      "initial_phase": "role-job"
+    },
+    "late-list": {
+      "name": "Late List",
+      "description": "From payment-status and their late export, list units coded past due. They contact occupants. You pack the list and fee-file asks.",
+      "instruction_file": ".cursor/workflows/late-list.md",
+      "initial_phase": "role-job"
+    },
+    "move-in-packet-completeness": {
+      "name": "Move In Packet Completeness",
+      "description": "Check the agreement folder against their move-in checklist. They take payment and they issue access. You list present-or-missing.",
+      "instruction_file": ".cursor/workflows/move-in-packet-completeness.md",
+      "initial_phase": "role-job"
+    },
+    "occupancy": {
+      "name": "Occupancy",
+      "description": "Build the occupancy list from their rent-roll or occupancy export. They use the list. You write the pack and questions.",
+      "instruction_file": ".cursor/workflows/occupancy.md",
+      "initial_phase": "role-job"
+    },
+    "photo-condition-pack": {
+      "name": "Photo Condition Pack",
+      "description": "Index photos in the folder against occupancy or vacant units. They shoot and they mark ready. You write the index and missing-photo questions.",
+      "instruction_file": ".cursor/workflows/photo-condition-pack.md",
+      "initial_phase": "role-job"
+    },
+    "rate-from-file": {
+      "name": "Rate From File",
+      "description": "Tabulate street, web, in-place, and promo rates from the rate file they saved. They approve any number they will say. You do not send a rate letter.",
+      "instruction_file": ".cursor/workflows/rate-from-file.md",
+      "initial_phase": "role-job"
+    },
+    "transfer-list": {
+      "name": "Transfer List",
+      "description": "List open unit transfers from their spreadsheet or occupancy notes. They approve the swap. You pack leftovers and missing agreements.",
+      "instruction_file": ".cursor/workflows/transfer-list.md",
+      "initial_phase": "role-job"
+    },
+    "unit-mix": {
+      "name": "Unit Mix",
+      "description": "From the unit-mix CSV, count units by size and climate versus standard as they coded them. They decide what to advertise. You list mix and questions.",
+      "instruction_file": ".cursor/workflows/unit-mix.md",
+      "initial_phase": "role-job"
+    },
+    "waitlist": {
+      "name": "Waitlist",
+      "description": "List waitlist rows in their existing order with size wanted and date added. They call the next person. You write the list.",
+      "instruction_file": ".cursor/workflows/waitlist.md",
+      "initial_phase": "role-job"
+    }
+  },
+  "default_workflow": "auction-file-completeness",
+  "preseeded_role": "Self-storage office",
+  "memory": {
+    "facts": "facts/facts-shared.md",
+    "rules": "facts/rules-shared.md"
+  }
+}

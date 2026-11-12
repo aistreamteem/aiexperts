@@ -1,0 +1,64 @@
+{
+  "workflows": {
+    "application-completeness": {
+      "name": "Application Completeness",
+      "description": "Index the application PDFs, mark each required form present or missing on a CSV, and write the pack.",
+      "instruction_file": ".cursor/workflows/application-completeness.md",
+      "initial_phase": "role-job"
+    },
+    "denied-file-routing": {
+      "name": "Denied File Routing",
+      "description": "Read their screening-status export and route rows by their code only — pending, complete, or the word they used.",
+      "instruction_file": ".cursor/workflows/denied-file-routing.md",
+      "initial_phase": "role-job"
+    },
+    "hours-and-tours": {
+      "name": "Hours And Tours",
+      "description": "Read the hours or holiday PDF they dropped and the showing calendar, then list tours that fit posted hours and flag any booked outside those hours.",
+      "instruction_file": ".cursor/workflows/hours-and-tours.md",
+      "initial_phase": "role-job"
+    },
+    "lease-packet": {
+      "name": "Lease Packet",
+      "description": "Index the lease-packet folder, tick addenda against their checklist, and write the pack.",
+      "instruction_file": ".cursor/workflows/lease-packet.md",
+      "initial_phase": "role-job"
+    },
+    "make-ready-vs-move-in": {
+      "name": "Make Ready Vs Move In",
+      "description": "Read make-ready status and lease-start dates, then flag units whose commence date is earlier than ready.",
+      "instruction_file": ".cursor/workflows/make-ready-vs-move-in.md",
+      "initial_phase": "role-job"
+    },
+    "showing-day": {
+      "name": "Showing Day",
+      "description": "Read the showing calendar and the availability sheet, then list today's tours with unit or floorplan as booked.",
+      "instruction_file": ".cursor/workflows/showing-day.md",
+      "initial_phase": "role-job"
+    },
+    "specials-from-file": {
+      "name": "Specials From File",
+      "description": "Read the dated specials sheet and the availability export, then list which open floorplans still match a live offer.",
+      "instruction_file": ".cursor/workflows/specials-from-file.md",
+      "initial_phase": "role-job"
+    },
+    "traffic-log": {
+      "name": "Traffic Log",
+      "description": "Pull guest cards, tally source labels as written, and write a traffic pack.",
+      "instruction_file": ".cursor/workflows/traffic-log.md",
+      "initial_phase": "role-job"
+    },
+    "waitlist": {
+      "name": "Waitlist",
+      "description": "Read their waitlist CSV in the existing order and write the pack.",
+      "instruction_file": ".cursor/workflows/waitlist.md",
+      "initial_phase": "role-job"
+    }
+  },
+  "default_workflow": "application-completeness",
+  "preseeded_role": "Apartment leasing admin",
+  "memory": {
+    "facts": "facts/facts-shared.md",
+    "rules": "facts/rules-shared.md"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "workflows": {
+    "amendment-log-pack": {
+      "name": "Amendment Log Pack",
+      "description": "Build one dated log of every executed amendment against the live contract file.",
+      "instruction_file": ".claude/workflows/amendment-log-pack.md",
+      "initial_phase": "role-job"
+    },
+    "closing-checklist": {
+      "name": "Closing Checklist",
+      "description": "Build a closing completeness pack from the closing index, title folder, lender status, and printed dates.",
+      "instruction_file": ".claude/workflows/closing-checklist.md",
+      "initial_phase": "role-job"
+    },
+    "dates-calendar": {
+      "name": "Dates Calendar",
+      "description": "Build a dates calendar from the executed contract and any executed amendments.",
+      "instruction_file": ".claude/workflows/dates-calendar.md",
+      "initial_phase": "role-job"
+    },
+    "disclosure-completeness": {
+      "name": "Disclosure Completeness",
+      "description": "Check the disclosure folder against their checklist: present, signed, dated, or missing only.",
+      "instruction_file": ".claude/workflows/disclosure-completeness.md",
+      "initial_phase": "role-job"
+    },
+    "hoa-packet-completeness": {
+      "name": "HOA Packet Completeness",
+      "description": "Index the HOA or condo packet against their checklist and list holes.",
+      "instruction_file": ".claude/workflows/hoa-packet-completeness.md",
+      "initial_phase": "role-job"
+    },
+    "inspection-to-repair-amendment-log": {
+      "name": "Inspection to Repair Amendment Log",
+      "description": "Index inspection PDFs by type and date, then list any executed repair amendment that followed.",
+      "instruction_file": ".claude/workflows/inspection-to-repair-amendment-log.md",
+      "initial_phase": "role-job"
+    },
+    "missing-docs": {
+      "name": "Missing Docs",
+      "description": "Compare their TC checklist to the files actually in the folder and name holes.",
+      "instruction_file": ".claude/workflows/missing-docs.md",
+      "initial_phase": "role-job"
+    },
+    "option-period-pack": {
+      "name": "Option Period Pack",
+      "description": "Calendar the option or termination-option window from the executed exhibit and effective-date rule.",
+      "instruction_file": ".claude/workflows/option-period-pack.md",
+      "initial_phase": "role-job"
+    },
+    "wire-fraud-checklist-as-their-process": {
+      "name": "Wire Fraud Checklist as Their Process",
+      "description": "Assemble their written verify-before-wire process. Never send, retype, or store wire instructions.",
+      "instruction_file": ".claude/workflows/wire-fraud-checklist-as-their-process.md",
+      "initial_phase": "role-job"
+    }
+  },
+  "default_workflow": "dates-calendar",
+  "preseeded_role": "Real estate transaction coordinator",
+  "memory": {
+    "facts": "facts/facts-operations.md",
+    "rules": "facts/rules-operations.md"
+  }
+}

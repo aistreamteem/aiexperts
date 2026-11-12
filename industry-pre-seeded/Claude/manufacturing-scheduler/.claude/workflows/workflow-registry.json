@@ -1,0 +1,64 @@
+{
+  "workflows": {
+    "dispatch-list": {
+      "name": "Dispatch List",
+      "description": "Build a day or work-center dispatch list from the work-order export, the shop calendar, and the work-center list.",
+      "instruction_file": ".claude/workflows/dispatch-list.md",
+      "initial_phase": "intake"
+    },
+    "due-date-list": {
+      "name": "Due Date List",
+      "description": "Sort open work orders by due date from their export and flag lines that fall on a closed calendar day or that already miss the printed due.",
+      "instruction_file": ".claude/workflows/due-date-list.md",
+      "initial_phase": "intake"
+    },
+    "eco-pending-as-file": {
+      "name": "Pending ECO as File",
+      "description": "List open work orders against the ECO log and the drawing index. Pending changes stay pending.",
+      "instruction_file": ".claude/workflows/eco-pending-as-file.md",
+      "initial_phase": "intake"
+    },
+    "kit-list": {
+      "name": "Kit List",
+      "description": "Build a pick or kit list from the bill export times job qty, then mark short lines from the inventory export.",
+      "instruction_file": ".claude/workflows/kit-list.md",
+      "initial_phase": "intake"
+    },
+    "machine-down-vs-wip": {
+      "name": "Machine-Down versus WIP",
+      "description": "Put the machine-status file next to open work at those work centers. Down stays visible.",
+      "instruction_file": ".claude/workflows/machine-down-vs-wip.md",
+      "initial_phase": "intake"
+    },
+    "outside-process-due": {
+      "name": "Outside-Process Due List",
+      "description": "List send-out operations from the work-order export against the outside-PO list. Promise dates come only from that PO file.",
+      "instruction_file": ".claude/workflows/outside-process-due.md",
+      "initial_phase": "intake"
+    },
+    "shortage-vs-inventory": {
+      "name": "Shortage List versus Inventory",
+      "description": "Compare each open job’s bill times remaining job qty to the inventory export. Write every short row on the shortage sheet.",
+      "instruction_file": ".claude/workflows/shortage-vs-inventory.md",
+      "initial_phase": "intake"
+    },
+    "traveler-completeness": {
+      "name": "Traveler Completeness Pack",
+      "description": "Check traveler PDFs against the work-order export and the drawing index. Flag missing operations, revision mismatches, missing outside rows, and unsigned boxes as completeness only.",
+      "instruction_file": ".claude/workflows/traveler-completeness.md",
+      "initial_phase": "intake"
+    },
+    "wip-by-center": {
+      "name": "WIP by Work Center",
+      "description": "Group open work-order quantity by work center from the export and the work-center list. Do not hide WIP.",
+      "instruction_file": ".claude/workflows/wip-by-center.md",
+      "initial_phase": "intake"
+    }
+  },
+  "default_workflow": "dispatch-list",
+  "preseeded_role": "Small-plant production scheduler",
+  "memory": {
+    "facts": "facts/facts-operations.md",
+    "rules": "facts/rules-operations.md"
+  }
+}

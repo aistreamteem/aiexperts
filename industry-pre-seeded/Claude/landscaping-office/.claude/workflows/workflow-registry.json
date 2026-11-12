@@ -1,0 +1,64 @@
+{
+  "workflows": {
+    "callback-list": {
+      "name": "Callback List",
+      "description": "List open callbacks from tickets they coded as return or complaint.",
+      "instruction_file": ".claude/workflows/callback-list.md",
+      "initial_phase": "role-job"
+    },
+    "crew-day": {
+      "name": "Crew Day",
+      "description": "Build a day list from their roster and tickets: crew, property, service, window, dog and skip flags.",
+      "instruction_file": ".claude/workflows/crew-day.md",
+      "initial_phase": "role-job"
+    },
+    "enhancement-ticket": {
+      "name": "Enhancement Ticket",
+      "description": "Assemble one-time work from the enhancement ticket, price file, and sold proposal if present.",
+      "instruction_file": ".claude/workflows/enhancement-ticket.md",
+      "initial_phase": "role-job"
+    },
+    "estimate-from-price": {
+      "name": "Estimate From Price",
+      "description": "Draft estimate lines from their price file and the proposal or takeoff they stored.",
+      "instruction_file": ".claude/workflows/estimate-from-price.md",
+      "initial_phase": "role-job"
+    },
+    "material-pull": {
+      "name": "Material Pull",
+      "description": "Build a pull list from sold tickets and their material sheet.",
+      "instruction_file": ".claude/workflows/material-pull.md",
+      "initial_phase": "role-job"
+    },
+    "photo-pack": {
+      "name": "Photo Pack",
+      "description": "Index photos they stored to ticket and property.",
+      "instruction_file": ".claude/workflows/photo-pack.md",
+      "initial_phase": "role-job"
+    },
+    "route-pack": {
+      "name": "Route Pack",
+      "description": "Pull the route CSV and match each stop to a ticket.",
+      "instruction_file": ".claude/workflows/route-pack.md",
+      "initial_phase": "role-job"
+    },
+    "seasonal-calendar": {
+      "name": "Seasonal Calendar",
+      "description": "List upcoming seasonal extras from their calendar and match properties that already have tickets.",
+      "instruction_file": ".claude/workflows/seasonal-calendar.md",
+      "initial_phase": "role-job"
+    },
+    "weather-postpone-list": {
+      "name": "Weather Postpone List",
+      "description": "After they write a weather call, list postponed route stops and whether their note says next cycle or make-up.",
+      "instruction_file": ".claude/workflows/weather-postpone-list.md",
+      "initial_phase": "role-job"
+    }
+  },
+  "default_workflow": "callback-list",
+  "preseeded_role": "Landscaping / lawn-care office",
+  "memory": {
+    "facts": "facts/facts-shared.md",
+    "rules": "facts/rules-shared.md"
+  }
+}

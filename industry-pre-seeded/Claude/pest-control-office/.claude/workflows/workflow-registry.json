@@ -1,0 +1,64 @@
+{
+  "workflows": {
+    "bait-map-index": {
+      "name": "Bait Map Index",
+      "description": "Index bait-station maps they stored to account and ticket. List station ids as written.",
+      "instruction_file": ".claude/workflows/bait-map-index.md",
+      "initial_phase": "role-job"
+    },
+    "callback-list": {
+      "name": "Callback List",
+      "description": "List open callbacks from their callback file and matching tickets.",
+      "instruction_file": ".claude/workflows/callback-list.md",
+      "initial_phase": "role-job"
+    },
+    "chemical-log-completeness": {
+      "name": "Chemical Log Completeness",
+      "description": "List application-log rows and flag blanks they use. Do not invent a mix, rate, or EPA number.",
+      "instruction_file": ".claude/workflows/chemical-log-completeness.md",
+      "initial_phase": "role-job"
+    },
+    "device-count": {
+      "name": "Device Count",
+      "description": "Count devices from their bait-station map and match tickets or scan notes they stored.",
+      "instruction_file": ".claude/workflows/device-count.md",
+      "initial_phase": "role-job"
+    },
+    "estimate-from-price": {
+      "name": "Estimate From Price",
+      "description": "Draft estimate lines from their price file and the lead or ticket they stored.",
+      "instruction_file": ".claude/workflows/estimate-from-price.md",
+      "initial_phase": "role-job"
+    },
+    "inventory-chem-vs-log": {
+      "name": "Inventory Chem Vs Log",
+      "description": "Compare their chemical inventory sheet to application-log product names they already wrote.",
+      "instruction_file": ".claude/workflows/inventory-chem-vs-log.md",
+      "initial_phase": "role-job"
+    },
+    "route-day": {
+      "name": "Route Day",
+      "description": "Build a day list from their route CSV and tickets. Apply the skip list first.",
+      "instruction_file": ".claude/workflows/route-day.md",
+      "initial_phase": "role-job"
+    },
+    "skip-list": {
+      "name": "Skip List",
+      "description": "Apply their skip rows to the route CSV. Skips win. Do not invent a skip to hide a miss.",
+      "instruction_file": ".claude/workflows/skip-list.md",
+      "initial_phase": "role-job"
+    },
+    "wdo-form-completeness": {
+      "name": "Wdo Form Completeness",
+      "description": "Check their WDO or termite form pack: form fields, graph present, photos named if they require them.",
+      "instruction_file": ".claude/workflows/wdo-form-completeness.md",
+      "initial_phase": "role-job"
+    }
+  },
+  "default_workflow": "bait-map-index",
+  "preseeded_role": "Pest control office",
+  "memory": {
+    "facts": "facts/facts-operations.md",
+    "rules": "facts/rules-operations.md"
+  }
+}

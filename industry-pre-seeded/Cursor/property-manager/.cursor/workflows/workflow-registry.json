@@ -1,0 +1,70 @@
+{
+  "workflows": {
+    "deposit-file": {
+      "name": "Deposit File",
+      "description": "Pull ledger lines and index move-in/out photos. Proposed charges only — not a refund.",
+      "instruction_file": ".cursor/workflows/deposit-file.md",
+      "initial_phase": "role-job"
+    },
+    "late-rent-list": {
+      "name": "Late Rent List",
+      "description": "Balances from the roll they name. No pay-or-quit text or lockout language.",
+      "instruction_file": ".cursor/workflows/late-rent-list.md",
+      "initial_phase": "role-job"
+    },
+    "make-ready-pack": {
+      "name": "Make Ready Pack",
+      "description": "Punch for one vacant unit they name. Rent-ready is their label, not an inspection pass.",
+      "instruction_file": ".cursor/workflows/make-ready-pack.md",
+      "initial_phase": "role-job"
+    },
+    "notice-process": {
+      "name": "Notice Process",
+      "description": "Log notices they already use. Do not draft statutory pay-or-quit or eviction text.",
+      "instruction_file": ".cursor/workflows/notice-process.md",
+      "initial_phase": "role-job"
+    },
+    "owner-month": {
+      "name": "Owner Month",
+      "description": "Period files for one property and named date range. Do not send owner money.",
+      "instruction_file": ".cursor/workflows/owner-month.md",
+      "initial_phase": "role-job"
+    },
+    "rent-roll-pack": {
+      "name": "Rent Roll Pack",
+      "description": "Export the roll as-of the date they name. Snapshot plus questions, not a legal lease.",
+      "instruction_file": ".cursor/workflows/rent-roll-pack.md",
+      "initial_phase": "role-job"
+    },
+    "showing-week": {
+      "name": "Showing Week",
+      "description": "Week's tours from their calendar. No steering copy and no lockbox codes.",
+      "instruction_file": ".cursor/workflows/showing-week.md",
+      "initial_phase": "role-job"
+    },
+    "unit-turnover": {
+      "name": "Unit Turnover",
+      "description": "Vacate file, make-ready punch, and rent-ready label. Not an inspection certificate.",
+      "instruction_file": ".cursor/workflows/unit-turnover.md",
+      "initial_phase": "role-job"
+    },
+    "vendor-quotes": {
+      "name": "Vendor Quotes",
+      "description": "Quote PDFs for one work order. They pick and they approve.",
+      "instruction_file": ".cursor/workflows/vendor-quotes.md",
+      "initial_phase": "role-job"
+    },
+    "work-orders": {
+      "name": "Work Orders",
+      "description": "Live work-order export plus flags. They dispatch and they pay vendors.",
+      "instruction_file": ".cursor/workflows/work-orders.md",
+      "initial_phase": "role-job"
+    }
+  },
+  "default_workflow": "deposit-file",
+  "preseeded_role": "Property manager write-ups",
+  "memory": {
+    "facts": "facts/facts-shared.md",
+    "rules": "facts/rules-shared.md"
+  }
+}

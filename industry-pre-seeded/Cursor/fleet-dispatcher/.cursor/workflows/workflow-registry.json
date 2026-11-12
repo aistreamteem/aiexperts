@@ -1,0 +1,64 @@
+{
+  "workflows": {
+    "assignment-pack": {
+      "name": "Assignment Pack",
+      "description": "Who is on which unit from the roster for the date.",
+      "instruction_file": ".cursor/workflows/assignment-pack.md",
+      "initial_phase": "role-job"
+    },
+    "breakdown": {
+      "name": "Breakdown",
+      "description": "Unit down write-up from their exception or GPS export.",
+      "instruction_file": ".cursor/workflows/breakdown.md",
+      "initial_phase": "role-job"
+    },
+    "detention": {
+      "name": "Detention",
+      "description": "In and out times from their scan, route sheet, or site file.",
+      "instruction_file": ".cursor/workflows/detention.md",
+      "initial_phase": "role-job"
+    },
+    "dvir-gap": {
+      "name": "DVIR Gap",
+      "description": "Which units on today’s roster have a DVIR file.",
+      "instruction_file": ".cursor/workflows/dvir-gap.md",
+      "initial_phase": "role-job"
+    },
+    "exceptions": {
+      "name": "Exceptions",
+      "description": "Late, breakdown, failed, and missing-POD rows from the day’s files.",
+      "instruction_file": ".cursor/workflows/exceptions.md",
+      "initial_phase": "role-job"
+    },
+    "fuel-outliers": {
+      "name": "Fuel Outliers",
+      "description": "Compare the fuel CSV to units on the roster; odd gallons are questions.",
+      "instruction_file": ".cursor/workflows/fuel-outliers.md",
+      "initial_phase": "role-job"
+    },
+    "hos-questions": {
+      "name": "HOS Questions",
+      "description": "List gaps from their ELD export as questions.",
+      "instruction_file": ".cursor/workflows/hos-questions.md",
+      "initial_phase": "role-job"
+    },
+    "pod-check": {
+      "name": "POD Check",
+      "description": "Match required stops to files in the POD folder.",
+      "instruction_file": ".cursor/workflows/pod-check.md",
+      "initial_phase": "role-job"
+    },
+    "todays-routes": {
+      "name": "Today's Routes",
+      "description": "Stops and missing PODs from their sheet for one service date.",
+      "instruction_file": ".cursor/workflows/todays-routes.md",
+      "initial_phase": "role-job"
+    }
+  },
+  "default_workflow": "assignment-pack",
+  "preseeded_role": "Fleet / delivery dispatcher",
+  "memory": {
+    "facts": "facts/facts-operations.md",
+    "rules": "facts/rules-operations.md"
+  }
+}

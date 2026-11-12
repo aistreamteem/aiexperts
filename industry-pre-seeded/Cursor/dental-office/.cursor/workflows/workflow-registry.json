@@ -1,0 +1,64 @@
+{
+  "workflows": {
+    "broken-list": {
+      "name": "Broken List",
+      "description": "From their sheet, list cancellations and no-shows they already coded.",
+      "instruction_file": ".cursor/workflows/broken-list.md",
+      "initial_phase": "role-job"
+    },
+    "claims-fields": {
+      "name": "Claims Fields",
+      "description": "List missing claim fields and named attachments from the claim images they provide.",
+      "instruction_file": ".cursor/workflows/claims-fields.md",
+      "initial_phase": "role-job"
+    },
+    "day-close": {
+      "name": "Day Close",
+      "description": "From their close report, list production, collection, and tender totals as exported.",
+      "instruction_file": ".cursor/workflows/day-close.md",
+      "initial_phase": "role-job"
+    },
+    "day-list": {
+      "name": "Day List",
+      "description": "From the schedule export, list the day by time, chair, provider, and their patient label.",
+      "instruction_file": ".cursor/workflows/day-list.md",
+      "initial_phase": "role-job"
+    },
+    "eligibility-notes": {
+      "name": "Eligibility Notes",
+      "description": "Quote in-network, deductible, and remaining maximum only as the dated screenshot shows.",
+      "instruction_file": ".cursor/workflows/eligibility-notes.md",
+      "initial_phase": "role-job"
+    },
+    "eob-index": {
+      "name": "EOB Index",
+      "description": "Index EOB or ERA PDFs they saved: payer, claim label, amounts as printed.",
+      "instruction_file": ".cursor/workflows/eob-index.md",
+      "initial_phase": "role-job"
+    },
+    "forms-check": {
+      "name": "Forms Check",
+      "description": "From PDFs they share, list missing pages and signatures as questions.",
+      "instruction_file": ".cursor/workflows/forms-check.md",
+      "initial_phase": "role-job"
+    },
+    "preauth-fields": {
+      "name": "Preauth Fields",
+      "description": "Check that predetermination requests have the fields and attachments they require.",
+      "instruction_file": ".cursor/workflows/preauth-fields.md",
+      "initial_phase": "role-job"
+    },
+    "recall-list": {
+      "name": "Recall List",
+      "description": "Build or clean a recall CSV from their export for them to send.",
+      "instruction_file": ".cursor/workflows/recall-list.md",
+      "initial_phase": "role-job"
+    }
+  },
+  "default_workflow": "day-list",
+  "preseeded_role": "Dental office (not the dentist)",
+  "memory": {
+    "facts": "facts/facts-operations.md",
+    "rules": "facts/rules-operations.md"
+  }
+}

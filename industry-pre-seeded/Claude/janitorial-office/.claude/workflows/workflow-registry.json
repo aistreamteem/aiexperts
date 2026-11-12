@@ -1,0 +1,64 @@
+{
+  "workflows": {
+    "complaint-callback": {
+      "name": "Complaint Callback",
+      "description": "List open complaints from their log and attach named photos if present.",
+      "instruction_file": ".claude/workflows/complaint-callback.md",
+      "initial_phase": "log"
+    },
+    "extra-work-auth-list": {
+      "name": "Extra Work Auth List",
+      "description": "Match add-on, extra-day, and project rows on the schedule to an auth PDF in the contract folder.",
+      "instruction_file": ".claude/workflows/extra-work-auth-list.md",
+      "initial_phase": "schedule"
+    },
+    "holiday-coverage": {
+      "name": "Holiday Coverage",
+      "description": "Read their holiday calendar against the schedule and roster.",
+      "instruction_file": ".claude/workflows/holiday-coverage.md",
+      "initial_phase": "cal"
+    },
+    "key-log-completeness": {
+      "name": "Key Log Completeness",
+      "description": "Match issued key-ids on the key log to sites on the site list.",
+      "instruction_file": ".claude/workflows/key-log-completeness.md",
+      "initial_phase": "keys"
+    },
+    "missed-service-list": {
+      "name": "Missed Service List",
+      "description": "List schedule rows they coded as missed and any complaint rows that point at a miss.",
+      "instruction_file": ".claude/workflows/missed-service-list.md",
+      "initial_phase": "schedule"
+    },
+    "night-board": {
+      "name": "Night Board",
+      "description": "Build a night list from their site list, schedule CSV, and crew roster.",
+      "instruction_file": ".claude/workflows/night-board.md",
+      "initial_phase": "sites"
+    },
+    "quality-checklist-pack": {
+      "name": "Quality Checklist Pack",
+      "description": "Assemble their quality form and any photo index they stored for the walk.",
+      "instruction_file": ".claude/workflows/quality-checklist-pack.md",
+      "initial_phase": "form"
+    },
+    "sds-index-missing": {
+      "name": "SDS Index Missing",
+      "description": "Compare chemical names on the par sheet to the SDS index.",
+      "instruction_file": ".claude/workflows/sds-index-missing.md",
+      "initial_phase": "index"
+    },
+    "supply-below-par": {
+      "name": "Supply Below Par",
+      "description": "Compare on-hand to their par or min on the supply par sheet.",
+      "instruction_file": ".claude/workflows/supply-below-par.md",
+      "initial_phase": "pars"
+    }
+  },
+  "default_workflow": "complaint-callback",
+  "preseeded_role": "Janitorial / contract-cleaning office",
+  "memory": {
+    "facts": "facts/facts-operations.md",
+    "rules": "facts/rules-operations.md"
+  }
+}

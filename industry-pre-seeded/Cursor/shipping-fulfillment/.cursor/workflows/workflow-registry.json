@@ -1,0 +1,66 @@
+{
+  "workflows": {
+    "bol-pack": {
+      "name": "BOL Pack",
+      "description": "Assemble a bill-of-lading completeness pack from their BOL PDF, scale export, and NMFC file.",
+      "instruction_file": ".cursor/workflows/bol-pack.md",
+      "initial_phase": "role-job"
+    },
+    "dim-vs-scale-exceptions": {
+      "name": "DIM Versus Scale Exceptions",
+      "description": "Compare carton-size inches to scale-export pounds. Never invent DIM, scale, or billed weight.",
+      "instruction_file": ".cursor/workflows/dim-vs-scale-exceptions.md",
+      "initial_phase": "role-job"
+    },
+    "end-of-day-manifest": {
+      "name": "End-of-Day Manifest",
+      "description": "Compare live label PDFs to the carrier manifest export. Voided labels must not appear as tendered.",
+      "instruction_file": ".cursor/workflows/end-of-day-manifest.md",
+      "initial_phase": "role-job"
+    },
+    "hold-and-will-call": {
+      "name": "Hold and Will-Call",
+      "description": "From the pick or address file, list credit holds, ship-complete holds, hold-for-pickup, and will-call.",
+      "instruction_file": ".cursor/workflows/hold-and-will-call.md",
+      "initial_phase": "role-job"
+    },
+    "pack-exceptions": {
+      "name": "Pack Exceptions",
+      "description": "Compare the pack export to the pick file. List shorts, extras, unknown carton codes, and missing scale weights.",
+      "instruction_file": ".cursor/workflows/pack-exceptions.md",
+      "initial_phase": "role-job"
+    },
+    "pick-wave": {
+      "name": "Pick / Wave List",
+      "description": "Build today’s pick list from their pick export. Keep wave ids if they use them; do not invent a wave.",
+      "instruction_file": ".cursor/workflows/pick-wave.md",
+      "initial_phase": "role-job"
+    },
+    "rma-returns": {
+      "name": "RMA / Returns Pack",
+      "description": "List open RMAs from their sheet. Do not invent an RMA, restock qty, or a customer credit.",
+      "instruction_file": ".cursor/workflows/rma-returns.md",
+      "initial_phase": "role-job"
+    },
+    "short-ship-list": {
+      "name": "Short-Ship List",
+      "description": "From pick versus pack, list orders where packed qty is less than ordered or picked qty they still wanted.",
+      "instruction_file": ".cursor/workflows/short-ship-list.md",
+      "initial_phase": "role-job"
+    },
+    "tracking-exceptions": {
+      "name": "Tracking Exceptions",
+      "description": "From the carrier export, list exception codes, failed delivery, and trackers that never appeared after a label PDF.",
+      "instruction_file": ".cursor/workflows/tracking-exceptions.md",
+      "initial_phase": "role-job"
+    }
+  },
+  "default_workflow": "bol-pack",
+  "preseeded_role": "Shipping / fulfillment role",
+  "memory": {
+    "facts_shared": "facts/facts-shared.md",
+    "rules_shared": "facts/rules-shared.md",
+    "facts": "facts/facts-operations.md",
+    "rules": "facts/rules-operations.md"
+  }
+}

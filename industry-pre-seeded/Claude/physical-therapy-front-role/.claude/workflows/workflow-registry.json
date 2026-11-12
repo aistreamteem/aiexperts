@@ -1,0 +1,64 @@
+{
+  "workflows": {
+    "auth-remaining-from-file": {
+      "name": "Auth Remaining From File",
+      "description": "From their auth tracker and visit-count export, list authorized, used, and remaining only as those files already show.",
+      "instruction_file": ".claude/workflows/auth-remaining-from-file.md",
+      "initial_phase": "role-job"
+    },
+    "day-close": {
+      "name": "Day Close",
+      "description": "From their close report or drawer sheet, list tender types and amounts they recorded for one clinic date.",
+      "instruction_file": ".claude/workflows/day-close.md",
+      "initial_phase": "role-job"
+    },
+    "day-list": {
+      "name": "Day List",
+      "description": "From the schedule export, list the day by time, therapist, type, and their patient label.",
+      "instruction_file": ".claude/workflows/day-list.md",
+      "initial_phase": "role-job"
+    },
+    "hep-print-index": {
+      "name": "HEP Print Index",
+      "description": "From their HEP library and the day list, list which charts have a therapist-attached or named HEP PDF ready to print.",
+      "instruction_file": ".claude/workflows/hep-print-index.md",
+      "initial_phase": "role-job"
+    },
+    "no-show-list": {
+      "name": "No Show List",
+      "description": "From the schedule or EHR export, list rows they already coded no-show, late cancel, or broken.",
+      "instruction_file": ".claude/workflows/no-show-list.md",
+      "initial_phase": "role-job"
+    },
+    "recert-dates": {
+      "name": "Recert Dates",
+      "description": "From their recert or POC tracker and the referral folder, list recert due dates and POC end dates as stored.",
+      "instruction_file": ".claude/workflows/recert-dates.md",
+      "initial_phase": "role-job"
+    },
+    "referral-poc-completeness": {
+      "name": "Referral POC Completeness",
+      "description": "From the referral folder, list inbound scripts and plans of care as complete or missing named pages and physician signature as their form requires.",
+      "instruction_file": ".claude/workflows/referral-poc-completeness.md",
+      "initial_phase": "role-job"
+    },
+    "visit-count-export-check": {
+      "name": "Visit Count Export Check",
+      "description": "Compare their visit-count export to the auth tracker for the charts they named.",
+      "instruction_file": ".claude/workflows/visit-count-export-check.md",
+      "initial_phase": "role-job"
+    },
+    "wait-list": {
+      "name": "Wait List",
+      "description": "From their wait-list file, keep their order and requested type and therapist.",
+      "instruction_file": ".claude/workflows/wait-list.md",
+      "initial_phase": "role-job"
+    }
+  },
+  "default_workflow": "auth-remaining-from-file",
+  "preseeded_role": "Physical therapy front role (not the therapist)",
+  "memory": {
+    "facts": "facts/facts-operations.md",
+    "rules": "facts/rules-operations.md"
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "workflows": {
+    "allergen-quote": {
+      "name": "Allergen Quote",
+      "description": "Quote contains, may-contain, and same-kitchen phrases from their matrix for the items they name.",
+      "instruction_file": ".claude/workflows/allergen-quote.md",
+      "initial_phase": "pull"
+    },
+    "catering-pull": {
+      "name": "Catering Pull",
+      "description": "Event pull for the date they name: extra prep and order qty from their BEO or pull sheet and from recipe yields they shared.",
+      "instruction_file": ".claude/workflows/catering-pull.md",
+      "initial_phase": "pull"
+    },
+    "count-walk-in": {
+      "name": "Count Walk In",
+      "description": "Transcribe or check their count sheet, including the shelf map if they filed one.",
+      "instruction_file": ".claude/workflows/count-walk-in.md",
+      "initial_phase": "pull"
+    },
+    "eighty-six": {
+      "name": "Eighty Six",
+      "description": "Out items from their board photo or the POS export they named as source of truth.",
+      "instruction_file": ".claude/workflows/eighty-six.md",
+      "initial_phase": "pull"
+    },
+    "invoice-match": {
+      "name": "Invoice Match",
+      "description": "Match the vendor invoice to the order and to receiving notes if they have them.",
+      "instruction_file": ".claude/workflows/invoice-match.md",
+      "initial_phase": "inv"
+    },
+    "order-guide": {
+      "name": "Order Guide",
+      "description": "Build an order CSV from counted on-hand versus their par for one vendor and one delivery date.",
+      "instruction_file": ".claude/workflows/order-guide.md",
+      "initial_phase": "count"
+    },
+    "par-review": {
+      "name": "Par Review",
+      "description": "Compare their pars to the recent sales-mix export and to waste rows if those files exist.",
+      "instruction_file": ".claude/workflows/par-review.md",
+      "initial_phase": "mix"
+    },
+    "prep": {
+      "name": "Prep",
+      "description": "Prep list for the next shift they name (AM, PM, brunch, or close).",
+      "instruction_file": ".claude/workflows/prep.md",
+      "initial_phase": "list"
+    },
+    "receiving": {
+      "name": "Receiving",
+      "description": "Receiving log or marked ticket versus the invoice.",
+      "instruction_file": ".claude/workflows/receiving.md",
+      "initial_phase": "recv"
+    },
+    "waste-week": {
+      "name": "Waste Week",
+      "description": "Waste from their log for the dates they name, using their reason codes and units.",
+      "instruction_file": ".claude/workflows/waste-week.md",
+      "initial_phase": "pull"
+    }
+  },
+  "default_workflow": "prep",
+  "preseeded_role": "Restaurant kitchen / BOH admin",
+  "memory": {
+    "facts": "facts/facts-operations.md",
+    "rules": "facts/rules-operations.md"
+  }
+}

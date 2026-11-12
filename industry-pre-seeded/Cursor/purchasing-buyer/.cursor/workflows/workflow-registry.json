@@ -1,0 +1,66 @@
+{
+  "workflows": {
+    "avl-check": {
+      "name": "AVL Check",
+      "description": "Check each proposed vendor on the requisition or draft against the approved-vendor list they exported.",
+      "instruction_file": ".cursor/workflows/avl-check.md",
+      "initial_phase": "role-job"
+    },
+    "backorder-list": {
+      "name": "Backorder List",
+      "description": "Build a list of open lines past need-by, plus vendor backorder notes from the latest PDF or acknowledgment.",
+      "instruction_file": ".cursor/workflows/backorder-list.md",
+      "initial_phase": "role-job"
+    },
+    "blanket-release": {
+      "name": "Blanket Release",
+      "description": "Draft a release against the blanket log: keep the blanket number, remaining NTE or qty, release quantity, and the blanket price file.",
+      "instruction_file": ".cursor/workflows/blanket-release.md",
+      "initial_phase": "role-job"
+    },
+    "change-order-pack": {
+      "name": "Change Order Pack",
+      "description": "Show the original PO line versus the requested change with the vendor PDF or buyer note that triggered it.",
+      "instruction_file": ".cursor/workflows/change-order-pack.md",
+      "initial_phase": "role-job"
+    },
+    "match": {
+      "name": "Match",
+      "description": "Match PO lines to receiving and to the invoice PDF if present. Name any missing leg instead of calling the pack three-way.",
+      "instruction_file": ".cursor/workflows/match.md",
+      "initial_phase": "role-job"
+    },
+    "open-pos": {
+      "name": "Open POs",
+      "description": "List open purchase orders and need-by dates from their sheet or export. Flag lines past need-by.",
+      "instruction_file": ".cursor/workflows/open-pos.md",
+      "initial_phase": "role-job"
+    },
+    "quote-lead-moq": {
+      "name": "Quote Lead MOQ",
+      "description": "Read the quote PDFs they saved. List unit price, currency, validity date, MOQ or pack, and lead time as written.",
+      "instruction_file": ".cursor/workflows/quote-lead-moq.md",
+      "initial_phase": "role-job"
+    },
+    "receiving-shorts": {
+      "name": "Receiving Shorts",
+      "description": "From receiving versus open PO quantity, list shorts and partials. Do not write received-in-full.",
+      "instruction_file": ".cursor/workflows/receiving-shorts.md",
+      "initial_phase": "role-job"
+    },
+    "rfq-from-files": {
+      "name": "RFQ From Files",
+      "description": "Assemble the item list, quantities, specs or drawings they attached, and need-by from their requisition files.",
+      "instruction_file": ".cursor/workflows/rfq-from-files.md",
+      "initial_phase": "role-job"
+    }
+  },
+  "default_workflow": "avl-check",
+  "preseeded_role": "Purchasing / buyer (small manufacturer or shop)",
+  "memory": {
+    "shared_facts": "facts/facts-shared.md",
+    "shared_rules": "facts/rules-shared.md",
+    "facts": "facts/facts-operations.md",
+    "rules": "facts/rules-operations.md"
+  }
+}

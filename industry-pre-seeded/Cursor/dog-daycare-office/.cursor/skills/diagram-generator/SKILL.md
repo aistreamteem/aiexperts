@@ -1,0 +1,39 @@
+﻿---
+name: diagram-generator
+description: "Use when the journal or user asks to regenerate, refresh, expand, or synchronize design diagrams (docs/diagrams/*.mmd and index.html) with existing HLD/DD documents."
+disable-model-invocation: false
+---
+
+# Diagram Generator
+
+## Journal layer
+
+Step notes and the next action go on the active node through journal-keeper, in `journals/work-items/<id>/nodes/`. Do not write them to `journals/work-items/<id>/progress.md`. Use AskQuestion for a fixed choice.
+
+Regenerates and synchronizes architecture, sequence, ER, and C4-style diagrams from design docs. Use when diagrams need refresh or consistency checks.
+
+## When to use
+
+- Journal or user requests diagram regeneration/refresh/synchronization
+- Diagrams in `docs/diagrams/` are missing, outdated, inconsistent, or not aligned with `docs/design/hld.md` and `docs/design/dd.md`
+- The HTML viewer page needs to be rebuilt or updated after design changes
+
+## Instructions
+
+### 0. Work Item Context
+### 0. Work Item context
+
+- Active work item: the line in `.cursor/active-context.txt`, formatted `work-item:<id>`.
+- Artifacts (spec, docs, TODOS, STATUS, facts): `work-items/<id>/`.
+- Journal: `journals/work-items/<id>/progress.md` for item-wide fields, `state.json` for the
+  branch map, and `nodes/<active leaf>.md` for step notes, open questions, and the next action.
+  Write through journal-keeper.
+- Use Work Item-scoped paths for all artifacts
+
+
+1. Use **Mermaid** by default for all diagrams (architecture, sequence, ER, C4-style).
+2. Read `docs/design/hld.md` and `docs/design/dd.md` when present. Use the Standard HLD profile only (Part 1 / Extended profile docs are not in this expert).
+3. Regenerate or update diagrams in `docs/diagrams/` so they are synchronized with current HLD/DD content. Preserve clear naming conventions and avoid removing valid existing diagrams without reason.
+4. **Generate or refresh the HTML page** (e.g. `docs/diagrams/index.html`) used to view diagrams in a browser. The page should load Mermaid.js (e.g. from a CDN), render each diagram, and include a simple list or nav.
+5. Verify `docs/design/hld.md` and `docs/design/dd.md` reference relevant diagrams and update references if needed.
+6. Update the journal with what was regenerated/refreshed and set the next action according to the active pipeline step (do not force a pipeline jump if the project is not in a standalone diagram phase).
